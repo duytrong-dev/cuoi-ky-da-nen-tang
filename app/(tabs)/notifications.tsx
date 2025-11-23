@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet } from "react-native";
 
-export default function ExploreScreen() {
+export default function NotificationsScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello Explore!</Text>
+      <Text style={styles.text}>Hello Notifications!</Text>
     </View>
   );
 }
