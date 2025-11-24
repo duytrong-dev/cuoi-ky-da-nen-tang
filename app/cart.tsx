@@ -1,15 +1,20 @@
+import RecommendationSection from "@/components/recommendation-section";
 import ShopSection from "@/components/shop-section";
+import ShopVoucherModal from "@/components/shop-voucher-modal";
 import StickyFooter from "@/components/sticky-footer";
-import { SelectedMap, Shop, sampleData } from "@/types/cart";
+import VariantModal from "@/components/variant-modal";
+import { Product, SelectedMap, Shop, sampleData } from "@/types/cart";
 import { formatVND } from "@/utils/formatVND";
 import { Stack, useRouter } from "expo-router";
 import React from "react";
-import { Image, ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 
 export default function CartScreen() {
   const router = useRouter();
   const [cart, setCart] = React.useState<Shop[]>(sampleData);
   const [selected, setSelected] = React.useState<SelectedMap>({});
+  const [selectedProductForVariant, setSelectedProductForVariant] = React.useState<Product | null>(null);
+  const [selectedShopForVoucher, setSelectedShopForVoucher] = React.useState<Shop | null>(null);
 
   // Derived state
   const allProductIds = React.useMemo(
@@ -77,18 +82,34 @@ export default function CartScreen() {
     });
   };
 
+  const handleOpenVariant = (product: Product) => {
+    setSelectedProductForVariant(product);
+  };
+
+  const handleConfirmVariant = (product: Product, newVariant: string, newQty: number) => {
+    setCart(prev =>
+      prev.map(s => ({
+        ...s,
+        products: s.products.map(p =>
+          p.id === product.id ? { ...p, variant: newVariant, qty: newQty } : p
+        ),
+      }))
+    );
+    setSelectedProductForVariant(null);
+  };
+
   return (
     <View className="flex-1 bg-background">
       <Stack.Screen options={{
         headerTitle: () => (
           <View className="flex-row items-center">
-            <Text className="text-lg font-medium text-black">Giỏ hàng</Text>
+            <Text className="text-lg font-medium text-primary">Giỏ hàng</Text>
             <Text className="text-lg text-gray-500 ml-1">({allProductIds.length})</Text>
           </View>
         )
       }} />
 
-      <ScrollView contentContainerStyle={{ paddingBottom: 180 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 180 }} className="px-2">
         {cart.map(shop => (
           <ShopSection
             key={shop.shopId}
@@ -97,33 +118,12 @@ export default function CartScreen() {
             onToggleProduct={toggleSelectProduct}
             onChangeQty={changeQty}
             onRemove={removeProduct}
+            onOpenVariant={handleOpenVariant}
+            onOpenVoucher={() => setSelectedShopForVoucher(shop)}
           />
         ))}
 
-        {/* You might also like section */}
-        <View className="mt-4 px-2">
-          <View className="flex-row items-center justify-center mb-4">
-            <View className="h-[1px] bg-gray-300 flex-1" />
-            <Text className="mx-4 text-gray-500 font-medium">Có thể bạn cũng thích</Text>
-            <View className="h-[1px] bg-gray-300 flex-1" />
-          </View>
-
-          <View className="flex-row flex-wrap justify-between">
-            {/* Mock items for "You might also like" */}
-            {[1, 2, 3, 4].map((i) => (
-              <View key={i} className="w-[49%] bg-white mb-2 rounded-sm overflow-hidden">
-                <Image source={{ uri: 'https://via.placeholder.com/150' }} className="w-full h-40" />
-                <View className="p-2">
-                  <Text numberOfLines={2} className="text-xs mb-1">Sản phẩm gợi ý {i} - Chất lượng cao, giá tốt</Text>
-                  <View className="flex-row items-center">
-                    <Text className="text-primary text-sm">₫{formatVND(100000 * i)}</Text>
-                    <Text className="text-[10px] text-gray-500 ml-2">Đã bán {i * 10}</Text>
-                  </View>
-                </View>
-              </View>
-            ))}
-          </View>
-        </View>
+        <RecommendationSection />
       </ScrollView>
 
       <StickyFooter
@@ -132,6 +132,21 @@ export default function CartScreen() {
         total={total}
         totalItems={totalItems}
         onCheckout={() => alert("Checkout: " + formatVND(total))}
+      />
+
+      <VariantModal
+        visible={!!selectedProductForVariant}
+        product={selectedProductForVariant}
+        currentVariant={selectedProductForVariant?.variant || ""}
+        currentQty={selectedProductForVariant?.qty || 1}
+        onClose={() => setSelectedProductForVariant(null)}
+        onConfirm={handleConfirmVariant}
+      />
+
+      <ShopVoucherModal
+        visible={!!selectedShopForVoucher}
+        shopName={selectedShopForVoucher?.shopName || ""}
+        onClose={() => setSelectedShopForVoucher(null)}
       />
     </View>
   );

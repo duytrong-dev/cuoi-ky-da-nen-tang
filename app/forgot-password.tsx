@@ -9,12 +9,12 @@ export const screenOptions = {
 };
 
 
-export default function ForgotPassword() {
+export default function ForgotPasswordScreen() {
 
   const router = useRouter();
-  const [value, setValue] = useState("");
+  const [identifier, setIdentifier] = useState("");
 
-  const canContinue = value.trim().length > 0;
+  const canContinue = identifier.trim().length > 0;
 
   return (
     <View className="flex-1 bg-white px-5 pt-16">
@@ -23,11 +23,12 @@ export default function ForgotPassword() {
       <View className="flex-row items-center border-b border-gray-300 pb-2 mb-8">
         <Ionicons name="person-outline" size={22} color="#777" />
         <TextInput
-          placeholder="Số điện thoại/Email"
+          placeholder="Email hoặc số điện thoại"
           placeholderTextColor="#b7b7b7"
           className="flex-1 ml-3 text-lg"
-          onChangeText={setValue}
-          value={value}
+          style={{ fontSize: 16, lineHeight: 20 }}
+          onChangeText={setIdentifier}
+          value={identifier}
         />
       </View>
 
@@ -42,7 +43,7 @@ export default function ForgotPassword() {
           className={`text-center font-semibold ${canContinue ? "text-white" : "text-gray-500"
             }`}
         >
-          Tiếp
+          Tiếp tục
         </Text>
       </TouchableOpacity>
 

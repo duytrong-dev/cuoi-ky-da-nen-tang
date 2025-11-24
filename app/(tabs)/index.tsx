@@ -1,23 +1,30 @@
-import { Redirect } from "expo-router";
-import { StyleSheet } from "react-native";
+import BannerSlider from "@/components/banner-slider";
+import FeaturedGrid from "@/components/featured-grid";
+import HomeHeader from "@/components/home-header";
+import LiveAndVideoSection from "@/components/live-and-video-section";
+import QuickLinks from "@/components/quick-links";
+import React from "react";
+import { ScrollView, View } from "react-native";
 
 export default function HomeScreen() {
+
   return (
-    // <View style={styles.container}>
-    //   <Text style={styles.text}>Hello Home!</Text>
-    // </View>
-    <Redirect href="/login" />
+    <View className="flex-1 bg-gray-100">
+      {/* Header */}
+      <HomeHeader />
+      <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
+        {/* Banner Slider */}
+        <BannerSlider />
+
+        {/* Quick Links */}
+        <QuickLinks />
+
+        {/* Live & Video Section */}
+        <LiveAndVideoSection />
+
+        {/* Featured Grid */}
+        <FeaturedGrid />
+      </ScrollView>
+    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: "700",
-  },
-});

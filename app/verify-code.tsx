@@ -8,10 +8,12 @@ import {
   View,
 } from "react-native";
 
-export default function VerifyCode() {
+export default function VerifyCodeScreen() {
+
   const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
   const inputRefs = useRef<(TextInput | null)[]>([]);
   const [countdown, setCountdown] = useState(60);
+  const [phoneNumber, setPhoneNumber] = useState("(+84) 702 579 654");
 
   // Countdown
   useEffect(() => {
@@ -27,7 +29,7 @@ export default function VerifyCode() {
     if (!digit) return;
 
     const updated = [...otp];
-    updated[index] = digit[0]; // chỉ lấy ký tự đầu nếu nhập nhanh nhiều số
+    updated[index] = digit[0];
     setOtp(updated);
 
     // Focus ô tiếp theo
@@ -62,10 +64,10 @@ export default function VerifyCode() {
     <View className="flex-1 bg-white px-5 pt-16">
       <Text className="text-base text-gray-700 mb-3">
         Mã xác thực đã được gửi qua{" "}
-        <Text className="font-semibold">Zalo</Text> đến số điện thoại
+        <Text className="font-semibold text-blue-500">Zalo</Text> đến số điện thoại
       </Text>
 
-      <Text className="text-lg font-semibold mb-8">(+84) 702 579 654</Text>
+      <Text className="text-lg font-semibold mb-8">{phoneNumber}</Text>
 
       {/* OTP Inputs */}
       <View className="flex-row justify-between mb-8">
@@ -80,7 +82,7 @@ export default function VerifyCode() {
             onKeyPress={(e) => handleKeyPress(e, idx)}
             maxLength={1}
             keyboardType="number-pad"
-            className="w-12 h-14 border-b border-gray-500 text-center text-2xl"
+            className="w-12 h-14 border-b border-gray-500 text-center text-2xl text-primary"
           />
         ))}
       </View>
@@ -95,7 +97,7 @@ export default function VerifyCode() {
           className={`text-center font-semibold ${canContinue ? "text-white" : "text-gray-500"
             }`}
         >
-          Tiếp theo
+          Tiếp tục
         </Text>
       </TouchableOpacity>
 

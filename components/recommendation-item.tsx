@@ -1,0 +1,80 @@
+import { Colors } from "@/constants/theme";
+import { formatVND } from "@/utils/formatVND";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import React from "react";
+import { Image, Text, TouchableOpacity, View } from "react-native";
+
+export type RecommendationProduct = {
+    id: string;
+    image: string;
+    title: string;
+    price: number;
+    rating: number;
+    sold: number;
+    location: string;
+    deliveryTime: string;
+    isMall?: boolean;
+    isPreferred?: boolean;
+    hasVoucherXtra?: boolean;
+};
+
+type Props = {
+    item: RecommendationProduct;
+};
+
+export default function RecommendationItem({ item }: Readonly<Props>) {
+    return (
+        <TouchableOpacity className="bg-white rounded-md overflow-hidden m-1 shadow-sm border border-gray-100">
+            {/* Image Container */}
+            <View className="relative w-full aspect-square">
+                <Image source={{ uri: item.image }} className="w-full h-full" resizeMode="cover" />
+
+                {/* Voucher Xtra Badge */}
+                {item.hasVoucherXtra && (
+                    <View className="absolute bottom-0 left-0 bg-yellow-400 px-1 py-[2px]">
+                        <Text className="text-[10px] font-bold text-white">VOUCHER</Text>
+                        <Text className="text-[10px] font-bold text-white leading-3">XTRA</Text>
+                    </View>
+                )}
+
+                {/* Play Icon Overlay (if needed, based on image) */}
+                {/* <View className="absolute bottom-2 right-2 bg-black/30 rounded-full p-1">
+                    <Ionicons name="play" size={12} color="white" />
+                </View> */}
+            </View>
+
+            {/* Content */}
+            <View className="p-2">
+                {/* Title with Badge */}
+                <Text numberOfLines={2} className="text-xs text-gray-800 leading-4 mb-1">
+                    {item.isPreferred && (
+                        <Text className="text-[10px] text-white bg-primary px-1 mr-1 rounded-[2px]"> Yêu thích+ </Text>
+                    )}
+                    {item.title}
+                </Text>
+
+                {/* Price */}
+                <View>
+                    <Text className="text-primary text-base font-medium">{formatVND(item.price)}</Text>
+                </View>
+
+                {/* Rating & Sold */}
+                <View className="flex-row items-center mt-1">
+                    <Ionicons name="star" size={10} color="#FFD700" />
+                    <Text className="text-[10px] text-gray-500 ml-[2px]">{item.rating}</Text>
+                    <View className="w-[1px] h-2 bg-gray-300 mx-1" />
+                    <Text className="text-[10px] text-gray-500">Đã bán {item.sold}</Text>
+                </View>
+
+                {/* Delivery & Location */}
+                <View className="mt-2 flex-row items-center justify-between">
+                    <View className="flex-row items-center">
+                        <MaterialCommunityIcons name="truck-delivery-outline" size={12} color={Colors.light.secondary} />
+                        <Text className="text-[10px] text-gray-500 ml-1">{item.deliveryTime}</Text>
+                    </View>
+                    <Text className="text-[10px] text-gray-400">{item.location}</Text>
+                </View>
+            </View>
+        </TouchableOpacity>
+    );
+}

@@ -24,8 +24,8 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => (
-            <Ionicons size={22} name="home-outline" color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons size={22} name={focused ? "home" : "home-outline"} color={color} />
           ),
         }}
       />
@@ -33,8 +33,8 @@ export default function TabLayout() {
         name="explore"
         options={{
           title: 'Khám phá',
-          tabBarIcon: ({ color }) => (
-            <Ionicons size={22} name="compass-outline" color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons size={22} name={focused ? "compass" : "compass-outline"} color={color} />
           ),
         }}
       />
@@ -42,8 +42,8 @@ export default function TabLayout() {
         name="mall"
         options={{
           title: 'Mall',
-          tabBarIcon: ({ color }) => (
-            <Ionicons size={22} name="bag-handle-outline" color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons size={22} name={focused ? "bag-handle" : "bag-handle-outline"} color={color} />
           ),
         }}
       />
@@ -51,8 +51,8 @@ export default function TabLayout() {
         name="notifications"
         options={{
           title: 'Thông báo',
-          tabBarIcon: ({ color }) => (
-            <Ionicons size={22} name="notifications-outline" color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons size={22} name={focused ? "notifications" : "notifications-outline"} color={color} />
           ),
         }}
       />
@@ -60,8 +60,8 @@ export default function TabLayout() {
         name="profile"
         options={{
           title: 'Tôi',
-          tabBarIcon: ({ color }) => (
-            <Ionicons size={22} name="person-outline" color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons size={22} name={focused ? "person" : "person-outline"} color={color} />
           ),
         }}
       />

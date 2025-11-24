@@ -27,7 +27,7 @@ function RootLayoutNav() {
     headerTitle: title,
     headerLeft: ({ tintColor }) => (
       <TouchableOpacity onPress={goBack}>
-        <Ionicons name="chevron-back" size={24} color={Colors.light.primary} />
+        <Ionicons name="arrow-back" size={24} color={Colors.light.primary} />
       </TouchableOpacity>
     ),
     headerRight: ({ tintColor }) => (
@@ -37,17 +37,11 @@ function RootLayoutNav() {
     ),
     headerTitleAlign: "center",
     headerStyle: { backgroundColor: isDark ? "#111" : "#fff" },
-    headerTitleStyle: { fontWeight: "500", fontSize: 18, color: isDark ? "#fff" : "#000" },
+    headerTitleStyle: { fontWeight: "500", fontSize: 18, color: isDark ? Colors.dark.primary : Colors.light.primary },
   });
 
-  const cartScreenOptions = (title: string): NativeStackNavigationOptions => ({
+  const cartScreenOptions = (): NativeStackNavigationOptions => ({
     headerShown: true,
-    headerTitle: () => (
-      <View className="flex-row items-center">
-        <Text className="text-lg font-medium text-black dark:text-white">Giỏ hàng</Text>
-        <Text className="text-lg text-gray-500 ml-1">(5)</Text>
-      </View>
-    ),
     headerLeft: ({ tintColor }) => (
       <TouchableOpacity onPress={goBack} className="mr-4">
         <Ionicons name="arrow-back" size={24} color={Colors.light.primary} />
@@ -64,7 +58,7 @@ function RootLayoutNav() {
       </View>
     ),
     headerTitleAlign: "left",
-    headerStyle: { backgroundColor: isDark ? "#111" : "#fff" },
+    headerStyle: { backgroundColor: isDark ? Colors.dark.background : Colors.light.background },
     headerShadowVisible: false,
   });
 
@@ -77,9 +71,12 @@ function RootLayoutNav() {
         <Stack.Screen name="register" options={screenOptions("Đăng ký")} />
         <Stack.Screen name="forgot-password" options={screenOptions("Đặt lại mật khẩu")} />
         <Stack.Screen name="verify-code" options={screenOptions("Nhập mã xác minh")} />
+        <Stack.Screen name="app-voucher" options={screenOptions("Chọn Voucher")} />
 
-        <Stack.Screen name="cart" options={cartScreenOptions("Giở hàng (4)")} />
-        <Stack.Screen name="chat" options={{ headerShown: false }} />
+        <Stack.Screen name="cart" options={cartScreenOptions()} />
+        <Stack.Screen name="chat" options={screenOptions("Chat")} />
+        <Stack.Screen name="chat/[id]" options={screenOptions("Shop Inbox")} />
+
         <Stack.Screen name="search" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style={isDark ? "light" : "dark"} />
