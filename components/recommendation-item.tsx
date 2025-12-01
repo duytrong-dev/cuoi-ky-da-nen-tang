@@ -24,7 +24,7 @@ type Props = {
 
 export default function RecommendationItem({ item }: Readonly<Props>) {
     return (
-        <TouchableOpacity className="bg-white rounded-md overflow-hidden m-1 shadow-sm border border-gray-100">
+        <TouchableOpacity className="bg-white rounded-md overflow-hidden m-1 shadow-sm border border-black ">
             {/* Image Container */}
             <View className="relative w-full aspect-square">
                 <Image source={{ uri: item.image }} className="w-full h-full" resizeMode="cover" />
@@ -32,8 +32,8 @@ export default function RecommendationItem({ item }: Readonly<Props>) {
                 {/* Voucher Xtra Badge */}
                 {item.hasVoucherXtra && (
                     <View className="absolute bottom-0 left-0 bg-yellow-400 px-1 py-[2px]">
-                        <Text className="text-[10px] font-bold text-white">VOUCHER</Text>
-                        <Text className="text-[10px] font-bold text-white leading-3">XTRA</Text>
+                        <Text className="text-[10px] font-bold text-black">VOUCHER</Text>
+                        <Text className="text-[10px] font-bold text-black leading-3">XTRA</Text>
                     </View>
                 )}
 
@@ -46,33 +46,33 @@ export default function RecommendationItem({ item }: Readonly<Props>) {
             {/* Content */}
             <View className="p-2">
                 {/* Title with Badge */}
-                <Text numberOfLines={2} className="text-xs text-gray-800 leading-4 mb-1">
+                <Text numberOfLines={2} className="text-sm text-gray-800 leading-4 mb-1">
                     {item.isPreferred && (
-                        <Text className="text-[10px] text-white bg-primary px-1 mr-1 rounded-[2px]"> Yêu thích+ </Text>
+                        <Text className="text-xs text-black bg-primary px-1 mr-1 rounded-[2px]"> Yêu thích+ </Text>
                     )}
                     {item.title}
                 </Text>
 
                 {/* Price */}
                 <View>
-                    <Text className="text-primary text-base font-medium">{formatVND(item.price)}</Text>
+                    <Text className="text-red-500 text-base font-medium">{formatVND(item.price)}</Text>
                 </View>
 
                 {/* Rating & Sold */}
                 <View className="flex-row items-center mt-1">
                     <Ionicons name="star" size={10} color="#FFD700" />
-                    <Text className="text-[10px] text-gray-500 ml-[2px]">{item.rating}</Text>
+                    <Text className="text-xs text-gray-500 ml-[2px]">{item.rating}</Text>
                     <View className="w-[1px] h-2 bg-gray-300 mx-1" />
-                    <Text className="text-[10px] text-gray-500">Đã bán {item.sold}</Text>
+                    <Text className="text-xs text-gray-500">Đã bán {item.sold}</Text>
                 </View>
 
                 {/* Delivery & Location */}
                 <View className="mt-2 flex-row items-center justify-between">
                     <View className="flex-row items-center">
-                        <MaterialCommunityIcons name="truck-delivery-outline" size={12} color={Colors.light.secondary} />
-                        <Text className="text-[10px] text-gray-500 ml-1">{item.deliveryTime}</Text>
+                        <MaterialCommunityIcons name="truck-delivery-outline" size={16} color={Colors.light.secondary} />
+                        <Text className="text-sm text-gray-500 ml-1">{item.deliveryTime}</Text>
                     </View>
-                    <Text className="text-[10px] text-gray-400">{item.location}</Text>
+                    <Text className="text-sm text-gray-400">{item.location}</Text>
                 </View>
             </View>
         </TouchableOpacity>

@@ -1,15 +1,13 @@
+import ConversationItem, { Conversation } from "@/components/conversation-item";
 import { useRouter } from "expo-router";
 import React from "react";
 import {
   FlatList,
-  Image,
-  Text,
-  TouchableOpacity,
   View,
 } from "react-native";
 
 // Sample data
-const CONVERSATIONS = [
+const CONVERSATIONS: Conversation[] = [
   {
     id: "1",
     shopName: "Kho Công Nghệ Online",
@@ -33,53 +31,20 @@ const CONVERSATIONS = [
 export default function ChatScreen() {
   const router = useRouter();
 
-  const renderConversation = ({ item, index }: { item: typeof CONVERSATIONS[0]; index: number }) => (
-    <TouchableOpacity
-      onPress={() => router.push({
-        pathname: "/chat/[id]",
-        params: { id: index.toString() },
-      })}
-      className="flex-row items-center px-4 py-3 bg-white border-b border-gray-100"
-    >
-      {/* Avatar with Badge */}
-      <View className="relative mr-3">
-        <Image
-          source={{ uri: item.shopAvatar }}
-          className="w-16 aspect-square rounded-full"
-        />
-        {item.badge && (
-          <View className="absolute -bottom-1 left-0 right-0 bg-primary px-1 py-0.5 rounded-sm">
-            <Text className="text-white text-[8px] font-bold text-center">
-              {item.badge}
-            </Text>
-          </View>
-        )}
-        {item.isOnline && (
-          <View className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white" />
-        )}
-      </View>
-
-      {/* Content */}
-      <View className="flex-1">
-        <Text className="text-base font-medium text-gray-800 mb-1">
-          {item.shopName}
-        </Text>
-        <Text className="text-sm text-gray-500" numberOfLines={1}>
-          {item.lastMessage}
-        </Text>
-      </View>
-
-      {/* Date */}
-      <Text className="text-xs text-gray-400 ml-2">{item.date}</Text>
-    </TouchableOpacity>
-  );
-
   return (
     <View className="flex-1">
       {/* Conversation List */}
       <FlatList
         data={CONVERSATIONS}
-        renderItem={renderConversation}
+        renderItem={({ item, index }) => (
+          <ConversationItem
+            conversation={item}
+            onPress={() => router.push({
+              pathname: "/chat/[id]",
+              params: { id: index.toString() },
+            })}
+          />
+        )}
         keyExtractor={(item) => item.id}
         className="flex-1"
       />

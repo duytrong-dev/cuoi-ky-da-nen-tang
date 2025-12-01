@@ -1,15 +1,16 @@
+import ChatInputArea from "@/components/chat-input-area";
 import ChatMessage, { Message } from "@/components/chat-message";
-import { Colors } from "@/constants/theme";
-import { Ionicons } from "@expo/vector-icons";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import ChatOptionsMenu from "@/components/chat-options-menu";
+import ChatRatingPrompt from "@/components/chat-rating-prompt";
+import HeaderIconButton from "@/components/header-icon-button";
+import { useTheme } from "@/store/ThemeContext";
+import { Stack, useLocalSearchParams } from "expo-router";
 import React, { useEffect, useRef, useState } from "react";
 import {
     FlatList,
+    Image,
     KeyboardAvoidingView,
-    Modal,
     Text,
-    TextInput,
-    TouchableOpacity,
     View
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -75,7 +76,6 @@ const MESSAGES: Message[] = [
         id: "9",
         type: "image",
         image: "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7ab0te9@resize_w450_nl.webp",
-        text: "Shop gửi bạn nhé",
         timestamp: "13:17",
     },
     {
@@ -98,8 +98,8 @@ const OPTIONS_MENU = [
 ];
 
 export default function ChatDetailScreen() {
+    const { isDark } = useTheme();
     const insets = useSafeAreaInsets();
-    const router = useRouter();
     const { id } = useLocalSearchParams();
     const [message, setMessage] = useState("");
     const [showMenu, setShowMenu] = useState(false);
@@ -114,116 +114,104 @@ export default function ChatDetailScreen() {
         return () => clearTimeout(timer);
     }, []);
 
-    const shopInfo = {
-        name: "Kho Công Nghệ Online",
-        avatar: "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7ab0te9@resize_w450_nl.webp",
-        badge: "Yêu thích",
-        isOnline: true,
-    };
-
-
-
+    const shopName = "Kho Công Nghệ Online";
+    const shopAvatar = "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7ab0te9@resize_w450_nl.webp";
+    const badge = "Yêu thích";
+    const isOnline = true;
     return (
-        <KeyboardAvoidingView
-            behavior="padding"
-            keyboardVerticalOffset={insets.bottom + 22}
-            className="flex-1 bg-gray-50"
-        >
-
-            {/* Messages */}
-            <FlatList
-                ref={flatListRef}
-                data={MESSAGES}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => <ChatMessage message={item} />}
+        <View className="flex-1">
+            <Stack.Screen options={{
+                headerTitle: () => (
+                    <View className="flex-row items-center flex-1">
+                        <Image
+                            source={{ uri: "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7ab0te9@resize_w450_nl.webp" }}
+                            className="w-10 h-10 rounded-full"
+                        />
+                        <View className="ml-3 flex-1">
+                            <View className="flex-row items-center">
+                                <Text
+                                    className="text-base font-medium text-gray-800 dark:text-white"
+                                    numberOfLines={1}
+                                >
+                                    {shopName}
+                                </Text>
+                                {badge && (
+                                    <View className="bg-primary px-2 py-0.5 rounded-sm ml-2">
+                                        <Text className="text-white text-xs font-medium">{badge}</Text>
+                                    </View>
+                                )}
+                            </View>
+                            {isOnline && (
+                                <View className="flex-row items-center mt-0.5">
+                                    <View className="w-2 h-2 rounded-full bg-green-500 mr-1" />
+                                    <Text className="text-xs text-green-600">Trực tuyến</Text>
+                                </View>
+                            )}
+                        </View>
+                    </View>
+                ),
+                headerRight: () => (
+                    <View className="flex-row items-center gap-2">
+                        <HeaderIconButton
+                            iconName="storefront-outline"
+                            color={isDark ? '#fff' : '#666'}
+                            onPress={() => { }}
+                        />
+                        <HeaderIconButton
+                            iconName="ellipsis-vertical"
+                            color={isDark ? '#fff' : '#666'}
+                            onPress={() => setShowMenu(true)}
+                        />
+                    </View>
+                ),
+            }} />
+            <KeyboardAvoidingView
+                behavior="padding"
+                keyboardVerticalOffset={insets.bottom + 22}
                 className="flex-1 bg-gray-50"
-                contentContainerStyle={{ paddingBottom: 10 }}
-            />
-
-            {/* Rating Prompt */}
-            {showRating && (
-                <View className="bg-white border-t border-gray-200 px-4 py-3">
-                    <View className="flex-row items-center justify-between mb-2">
-                        <Text className="text-lg font-medium text-gray-800">
-                            Đánh Giá Dịch Vụ
-                        </Text>
-                        <TouchableOpacity onPress={() => setShowRating(false)}>
-                            <Ionicons name="close" size={20} color="#666" />
-                        </TouchableOpacity>
-                    </View>
-                    <Text className="text-md text-gray-600 mb-3">
-                        Bạn đánh giá lần hỗ trợ này như thế nào?
-                    </Text>
-                    <View className="flex-row justify-around">
-                        <TouchableOpacity className="items-center">
-                            <Text className="text-3xl mb-1">😞</Text>
-                            <Text className="text-md text-gray-600">Kém</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity className="items-center">
-                            <Text className="text-3xl mb-1">😐</Text>
-                            <Text className="text-md text-gray-600">Bình Thường</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity className="items-center">
-                            <Text className="text-3xl mb-1">😊</Text>
-                            <Text className="text-md text-gray-600">Tốt</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-            )}
-
-            {/* Input Area */}
-            <View className="bg-white border-t border-gray-200 px-4 py-4 pb-12">
-                <View className="flex-row items-center mb-3">
-                    <Ionicons name="document-attach-outline" size={20} color={Colors.light.primary} />
-                    <Text className="text-md text-primary ml-1">Đánh giá mức độ hài lòng</Text>
-                </View>
-                <View className="flex-row items-center">
-                    <TouchableOpacity className="mr-2">
-                        <Ionicons name="add-circle-outline" size={28} color="#666" />
-                    </TouchableOpacity>
-                    <TextInput
-                        placeholder="Gửi tin nhắn ..."
-                        className="flex-1 bg-gray-100 rounded-full px-4 py-3 text-base"
-                        style={{ fontSize: 16, lineHeight: 20 }}
-                        value={message}
-                        onChangeText={setMessage}
-                    />
-                    <TouchableOpacity className="ml-2">
-                        <Ionicons name="happy-outline" size={28} color="#666" />
-                    </TouchableOpacity>
-                </View>
-            </View>
-
-            {/* Options Menu Modal */}
-            <Modal
-                visible={showMenu}
-                transparent
-                animationType="fade"
-                onRequestClose={() => setShowMenu(false)}
             >
-                <TouchableOpacity
-                    className="flex-1 bg-black/50"
-                    activeOpacity={1}
-                    onPress={() => setShowMenu(false)}
-                >
-                    <View className="absolute top-16 right-4 bg-white rounded-lg shadow-lg overflow-hidden" style={{ width: 250 }}>
-                        {OPTIONS_MENU.map((option, index) => (
-                            <TouchableOpacity
-                                key={option.id}
-                                className={`flex-row items-center px-4 py-3 ${index < OPTIONS_MENU.length - 1 ? "border-b border-gray-100" : ""
-                                    }`}
-                                onPress={() => {
-                                    setShowMenu(false);
-                                    console.log(option.label);
-                                }}
-                            >
-                                <Ionicons name={option.icon as any} size={20} color="#666" />
-                                <Text className="text-sm text-gray-800 ml-3">{option.label}</Text>
-                            </TouchableOpacity>
-                        ))}
-                    </View>
-                </TouchableOpacity>
-            </Modal>
-        </KeyboardAvoidingView>
+                {/* Messages */}
+                <FlatList
+                    ref={flatListRef}
+                    data={MESSAGES}
+                    keyExtractor={(item) => item.id}
+                    renderItem={({ item }) => <ChatMessage message={item} />}
+                    className="flex-1 bg-gray-50"
+                    contentContainerStyle={{ paddingBottom: 10 }}
+                />
+
+                {/* Rating Prompt */}
+                {showRating && (
+                    <ChatRatingPrompt
+                        onClose={() => setShowRating(false)}
+                        onRate={(rating) => {
+                            console.log("Rating:", rating);
+                            setShowRating(false);
+                        }}
+                    />
+                )}
+
+                {/* Input Area */}
+                <ChatInputArea
+                    message={message}
+                    onChangeMessage={setMessage}
+                    onSend={() => {
+                        console.log("Send:", message);
+                        setMessage("");
+                    }}
+                />
+
+                {/* Options Menu Modal */}
+                <ChatOptionsMenu
+                    visible={showMenu}
+                    onClose={() => setShowMenu(false)}
+                    options={OPTIONS_MENU}
+                    onSelectOption={(optionId) => {
+                        console.log("Selected option:", optionId);
+                    }}
+                />
+            </KeyboardAvoidingView>
+        </View>
     );
 }
+

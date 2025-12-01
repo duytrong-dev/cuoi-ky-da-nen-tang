@@ -4,7 +4,6 @@ import ShopVoucherModal from "@/components/shop-voucher-modal";
 import StickyFooter from "@/components/sticky-footer";
 import VariantModal from "@/components/variant-modal";
 import { Product, SelectedMap, Shop, sampleData } from "@/types/cart";
-import { formatVND } from "@/utils/formatVND";
 import { Stack, useRouter } from "expo-router";
 import React from "react";
 import { ScrollView, Text, View } from "react-native";
@@ -131,7 +130,7 @@ export default function CartScreen() {
         onToggleAll={toggleSelectAll}
         total={total}
         totalItems={totalItems}
-        onCheckout={() => alert("Checkout: " + formatVND(total))}
+        onCheckout={() => router.push("/checkout")}
       />
 
       <VariantModal

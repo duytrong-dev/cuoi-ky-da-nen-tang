@@ -1,19 +1,34 @@
-import MasonryList from "@react-native-seoul/masonry-list";
-import React from "react";
-import FeaturedItem, { FeaturedProductItem } from "./featured-item";
+export type ProductItemType = {
+    id: string;
+    image: string;
+    title: string;
+    price: number;
+    rating: number;
+    sold: number;
+    location: string;
+    deliveryTime: string;
+    isMall?: boolean;
+    isPreferred?: boolean;
+    hasVoucherXtra?: boolean;
+    isTrending?: boolean;
+    discount?: string;
+    originalPrice?: number;
+};
 
-const PRODUCTS: FeaturedProductItem[] = [
+export const products: ProductItemType[] = [
     {
         id: '1',
         image: "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7ab0te9@resize_w450_nl.webp",
-        title: "Ram Laptop DDR5 8gb Samsung/skhynix/crucial",
-        price: 609520,
+        title: "Áo hoodie nam unisex dày dặn form rộng chất nỉ bông có mũ trùm đầu Alex cool HD01",
+        price: 86333,
         rating: 5.0,
-        sold: 4,
-        location: "TP. Hồ Chí Minh",
+        sold: 10000,
+        location: "Hà Nội",
         deliveryTime: "2 - 3 ngày",
         isPreferred: true,
         hasVoucherXtra: true,
+        discount: "-19%",
+        originalPrice: 149000,
     },
     {
         id: '2',
@@ -25,10 +40,12 @@ const PRODUCTS: FeaturedProductItem[] = [
         location: "Quảng Ninh",
         deliveryTime: "2 - 4 ngày",
         hasVoucherXtra: true,
+        discount: "-19%",
+        originalPrice: 1743900,
     },
     {
         id: '3',
-        image: "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz7j1caiwpep17.webp",
+        image: "https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m33f1mqavijfd6.webp",
         title: "[Sẵn hàng] Kit bàn phím cơ Lucky65 v3 - Nhôm CNC cao cấp",
         price: 1300500,
         rating: 5.0,
@@ -38,6 +55,8 @@ const PRODUCTS: FeaturedProductItem[] = [
         isPreferred: true,
         hasVoucherXtra: true,
         isTrending: true,
+        discount: "-19%",
+        originalPrice: 1550500,
     },
     {
         id: '4',
@@ -50,16 +69,20 @@ const PRODUCTS: FeaturedProductItem[] = [
         deliveryTime: "2 - 3 ngày",
         isPreferred: true,
         hasVoucherXtra: true,
+        discount: "-19%",
+        originalPrice: 2158000,
     },
     {
         id: '5',
-        image: "https://down-vn.img.susercontent.com/file/sg-11134201-7rdvl-lz7j1caiwpep17@resize_w450_nl.webp",
+        image: "https://down-vn.img.susercontent.com/file/vn-11134207-820l4-meyhktetfgu8c4.webp",
         title: "Quần Âu Dài Nam LC, Form Slim, cạp chun ấn, vải ấu",
         price: 322960,
         rating: 4.8,
         sold: 128,
         location: "Hà Nội",
         deliveryTime: "3 - 5 ngày",
+        discount: "-19%",
+        originalPrice: 390000,
     },
     {
         id: '6',
@@ -71,10 +94,12 @@ const PRODUCTS: FeaturedProductItem[] = [
         location: "TP. Hồ Chí Minh",
         deliveryTime: "2 - 3 ngày",
         hasVoucherXtra: true,
+        discount: "-19%",
+        originalPrice: 2158000,
     },
     {
         id: '7',
-        image: "https://down-vn.img.susercontent.com/file/sg-11134201-7rdw4-lz7j1caiwpep17@resize_w450_nl.webp",
+        image: "https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mh7cbakyg1zi75.webp",
         title: "Máy tính All In One G33 I7-8650U Ram 16GB SSD 256GB Màn 24 inch",
         price: 7310000,
         rating: 4.9,
@@ -83,10 +108,12 @@ const PRODUCTS: FeaturedProductItem[] = [
         deliveryTime: "2 - 4 ngày",
         isMall: true,
         isTrending: true,
+        discount: "-19%",
+        originalPrice: 2158000,
     },
     {
         id: '8',
-        image: "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7ab0te9@resize_w450_nl.webp",
+        image: "https://down-vn.img.susercontent.com/file/0982de1d517eed28495a9bbcaced5881.webp",
         title: "iPhone 14 Pro Max 128GB 256GB 512GB Chính hãng VN/A",
         price: 25990000,
         rating: 5.0,
@@ -95,18 +122,8 @@ const PRODUCTS: FeaturedProductItem[] = [
         deliveryTime: "1 - 2 ngày",
         isMall: true,
         isPreferred: true,
+        isTrending: true,
+        discount: "-19%",
+        originalPrice: 2158000,
     },
 ];
-
-export default function FeaturedGrid() {
-    return (
-        <MasonryList
-            data={PRODUCTS}
-            keyExtractor={(item) => (item as FeaturedProductItem).id}
-            numColumns={2}
-            renderItem={({ item }) => <FeaturedItem item={item as FeaturedProductItem} />}
-            showsVerticalScrollIndicator={false}
-            className="p-1"
-        />
-    );
-}

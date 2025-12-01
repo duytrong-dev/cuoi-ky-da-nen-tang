@@ -54,12 +54,12 @@ const MOCK_DATA: RecommendationProduct[] = [
 
 export default function RecommendationSection() {
     return (
-        <View>
+        <View className="px-2">
             {/* Header */}
             <View className="flex-row items-center justify-center my-6">
-                <View className="h-[1px] bg-gray-300 flex-1" />
-                <Text className="mx-4 text-gray-500 font-medium">Có thể bạn cũng thích</Text>
-                <View className="h-[1px] bg-gray-300 flex-1" />
+                <View className="h-[1px] bg-gray-400 flex-1" />
+                <Text className="mx-4 text-black font-medium">Có thể bạn cũng thích</Text>
+                <View className="h-[1px] bg-gray-400 flex-1" />
             </View>
 
             {/* Grid */}

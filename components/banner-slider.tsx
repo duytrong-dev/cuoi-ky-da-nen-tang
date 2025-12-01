@@ -1,71 +1,93 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Dimensions, Image, ScrollView, TouchableOpacity, View } from "react-native";
+import { banners } from "@/constants/banner";
+import { Ionicons } from "@expo/vector-icons";
+import React from "react";
+import { Dimensions, Image, TouchableOpacity, View } from "react-native";
+import { useSharedValue } from "react-native-reanimated";
+import Carousel, { ICarouselInstance, Pagination } from "react-native-reanimated-carousel";
 
 const { width } = Dimensions.get("window");
 
-const banners = [
-    "https://down-vn.img.susercontent.com/file/vn-11134258-820l4-mf82135tct8s16@resize_w1594_nl.webp",
-    "https://down-vn.img.susercontent.com/file/sg-11134258-821dc-mh9y5ps6n6rzaf@resize_w1594_nl.webp",
-    "https://down-vn.img.susercontent.com/file/vn-11134258-820l4-mha512nf4wei2f@resize_w796_nl.webp",
-];
-
 export default function BannerSlider() {
-    const [active, setActive] = useState(0);
-    const scrollRef = useRef<ScrollView>(null);
+    const progress = useSharedValue<number>(0);
+    const ref = React.useRef<ICarouselInstance>(null);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const nextSlide = active === banners.length - 1 ? 0 : active + 1;
-            scrollRef.current?.scrollTo({ x: nextSlide * width, animated: true });
-        }, 4000);
-
-        return () => clearInterval(interval);
-    }, [active]);
-
-    const onScroll = (nativeEvent: any) => {
-        if (nativeEvent) {
-            const slide = Math.ceil(
-                nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width
-            );
-            if (slide !== active) {
-                setActive(slide);
-            }
-        }
+    const onPressPagination = (index: number) => {
+        ref.current?.scrollTo({
+            count: index - progress.value,
+            animated: true,
+        });
     };
 
-    const handleOnPress = (index: number) => {
-        console.log(`Banner ${index} pressed`);
+    const handlePrev = () => {
+        ref.current?.prev();
+    };
+
+    const handleNext = () => {
+        ref.current?.next();
     };
 
     return (
-        <View className="relative">
-            <ScrollView
-                ref={scrollRef}
-                horizontal
-                pagingEnabled
-                showsHorizontalScrollIndicator={false}
-                onScroll={({ nativeEvent }) => onScroll(nativeEvent)}
-                scrollEventThrottle={16}
-                className="w-full h-52"
+        <View className="relative px-2 py-2">
+            <View className="rounded-2xl overflow-hidden border">
+                <Carousel
+                    ref={ref}
+                    loop
+                    width={width - 16}
+                    height={200}
+                    autoPlay={true}
+                    data={banners}
+                    scrollAnimationDuration={2000}
+                    onProgressChange={progress}
+                    renderItem={({ item }) => (
+                        <TouchableOpacity key={item.id} activeOpacity={0.9}>
+                            <Image
+                                source={{ uri: item.image }}
+                                style={{ width: width - 16, height: 200 }}
+                                resizeMode="cover"
+                            />
+                        </TouchableOpacity>
+                    )}
+                />
+            </View>
+
+            {/* Left Arrow */}
+            <TouchableOpacity
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/50 rounded-full w-10 h-10 items-center justify-center"
+                onPress={handlePrev}
             >
-                {banners.map((image, index) => (
-                    <TouchableOpacity key={index} onPress={() => handleOnPress(index)}>
-                        <Image
-                            source={{ uri: image }}
-                            style={{ width, height: 208 }}
-                            className="h-full"
-                            resizeMode="cover"
-                        />
-                    </TouchableOpacity>
-                ))}
-            </ScrollView>
-            <View className="absolute bottom-2 left-0 right-0 flex-row justify-center space-x-1">
-                {banners.map((_, index) => (
-                    <View
-                        key={index}
-                        className={`w-2 h-2 rounded-full mx-1 ${active === index ? "bg-white" : "bg-white/50"}`}
-                    />
-                ))}
+                <Ionicons name="chevron-back" size={24} color="#000" />
+            </TouchableOpacity>
+
+            {/* Right Arrow */}
+            <TouchableOpacity
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/50 rounded-full w-10 h-10 items-center justify-center"
+                onPress={handleNext}
+            >
+                <Ionicons name="chevron-forward" size={24} color="#000" />
+            </TouchableOpacity>
+
+            {/* Pagination Dots */}
+            <View className="absolute bottom-4 left-0 right-0 items-center">
+                <Pagination.Basic
+                    progress={progress}
+                    data={banners}
+                    dotStyle={{
+                        backgroundColor: "rgba(255,255,255,0.6)",
+                        borderRadius: 50,
+                        width: 8,
+                        height: 8,
+                    }}
+                    activeDotStyle={{
+                        backgroundColor: "#d4f1a2",
+                        borderRadius: 50,
+                        width: 8,
+                        height: 8,
+                    }}
+                    containerStyle={{
+                        gap: 6,
+                    }}
+                    onPress={onPressPagination}
+                />
             </View>
         </View>
     );

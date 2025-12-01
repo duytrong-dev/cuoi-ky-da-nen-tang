@@ -1,4 +1,3 @@
-import { Colors } from "@/constants/theme";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React from "react";
@@ -12,20 +11,20 @@ export default function HomeHeader() {
     return (
         <View
             style={{ paddingTop: insets.top }}
-            className="bg-white pb-2"
+            className="bg-transparent pb-2"
         >
             <View className="flex-row items-center px-3 pt-2">
                 {/* Search Bar */}
                 <TouchableOpacity
-                    className="flex-1 flex-row items-center bg-gray-100 rounded-md px-3 py-2 mr-3 border border-gray-200"
+                    className="flex-1 flex-row items-center bg-gray-100 rounded-md px-3 py-2 mr-3 border border-black"
                     onPress={() => router.push("/search")}
                     activeOpacity={0.7}
                 >
-                    <Ionicons name="search" size={20} color="#666" />
-                    <Text className="flex-1 ml-2 text-base" style={{ color: "#EE4D2D" }}>
-                        Ram DDR5 8gb
+                    <Ionicons name="search" size={20} />
+                    <Text className="flex-1 ml-2 text-base">
+                        Tìm kiếm
                     </Text>
-                    <Ionicons name="camera-outline" size={22} color="#666" />
+                    <Ionicons name="camera-outline" size={22} />
                 </TouchableOpacity>
 
                 {/* Icons */}
@@ -34,9 +33,9 @@ export default function HomeHeader() {
                         className="relative mr-4"
                         onPress={() => router.push("/cart")}
                     >
-                        <Ionicons name="cart-outline" size={26} color={Colors.light.primary} />
-                        <View className="absolute -top-1 -right-2 bg-primary rounded-full min-w-[16px] h-4 items-center justify-center px-1 border border-white">
-                            <Text className="text-white text-[10px] font-bold">5</Text>
+                        <Ionicons name="cart-outline" size={26} />
+                        <View className="absolute -top-1 -right-2 bg-primary rounded-full min-w-[16px] h-4 items-center justify-center px-1 border border-black">
+                            <Text className="text-[10px] font-bold">5</Text>
                         </View>
                     </TouchableOpacity>
 
@@ -44,7 +43,6 @@ export default function HomeHeader() {
                         <Ionicons
                             name="chatbubble-ellipses-outline"
                             size={26}
-                            color={Colors.light.primary}
                         />
                     </TouchableOpacity>
                 </View>

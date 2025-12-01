@@ -6,9 +6,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#EE4D2D",
-        secondary: "#26AA99",
+        primary: "#d4f1a2",
+        secondary: "#8cdb03ff",
         background: "#F5F5F5",
+        shoppeeColor: "#EE4D2D"
       },
     },
   },

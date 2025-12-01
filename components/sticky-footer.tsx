@@ -111,10 +111,7 @@ export default function StickyFooter({
               <Text className="text-secondary text-xs ml-1">Miễn phí</Text>
             </View>
             <View className="flex-row items-baseline">
-              <Text className="text-sm text-gray-600 mr-1">
-                Tổng thanh toán
-              </Text>
-              <Text className="text-primary text-md font-bold max-w-[80px] overflow-hidden" numberOfLines={1}>
+              <Text className="text-primary text-xl font-bold max-w-[80px] overflow-hidden" numberOfLines={1}>
                 {formatVND(total)}
               </Text>
             </View>

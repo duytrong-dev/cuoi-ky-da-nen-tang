@@ -130,7 +130,6 @@ export default function ChatMessage({ message }: Readonly<ChatMessageProps>) {
                         className="w-48 h-48 rounded-lg"
                         resizeMode="cover"
                     />
-                    <Text className="text-lg text-gray-800 mt-1">{msg.text}</Text>
                 </View>
                 <Text className="text-sm text-gray-400 mt-1">{msg.timestamp}</Text>
             </View>
