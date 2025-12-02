@@ -7,7 +7,9 @@ import {
   createStandardScreenOptions
 } from '@/components/screen-options';
 import { ThemeProvider, useTheme } from '@/store/ThemeContext';
+import { queryClient } from '@/utils/query-client';
 import { DarkTheme, DefaultTheme, ThemeProvider as NavigationThemeProvider } from '@react-navigation/native';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { Stack, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
@@ -59,9 +61,11 @@ function RootLayoutNav() {
 
 export default function RootLayout() {
   return (
-    <ThemeProvider>
-      <RootLayoutNav />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+        <RootLayoutNav />
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
 

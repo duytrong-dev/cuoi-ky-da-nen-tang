@@ -4,21 +4,69 @@ import InputField from "@/components/input-field";
 import PasswordInput from "@/components/password-input";
 import SocialLoginButton from "@/components/social-login-button";
 import TextLink from "@/components/text-link";
+import { useLogin } from "@/queries/useAuth";
+import { LoginBody } from "@/schemaValidations/auth.schema";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
 
 export default function LoginScreen() {
-  const [identifier, setIdentifier] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [useSMS, setUseSMS] = useState(false);
+  const [errors, setErrors] = useState<{
+    email?: string;
+    password?: string;
+  }>({});
 
   const router = useRouter();
+  const loginMutation = useLogin();
 
   const canLogin = !useSMS
-    ? identifier.trim().length > 0 && password.trim().length > 0
+    ? email.trim().length > 0 && password.trim().length > 0
     : phoneNumber.trim().length > 0;
+
+  const handleLogin = async () => {
+    setErrors({});
+
+    const data = {
+      email,
+      password,
+    };
+
+    const result = LoginBody.safeParse(data);
+
+    if (!result.success) {
+      const newErrors: typeof errors = {};
+      result.error.issues.forEach((issue) => {
+        const field = issue.path[0] as keyof typeof errors;
+        if (field) {
+          newErrors[field] = issue.message;
+        }
+      });
+      setErrors(newErrors);
+      return;
+    }
+
+    try {
+      await loginMutation.mutateAsync(result.data);
+      Alert.alert('Thành công', 'Đăng nhập thành công!');
+      setEmail('');
+      setPassword('');
+      setErrors({});
+    } catch (error: any) {
+      if (error?.response?.data?.errors) {
+        const serverErrors = error.response.data.errors;
+        setErrors({
+          email: serverErrors.email?.[0],
+          password: serverErrors.password?.[0],
+        });
+      } else {
+        Alert.alert('Lỗi', error?.message || 'Đăng nhập thất bại');
+      }
+    }
+  };
 
   return (
     <View className="flex-1 bg-white">
@@ -35,16 +83,19 @@ export default function LoginScreen() {
         {!useSMS ? (
           <>
             <InputField
-              icon="person-outline"
-              placeholder="Email hoặc số điện thoại"
-              value={identifier}
-              onChangeText={setIdentifier}
+              icon="mail-outline"
+              placeholder="Email"
+              value={email}
+              onChangeText={setEmail}
+              keyboardType="email-address"
+              error={errors.email}
             />
 
             <PasswordInput
               value={password}
               onChangeText={setPassword}
               showForgotPassword={true}
+              error={errors.password}
             />
           </>
         ) : (
@@ -60,8 +111,9 @@ export default function LoginScreen() {
         {/* login button */}
         <ContinueButton
           disabled={!canLogin}
-          onPress={() => console.log("Login")}
+          onPress={handleLogin}
           text="Đăng nhập"
+          isLoading={loginMutation.isPending}
         />
 
         {/* toggle password / sms */}
@@ -93,4 +145,3 @@ export default function LoginScreen() {
     </View>
   );
 }
-

@@ -1,17 +1,14 @@
-import { GetMeResType } from '@/schemaValidations/auth.schema';
+import { UserType } from '@/schemaValidations/users.schema';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
-// User type từ GetMeRes schema
-type User = GetMeResType['data'];
-
 interface AuthState {
-    user: User | null;
+    user: UserType | null;
     isAuthenticated: boolean;
-    setUser: (user: User) => void;
+    setUser: (user: UserType) => void;
     clearUser: () => void;
-    updateUser: (userData: Partial<User>) => void;
+    updateUser: (userData: Partial<UserType>) => void;
 }
 
 export const useAuthStore = create<AuthState>()(

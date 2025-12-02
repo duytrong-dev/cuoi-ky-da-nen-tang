@@ -15,12 +15,8 @@ import {
 import http from "@/utils/http";
 import { clearTokens, setTokens } from "@/utils/token-helper";
 
-/**
- * Auth API Requests
- */
-
-// Login request
-export const loginRequest = async (body: LoginBodyType): Promise<LoginResType> => {
+// Login
+export const loginApiRequest = async (body: LoginBodyType): Promise<LoginResType> => {
     const validatedBody = LoginBody.parse(body);
     const response = await http.post<LoginResType>("/auth/login", validatedBody);
 
@@ -38,8 +34,8 @@ export const loginRequest = async (body: LoginBodyType): Promise<LoginResType> =
     return validatedResponse;
 };
 
-// Register request
-export const registerRequest = async (body: RegisterBodyType): Promise<RegisterResType> => {
+// Register
+export const registerApiRequest = async (body: RegisterBodyType): Promise<RegisterResType> => {
     const validatedBody = RegisterBody.parse(body);
     const response = await http.post<RegisterResType>("/auth/register", validatedBody);
 
@@ -57,8 +53,8 @@ export const registerRequest = async (body: RegisterBodyType): Promise<RegisterR
     return validatedResponse;
 };
 
-// Logout request
-export const logoutRequest = async (): Promise<LogoutResType> => {
+// Logout
+export const logoutApiRequest = async (): Promise<LogoutResType> => {
     try {
         const response = await http.post<LogoutResType>("/auth/logout");
         const validatedResponse = LogoutRes.parse(response);
@@ -69,8 +65,20 @@ export const logoutRequest = async (): Promise<LogoutResType> => {
     }
 };
 
-// Get current user request
-export const getMeRequest = async (): Promise<GetMeResType> => {
+// Logout all   
+export const logoutAllApiRequest = async (): Promise<LogoutResType> => {
+    try {
+        const response = await http.post<LogoutResType>("/auth/logout-all");
+        const validatedResponse = LogoutRes.parse(response);
+        return validatedResponse;
+    } finally {
+        // Xóa tokens dù API có lỗi hay không
+        await clearTokens();
+    }
+};
+
+// Get current user
+export const getMeApiRequest = async (): Promise<GetMeResType> => {
     const response = await http.get<GetMeResType>("/auth/me");
     const validatedResponse = GetMeRes.parse(response);
     return validatedResponse;

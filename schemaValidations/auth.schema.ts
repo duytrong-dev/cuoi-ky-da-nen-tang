@@ -1,15 +1,25 @@
-import { RoleValues } from '@/constants/type'
+import { Role, RoleValues } from '@/constants/type'
 import z from 'zod'
+import { UserSchema } from './users.schema'
+
 
 // register schema
 export const RegisterBody = z.object({
-    name: z.string().min(2).max(100),
-    email: z.email(),
-    password: z.string().min(6).max(100),
-    password_confirmation: z.string().min(6).max(100),
-    phone: z.string().min(10).max(15).regex(/^[0-9]+$/),
-    role: z.enum(RoleValues)
-}).strict()
+    name: z.string({ message: "Vui lòng nhập họ và tên" })
+        .min(2, { message: "Họ và tên phải có ít nhất 2 ký tự" })
+        .max(100, { message: "Họ và tên không được quá 100 ký tự" }),
+    email: z.email({ message: "Email không hợp lệ" }),
+    password: z.string({ message: "Vui lòng nhập mật khẩu" })
+        .min(6, { message: "Mật khẩu phải có ít nhất 6 ký tự" })
+        .max(100, { message: "Mật khẩu không được quá 100 ký tự" }),
+    password_confirmation: z.string({ message: "Vui lòng xác nhận mật khẩu" })
+        .min(6, { message: "Mật khẩu xác nhận phải có ít nhất 6 ký tự" })
+        .max(100, { message: "Mật khẩu xác nhận không được quá 100 ký tự" }),
+    role: z.enum(RoleValues).default(Role.BUYER),
+}).strict().refine((data) => data.password === data.password_confirmation, {
+    message: "Mật khẩu xác nhận không khớp",
+    path: ["password_confirmation"],
+})
 export type RegisterBodyType = z.TypeOf<typeof RegisterBody>
 
 // register response schema
@@ -17,7 +27,7 @@ export const RegisterRes = z.object({
     success: z.boolean(),
     message: z.string(),
     data: z.object({
-        user: z.string(),
+        user: UserSchema,
         access_token: z.string(),
         refresh_token: z.string(),
         token_type: z.string(),
@@ -28,8 +38,10 @@ export type RegisterResType = z.TypeOf<typeof RegisterRes>
 
 // login schema
 export const LoginBody = z.object({
-    email: z.email(),
-    password: z.string().min(6).max(100)
+    email: z.email({ message: "Email không hợp lệ" }),
+    password: z.string({ message: "Vui lòng nhập mật khẩu" })
+        .min(6, { message: "Mật khẩu phải có ít nhất 6 ký tự" })
+        .max(100, { message: "Mật khẩu không được quá 100 ký tự" })
 }).strict()
 export type LoginBodyType = z.TypeOf<typeof LoginBody>
 
@@ -38,7 +50,7 @@ export const LoginRes = z.object({
     success: z.boolean(),
     message: z.string(),
     data: z.object({
-        user: z.string(),
+        user: UserSchema,
         access_token: z.string(),
         refresh_token: z.string(),
         token_type: z.string(),
@@ -49,7 +61,8 @@ export type LoginResType = z.TypeOf<typeof LoginRes>
 
 // refresh token schema
 export const RefreshTokenBody = z.object({
-    refreshToken: z.string()
+    refreshToken: z.string({ message: "Vui lòng cung cấp refresh token" })
+        .min(1, { message: "Refresh token không được để trống" })
 }).strict()
 export type RefreshTokenBodyType = z.TypeOf<typeof RefreshTokenBody>
 
@@ -76,23 +89,7 @@ export type LogoutResType = z.TypeOf<typeof LogoutRes>
 export const GetMeRes = z.object({
     success: z.boolean(),
     message: z.string(),
-    data: z.object({
-        id: z.number(),
-        name: z.string(),
-        email: z.string(),
-        phone: z.string(),
-        role: z.enum(RoleValues),
-        status: z.string(),
-        avatar: z.string(),
-        address: z.object({
-            street: z.string(),
-            city: z.string(),
-            state: z.string(),
-            zip: z.string()
-        }),
-        created_at: z.string(),
-        updated_at: z.string()
-    })
+    data: UserSchema
 })
 export type GetMeResType = z.TypeOf<typeof GetMeRes>
 
