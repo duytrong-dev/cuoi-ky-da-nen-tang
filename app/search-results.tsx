@@ -14,7 +14,7 @@ export default function SearchResultsScreen() {
     const [selectedTab, setSelectedTab] = useState<SearchTab>("related");
 
     return (
-        <View className="flex-1 bg-gray-50" style={{ paddingTop: insets.top }}>
+        <View className="flex-1 bg-transparent" style={{ paddingTop: insets.top }}>
             {/* Header */}
             <SearchHeader
                 searchText={searchText}

@@ -28,7 +28,7 @@ export default function SearchBar({
         <View className="flex-row items-center px-3 py-2">
             {/* Back Button */}
             <TouchableOpacity onPress={onBack} className="mr-2">
-                <Ionicons name="arrow-back" size={24} color={Colors.light.primary} />
+                <Ionicons name="arrow-back" size={24} color="#999" />
             </TouchableOpacity>
 
             {/* Search Input */}
@@ -48,7 +48,7 @@ export default function SearchBar({
 
             {/* Filter Button */}
             <TouchableOpacity className="ml-2" onPress={onFilter}>
-                <Ionicons name="options-outline" size={24} color={Colors.light.primary} />
+                <Ionicons name="options-outline" size={24} color={Colors.light.secondary} />
             </TouchableOpacity>
         </View>
     );

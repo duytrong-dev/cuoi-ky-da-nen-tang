@@ -33,12 +33,12 @@ export default function CheckoutSummary({
 
             <View className="flex-row justify-between mb-2">
                 <Text className="text-gray-600 text-sm">Giảm giá phí vận chuyển</Text>
-                <Text className="text-primary text-sm">{shippingDiscount.toLocaleString('vi-VN')}đ</Text>
+                <Text className="text-red-500 text-sm">{shippingDiscount.toLocaleString('vi-VN')}đ</Text>
             </View>
 
             <View className="flex-row justify-between pt-2 border-t border-gray-100">
                 <Text className="font-medium text-lg">Tổng thanh toán</Text>
-                <Text className="font-medium text-lg">{total.toLocaleString('vi-VN')}đ</Text>
+                <Text className="font-medium text-lg text-red-500">{total.toLocaleString('vi-VN')}đ</Text>
             </View>
         </View>
     );

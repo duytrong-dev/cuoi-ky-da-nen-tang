@@ -40,7 +40,7 @@ export const createCartScreenOptions = ({
     router,
 }: CreateScreenOptionsParams): NativeStackNavigationOptions => ({
     headerShown: true,
-    headerLeft: () => <HeaderBackButton onPress={goBack} />,
+    headerLeft: () => <HeaderBackButton onPress={goBack} color="black" />,
     headerRight: () => (
         <View className="flex-row items-center gap-4">
             <TouchableOpacity>
@@ -49,6 +49,7 @@ export const createCartScreenOptions = ({
             <HeaderIconButton
                 iconName="chatbubble-ellipses-outline"
                 onPress={() => router.push("/chat")}
+                color="black"
             />
         </View>
     ),
@@ -67,11 +68,12 @@ export const createSettingsScreenOptions = ({
     headerShown: true,
     headerTitle: "Thiết lập tài khoản",
     headerTitleAlign: "center",
-    headerLeft: () => <HeaderBackButton onPress={goBack} />,
+    headerLeft: () => <HeaderBackButton onPress={goBack} color="black" />,
     headerRight: () => (
         <HeaderIconButton
             iconName="chatbubble-ellipses-outline"
             onPress={() => router.push("/chat")}
+            color="black"
         />
     ),
     headerStyle: {
@@ -80,7 +82,7 @@ export const createSettingsScreenOptions = ({
     headerTitleStyle: {
         fontWeight: "500",
         fontSize: 18,
-        color: isDark ? Colors.dark.secondary : Colors.light.secondary,
+        color: "black",
     },
 });
 
@@ -92,13 +94,14 @@ export const createMyOrdersScreenOptions = ({
     headerShown: true,
     headerTitle: "Đơn hàng của tôi",
     headerTitleAlign: "center",
-    headerLeft: () => <HeaderBackButton onPress={goBack} />,
+    headerLeft: () => <HeaderBackButton onPress={goBack} color="black" />,
     headerRight: () => (
         <View className="flex-row items-center gap-4">
-            <HeaderIconButton iconName="search-outline" onPress={() => { }} />
+            <HeaderIconButton iconName="search-outline" onPress={() => { }} color="black" />
             <HeaderIconButton
                 iconName="chatbubble-ellipses-outline"
                 onPress={() => router.push("/chat")}
+                color="black"
             />
         </View>
     ),
@@ -108,7 +111,7 @@ export const createMyOrdersScreenOptions = ({
     headerTitleStyle: {
         fontWeight: "500",
         fontSize: 18,
-        color: isDark ? Colors.dark.primary : Colors.light.primary,
+        color: "black",
     },
 });
 

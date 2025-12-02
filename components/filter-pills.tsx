@@ -1,4 +1,3 @@
-import { Colors } from "@/constants/theme";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
 import {
@@ -19,7 +18,7 @@ interface FilterPillsProps {
 }
 
 const DEFAULT_FILTERS: FilterPill[] = [
-    { id: "flower", label: "Hòa Tấc", icon: "flower" },
+    { id: "flower", label: "Hỏa tốc", icon: "flower" },
     { id: "favorite", label: "Shop Yêu thích" },
     { id: "rating", label: "Đánh giá", icon: "chevron" },
     { id: "location", label: "Nơi Bán", icon: "chevron" },
@@ -39,7 +38,7 @@ export default function FilterPills({ filters = DEFAULT_FILTERS, onFilterPress }
                     className="flex-row items-center bg-white border border-gray-300 rounded-full px-3 py-1.5 mr-2"
                 >
                     {filter.icon === "flower" && (
-                        <MaterialCommunityIcons name="flower-tulip" size={16} color={Colors.light.primary} />
+                        <MaterialCommunityIcons name="flower-tulip" size={16} color="red" />
                     )}
                     <Text className={`text-sm text-gray-700 ${filter.icon === "flower" ? "ml-1" : ""}`}>
                         {filter.label}

@@ -1,4 +1,5 @@
 import RecommendationSection from "@/components/recommendation-section";
+import { Colors } from "@/constants/theme";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React from "react";
@@ -19,7 +20,7 @@ export default function OrderSuccessScreen() {
                 <View className="bg-primary px-4 py-6">
                     <View className="items-center mb-4">
                         <View className="w-16 h-16 rounded-full bg-white items-center justify-center mb-3">
-                            <Ionicons name="time-outline" size={40} color="#ee4d2d" />
+                            <Ionicons name="time-outline" size={40} color={Colors.light.secondary} />
                         </View>
                         <Text className="text-white text-2xl font-bold mb-2">Đang chờ thanh toán</Text>
                     </View>

@@ -75,14 +75,14 @@ export default function CartItem({
 
         {/* Voucher Tag */}
         <View className="my-2 flex-row">
-          <View className="border border-primary px-1 rounded-md p-1">
-            <Text className="text-[10px] text-primary">VOUCHER GIẢM 50%</Text>
+          <View className="border border-red-500 px-1 rounded-md p-1">
+            <Text className="text-[10px] text-red-500">VOUCHER GIẢM 50%</Text>
           </View>
         </View>
 
         {/* Price */}
         <View>
-          <Text className="text-primary font-medium text-base">{formatVND(product.price)}</Text>
+          <Text className="text-red-500 font-medium text-base">{formatVND(product.price)}</Text>
         </View>
       </View>
     </View>

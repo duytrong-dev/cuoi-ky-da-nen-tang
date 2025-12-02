@@ -51,10 +51,10 @@ export default function ShopSection({
 
       {/* Free Shipping Banner */}
       {shop.freeShipping && (
-        <View className="flex-row items-center bg-[#F0F9F8] px-3 py-2 mx-3 mt-2 rounded-sm border border-secondary/20">
-          <MaterialCommunityIcons name="truck-delivery-outline" size={20} color={Colors.light.secondary} />
-          <Text className="text-secondary text-xs ml-2 flex-1">Bạn đã được hưởng Miễn phí vận chuyển!</Text>
-          <Ionicons name="chevron-forward" size={16} color={Colors.light.secondary} />
+        <View className="flex-row items-center bg-teal-50 px-3 py-2 mx-3 mt-2 rounded-sm border border-teal-200">
+          <MaterialCommunityIcons name="truck-delivery-outline" size={20} color="#26AA99" />
+          <Text className="text-[#26AA99] text-xs ml-2 flex-1">Bạn đã được hưởng Miễn phí vận chuyển!</Text>
+          <Ionicons name="chevron-forward" size={16} color="black" />
         </View>
       )}
 

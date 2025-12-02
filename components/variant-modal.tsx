@@ -70,7 +70,7 @@ export default function VariantModal({
                             resizeMode="cover"
                         />
                         <View className="ml-3 flex-1 justify-end">
-                            <Text className="text-primary text-xl font-medium">
+                            <Text className="text-red-500 text-xl font-medium">
                                 {formatVND(product.price)}
                             </Text>
                             <Text className="text-gray-500 mt-1">Kho: {product.stock}</Text>

@@ -3,7 +3,7 @@ import { formatVND } from "@/utils/formatVND";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import { Switch, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type StickyFooterProps = {
@@ -48,38 +48,10 @@ export default function StickyFooter({
           <Text className="ml-2 text-gray-700">Shop Voucher</Text>
         </View>
         <View className="flex-row items-center">
-          {/* <View className="border border-secondary rounded-sm px-1 mr-2">
-            <Text className="text-secondary text-[10px]">
-              Miễn Phí Vận Chuyển
-            </Text>
-          </View> */}
           <Text className="text-gray-400">Chọn hoặc nhập mã</Text>
           <Ionicons name="chevron-forward" size={18} color="#999" />
         </View>
       </TouchableOpacity>
-
-      {/* Shopee Coins */}
-      <View className="w-full px-3 py-3 flex-row justify-between items-center border-b border-gray-100">
-        <View className="flex-row items-center">
-          <View className="w-5 h-5 rounded-full border border-orange-400 items-center justify-center mr-2">
-            <Text className="text-orange-400 font-bold text-xs">$</Text>
-          </View>
-          <Text className="text-gray-700">Dùng 100 Xu</Text>
-          <Ionicons
-            name="help-circle-outline"
-            size={16}
-            color="#999"
-            className="ml-1"
-          />
-        </View>
-        <Switch
-          trackColor={{ false: "#767577", true: Colors.light.primary }}
-          thumbColor={useCoins ? "#f4f3f4" : "#f4f3f4"}
-          onValueChange={setUseCoins}
-          value={useCoins}
-          style={{ transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }}
-        />
-      </View>
 
       {/* Bottom Bar */}
       <View className="flex-row justify-between items-center w-full px-3 py-3">
@@ -106,19 +78,19 @@ export default function StickyFooter({
               <MaterialCommunityIcons
                 name="truck-delivery-outline"
                 size={14}
-                color={Colors.light.secondary}
+                color="#26AA99"
               />
-              <Text className="text-secondary text-xs ml-1">Miễn phí</Text>
+              <Text className="text-gray-600 text-xs ml-1">Miễn phí</Text>
             </View>
             <View className="flex-row items-baseline">
-              <Text className="text-primary text-xl font-bold max-w-[80px] overflow-hidden" numberOfLines={1}>
+              <Text className="text-red-500 text-xl font-bold max-w-[170px] overflow-hidden" numberOfLines={1}>
                 {formatVND(total)}
               </Text>
             </View>
           </View>
 
           <TouchableOpacity
-            className="bg-primary px-6 py-3 rounded-md"
+            className="bg-red-500 px-6 py-3 rounded-md"
             onPress={onCheckout}
           >
             <Text className="text-white font-bold text-base">

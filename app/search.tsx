@@ -85,7 +85,7 @@ export default function SearchScreen() {
             />
 
             {/* Search Suggestions Section */}
-            <View className="py-2 px-3">
+            <View className="py-4 px-3 bg-gray-100">
               <Text className="text-md font-medium text-gray-800 mb-3 px-1">
                 Gợi ý tìm kiếm
               </Text>

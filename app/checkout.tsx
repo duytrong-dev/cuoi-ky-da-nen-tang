@@ -3,6 +3,7 @@ import CheckoutSummary from "@/components/checkout-summary";
 import DeliveryAddressSection from "@/components/delivery-address-section";
 import PaymentMethodSection from "@/components/payment-method-section";
 import ShippingMethodSection from "@/components/shipping-method-section";
+import { Colors } from "@/constants/theme";
 import { formatVND } from "@/utils/formatVND";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
@@ -31,7 +32,7 @@ export default function CheckoutScreen() {
         product: {
             name: "Giá đỡ trung bày huy hiệu, chân đế dùng thể hìn...",
             variant: "2 cái",
-            image: "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lx8z8z8z8z8z8z",
+            image: "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7ab0te9@resize_w450_nl.webp",
             price: 8000,
             quantity: 1
         }
@@ -82,14 +83,14 @@ export default function CheckoutScreen() {
                 <View className="bg-white px-4 py-3 mb-2">
                     <View className="flex-row items-center justify-between">
                         <Text className="text-md">Tổng số tiền (1 sản phẩm)</Text>
-                        <Text className="font-medium text-lg">{pricing.subtotal.toLocaleString('vi-VN')}đ</Text>
+                        <Text className="font-medium text-lg text-red-500">{pricing.subtotal.toLocaleString('vi-VN')}đ</Text>
                     </View>
                 </View>
 
                 {/* Shopee Voucher */}
                 <TouchableOpacity className="bg-white px-4 py-4 mb-2 flex-row items-center justify-between">
                     <View className="flex-row items-center">
-                        <MaterialCommunityIcons name="ticket-percent" size={20} color="#ee4d2d" />
+                        <MaterialCommunityIcons name="ticket-percent" size={20} color={Colors.light.primary} />
                         <Text className="font-medium text-md ml-2">Chọn Voucher</Text>
                     </View>
                     <View className="flex-row items-center">
@@ -116,7 +117,7 @@ export default function CheckoutScreen() {
                 <View className="px-4 py-3">
                     <Text className="text-gray-500 text-sm">
                         Nhấn "Đặt hàng" đồng nghĩa với việc bạn đồng ý tuân theo{" "}
-                        <Text className="text-blue-500">Điều khoản của chúng tôi</Text>
+                        <Text className="text-primary">Điều khoản của chúng tôi</Text>
                     </Text>
                 </View>
             </ScrollView>
@@ -127,19 +128,19 @@ export default function CheckoutScreen() {
                     <View className="flex-1 items-end px-4">
                         <View className="flex-row items-center">
                             <Text className="text-sm text-gray-600 mr-1">Tổng cộng</Text>
-                            <Text className="text-primary text-xl font-bold max-w-[80px] overflow-hidden" numberOfLines={1}>
+                            <Text className="text-red-500 text-xl font-bold max-w-[80px] overflow-hidden" numberOfLines={1}>
                                 {formatVND(pricing.total)}
                             </Text>
                         </View>
                         <View className="flex-row items-center text-xs text-gray-500">
                             <Text className="text-xs text-gray-600 mr-1">Tiết kiệm</Text>
-                            <Text className="text-primary font-bold">
+                            <Text className="text-red-500 font-bold">
                                 {formatVND(pricing.savings)}
                             </Text>
                         </View>
                     </View>
                     <TouchableOpacity
-                        className="bg-primary px-8 py-3 rounded-md"
+                        className="bg-red-500 px-8 py-3 rounded-md"
                         onPress={() => router.push("/order-success")}
                     >
                         <Text className="text-white font-bold text-base">Đặt hàng</Text>

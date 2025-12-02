@@ -45,18 +45,13 @@ export default function OrderCard({ order, isExpanded, onToggleExpand }: OrderCa
             <View className="flex-row items-center justify-between px-4 py-3 border-b border-gray-100">
                 <View className="flex-row items-center gap-2">
                     {order.isFavorite && (
-                        <View className="bg-primary px-2 py-0.5 rounded">
-                            <Text className="text-white text-xs font-medium">Yêu thích+</Text>
+                        <View className="border border-red-500 px-2 py-0.5 rounded">
+                            <Text className="text-red-500 text-xs font-medium">Yêu thích+</Text>
                         </View>
                     )}
                     <Text className="font-medium text-sm">{order.shopName}</Text>
-                    {order.isLive && (
-                        <View className="bg-primary px-2 py-0.5 rounded flex-row items-center gap-1">
-                            <Text className="text-white text-xs font-bold">LIVE</Text>
-                        </View>
-                    )}
                 </View>
-                <Text className="text-primary text-sm">{order.status}</Text>
+                <Text className="text-red-500 text-sm">{order.status}</Text>
             </View>
 
             {/* Product Info */}

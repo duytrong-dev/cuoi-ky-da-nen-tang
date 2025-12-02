@@ -1,3 +1,4 @@
+import { Colors } from "@/constants/theme";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
 import {
@@ -33,12 +34,12 @@ export default function PaymentMethodSection({
                 onPress={() => onMethodChange("cod")}
             >
                 <View className="flex-row items-center">
-                    <MaterialCommunityIcons name="cash" size={20} color="#ee4d2d" />
+                    <MaterialCommunityIcons name="cash" size={20} color={Colors.light.secondary} />
                     <Text className="ml-3 text-md">Thanh toán khi nhận hàng</Text>
                 </View>
-                <View className={`w-5 h-5 rounded-full border-2 items-center justify-center ${selectedMethod === "cod" ? "border-primary" : "border-gray-300"}`}>
+                <View className={`w-5 h-5 rounded-full border-2 items-center justify-center ${selectedMethod === "cod" ? "border-secondary" : "border-gray-300"}`}>
                     {selectedMethod === "cod" && (
-                        <View className="w-3 h-3 rounded-full bg-primary" />
+                        <View className="w-3 h-3 rounded-full bg-secondary" />
                     )}
                 </View>
             </TouchableOpacity>
@@ -50,12 +51,12 @@ export default function PaymentMethodSection({
                     onPress={() => onMethodChange("shopeepay")}
                 >
                     <View className="flex-row items-center">
-                        <MaterialCommunityIcons name="wallet-outline" size={20} color="#ee4d2d" />
+                        <MaterialCommunityIcons name="wallet-outline" size={20} color={Colors.light.secondary} />
                         <Text className="ml-3 text-md">Thẻ ngân hàng</Text>
                     </View>
-                    <View className={`w-5 h-5 rounded-full border-2 items-center justify-center ${selectedMethod === "shopeepay" ? "border-primary" : "border-gray-300"}`}>
+                    <View className={`w-5 h-5 rounded-full border-2 items-center justify-center ${selectedMethod === "shopeepay" ? "border-secondary" : "border-gray-300"}`}>
                         {selectedMethod === "shopeepay" && (
-                            <View className="w-3 h-3 rounded-full bg-primary" />
+                            <View className="w-3 h-3 rounded-full bg-secondary" />
                         )}
                     </View>
                 </TouchableOpacity>

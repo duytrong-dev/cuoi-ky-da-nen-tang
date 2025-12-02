@@ -49,7 +49,7 @@ export default function CheckoutOrderItem({
                     </Text>
                     <Text className="text-gray-500 text-xs mb-2">{product.variant}</Text>
                     <View className="flex-row items-center justify-between">
-                        <Text className="text-primary font-medium text-md">
+                        <Text className="text-red-500 font-medium text-md">
                             {product.price.toLocaleString('vi-VN')}đ
                         </Text>
                         <Text className="text-gray-500 text-sm">x{product.quantity}</Text>

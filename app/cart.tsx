@@ -102,8 +102,8 @@ export default function CartScreen() {
       <Stack.Screen options={{
         headerTitle: () => (
           <View className="flex-row items-center">
-            <Text className="text-lg font-medium text-primary">Giỏ hàng</Text>
-            <Text className="text-lg text-gray-500 ml-1">({allProductIds.length})</Text>
+            <Text className="text-lg font-medium text-black">Giỏ hàng</Text>
+            <Text className="text-lg text-gray-700 ml-1">({allProductIds.length})</Text>
           </View>
         )
       }} />
