@@ -19,11 +19,15 @@ const DEFAULT_VIDEOS: ProductVideo[] = [
         title: "Máy mẫn nhân đức hộp cuối cùng hè...",
     },
     {
-        thumbnail: "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7ab0te9@resize_w450_nl.webp",
+        thumbnail: "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7aba9df.webp",
         title: "Tuổi thơ ai đã từng xem Đấu sĩ LBX k...",
     },
     {
-        thumbnail: "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7ab0te9@resize_w450_nl.webp",
+        thumbnail: "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7bpl989.webp",
+        title: "#ShopeeVideo #ShopeeCreator...",
+    },
+    {
+        thumbnail: "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax78wptcb.webp",
         title: "#ShopeeVideo #ShopeeCreator...",
     },
 ];
@@ -32,8 +36,8 @@ export default function ProductVideosSection({ videos = DEFAULT_VIDEOS }: Produc
     return (
         <View className="py-3 bg-white border-t-2 border-gray-100">
             <TouchableOpacity className="flex-row items-center justify-between px-4 mb-3">
-                <Text className="text-sm font-medium text-gray-800">Video về sản phẩm</Text>
-                <Ionicons name="chevron-forward" size={16} color="#999" />
+                <Text className="text-md font-medium text-black">Video về sản phẩm</Text>
+                <Ionicons name="chevron-forward" size={16} color="black" />
             </TouchableOpacity>
 
             <ScrollView horizontal showsHorizontalScrollIndicator={false} className="px-4">

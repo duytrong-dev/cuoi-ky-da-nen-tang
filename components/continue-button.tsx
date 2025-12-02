@@ -20,7 +20,7 @@ export default function ContinueButton({
                 }`}
         >
             <Text
-                className={`text-center font-semibold ${disabled ? "text-gray-500" : "text-black"
+                className={`text-center font-semibold ${disabled ? "text-gray-500" : "text-white"
                     }`}
             >
                 {text}

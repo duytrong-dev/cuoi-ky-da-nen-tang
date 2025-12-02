@@ -1,8 +1,8 @@
-import { Colors } from "@/constants/theme";
 import { formatVND } from "@/utils/formatVND";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
+import VoucherXtra from "./voucher-xtra";
 
 export type RecommendationProduct = {
     id: string;
@@ -24,17 +24,14 @@ type Props = {
 
 export default function RecommendationItem({ item }: Readonly<Props>) {
     return (
-        <TouchableOpacity className="bg-white rounded-md overflow-hidden m-1 shadow-sm border border-black ">
+        <TouchableOpacity className="bg-white rounded-md overflow-hidden m-1 shadow-sm">
             {/* Image Container */}
             <View className="relative w-full aspect-square">
                 <Image source={{ uri: item.image }} className="w-full h-full" resizeMode="cover" />
 
                 {/* Voucher Xtra Badge */}
                 {item.hasVoucherXtra && (
-                    <View className="absolute bottom-0 left-0 bg-yellow-400 px-1 py-[2px]">
-                        <Text className="text-[10px] font-bold text-black">VOUCHER</Text>
-                        <Text className="text-[10px] font-bold text-black leading-3">XTRA</Text>
-                    </View>
+                    <VoucherXtra />
                 )}
 
                 {/* Play Icon Overlay (if needed, based on image) */}
@@ -48,7 +45,7 @@ export default function RecommendationItem({ item }: Readonly<Props>) {
                 {/* Title with Badge */}
                 <Text numberOfLines={2} className="text-sm text-gray-800 leading-4 mb-1">
                     {item.isPreferred && (
-                        <Text className="text-xs text-black bg-primary px-1 mr-1 rounded-[2px]"> Yêu thích+ </Text>
+                        <Text className="text-xs text-white bg-red-500 px-1 mr-1 rounded-[2px]"> Yêu thích+ </Text>
                     )}
                     {item.title}
                 </Text>
@@ -69,7 +66,7 @@ export default function RecommendationItem({ item }: Readonly<Props>) {
                 {/* Delivery & Location */}
                 <View className="mt-2 flex-row items-center justify-between">
                     <View className="flex-row items-center">
-                        <MaterialCommunityIcons name="truck-delivery-outline" size={16} color={Colors.light.secondary} />
+                        <MaterialCommunityIcons name="truck-delivery-outline" size={16} color="#26AA99" />
                         <Text className="text-sm text-gray-500 ml-1">{item.deliveryTime}</Text>
                     </View>
                     <Text className="text-sm text-gray-400">{item.location}</Text>

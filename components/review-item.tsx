@@ -28,7 +28,7 @@ export default function ReviewItem({ review }: ReviewItemProps) {
                     <View className="w-6 h-6 rounded-full bg-teal-500 items-center justify-center">
                         <Ionicons name="checkmark" size={14} color="white" />
                     </View>
-                    <Text className="text-sm font-medium text-gray-800 ml-2">{review.username}</Text>
+                    <Text className="text-md font-medium text-black ml-2">{review.username}</Text>
                 </View>
                 <View className="flex-row items-center">
                     <Ionicons name="thumbs-up-outline" size={14} color="#999" />
@@ -45,14 +45,14 @@ export default function ReviewItem({ review }: ReviewItemProps) {
             <Text className="text-xs text-gray-500 mb-2">Phân loại: {review.variant}</Text>
 
             {review.comment && (
-                <Text className="text-sm text-gray-800 mb-3 leading-5">{review.comment}</Text>
+                <Text className="text-sm text-black mb-3 leading-5">{review.comment}</Text>
             )}
 
             {review.color && (
-                <Text className="text-xs text-gray-600 mb-1">Bao bì/Mẫu mã: {review.color}</Text>
+                <Text className="text-sm text-black mb-1">Bao bì/Mẫu mã: {review.color}</Text>
             )}
             {review.quality && (
-                <Text className="text-xs text-gray-600 mb-3">Chất lượng sản phẩm: {review.quality}</Text>
+                <Text className="text-sm text-black mb-3">Chất lượng sản phẩm: {review.quality}</Text>
             )}
 
             {review.images && (

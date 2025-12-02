@@ -5,7 +5,7 @@ import { Text, View } from "react-native";
 export default function SupportSection() {
     return (
         <View className="bg-white mt-2 p-4">
-            <Text className="text-lg font-medium text-black mb-4">Hỗ trợ</Text>
+            <Text className="text-lg font-medium text-gray-700 mb-4">Hỗ trợ</Text>
             <SupportMenuItem
                 icon="help-circle-outline"
                 label="Trung tâm trợ giúp"

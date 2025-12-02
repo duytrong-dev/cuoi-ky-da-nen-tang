@@ -3,6 +3,7 @@ import { Ionicons } from "@expo/vector-icons";
 import React, { useRef, useState } from "react";
 import { Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import Carousel, { ICarouselInstance } from "react-native-reanimated-carousel";
+import ProductTitleSection from "./product-title-section";
 
 const { width, height } = Dimensions.get("window");
 const SLIDER_HEIGHT = height * 0.45; // Gần 1/2 chiều cao màn hình
@@ -48,33 +49,36 @@ export default function ProductDetailGallary() {
 
                 {/* Voucher XTRA Badge */}
                 <View className="absolute bottom-3 left-3 bg-yellow-400 px-2 py-1 rounded">
-                    <Text className="text-xs font-bold text-gray-800">VOUCHER</Text>
-                    <Text className="text-xs font-bold text-primary">XTRA</Text>
+                    <Text className="text-md font-bold text-black">VOUCHER</Text>
+                    <Text className="text-md font-bold text-black">XTRA</Text>
                 </View>
             </View>
 
             {/* Price Section */}
             <View className="px-4 py-3 bg-white">
                 <View className="flex-row items-baseline mb-1">
-                    <Text className="text-3xl font-bold text-primary">388.368</Text>
-                    <Text className="text-2xl font-bold text-primary">₫</Text>
+                    <Text className="text-2xl font-bold text-red-500">388.368</Text>
+                    <Text className="text-2xl font-bold text-red-500">₫</Text>
                     <View className="bg-gray-100 px-2 py-0.5 rounded ml-2">
-                        <Text className="text-xs text-gray-600">Giá Sau Voucher</Text>
+                        <Text className="text-xs text-black">Giá Sau Voucher</Text>
                     </View>
                 </View>
                 <View className="flex-row items-center mb-1">
-                    <Text className="text-sm text-gray-600">Chỉ từ 388.368₫ x 1 kỳ với SPayLater</Text>
-                    <Ionicons name="chevron-forward" size={14} color="#999" style={{ marginLeft: 4 }} />
+                    <Text className="text-sm text-black">Chỉ từ 388.368₫ x 1 kỳ với OPayLater</Text>
+                    <Ionicons name="chevron-forward" size={14} color="black" style={{ marginLeft: 4 }} />
                 </View>
                 <View className="flex-row items-center">
-                    <Text className="text-sm text-gray-600">Đã bán 85</Text>
-                    <Ionicons name="heart-outline" size={16} color="#999" style={{ marginLeft: 8 }} />
+                    <Text className="text-sm text-black">Đã bán 85</Text>
+                    <Ionicons name="heart-outline" size={16} color="black" style={{ marginLeft: 8 }} />
                 </View>
             </View>
 
+            {/* Product Title */}
+            <ProductTitleSection title="Mô hình BANDAI đấu sĩ LBX tổng hợp (NEW SEAL)" />
+
             {/* Thumbnail Gallery */}
             <View className="px-4 py-3 bg-white border-t border-gray-100">
-                <Text className="text-sm text-gray-600 mb-2">
+                <Text className="text-sm text-black mb-2">
                     {PRODUCT_IMAGES.length} phân loại có sẵn
                 </Text>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -85,7 +89,7 @@ export default function ProductDetailGallary() {
                             onPress={() => handleThumbnailPress(index)}
                         >
                             <View
-                                className={`w-16 h-16 rounded overflow-hidden ${currentIndex === index ? 'border-2 border-primary' : 'border border-gray-200'
+                                className={`w-16 h-16 rounded overflow-hidden ${currentIndex === index ? 'border-2 border-secondary' : 'border border-gray-200'
                                     }`}
                             >
                                 <Image

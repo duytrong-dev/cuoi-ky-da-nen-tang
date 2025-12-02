@@ -120,9 +120,9 @@ export default function NotificationsScreen() {
           ) : (
             <>
               <View className="flex-row items-center justify-between px-4 py-3 border-b border-gray-100">
-                <Text className="text-lg font-medium text-black">Cập nhật đơn hàng</Text>
+                <Text className="text-lg font-medium text-gray-700">Cập nhật đơn hàng</Text>
                 <TouchableOpacity>
-                  <Text className="text-md text-black">Đọc tất cả</Text>
+                  <Text className="text-md text-red-500">Đọc tất cả</Text>
                 </TouchableOpacity>
               </View>
               {orderNotifications.map((order) => (

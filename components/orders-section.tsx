@@ -11,10 +11,10 @@ export default function OrdersSection() {
     return (
         <View className="bg-white p-4">
             <View className="flex-row items-center justify-between mb-4">
-                <Text className="text-lg font-medium text-black">Đơn mua</Text>
+                <Text className="text-lg font-medium text-gray-700">Đơn mua</Text>
                 <TouchableOpacity className="flex-row items-center">
-                    <Text className="text-md text-black">Xem lịch sử mua hàng</Text>
-                    <Ionicons name="chevron-forward" size={16} color="black" />
+                    <Text className="text-md text-gray-700">Xem lịch sử mua hàng</Text>
+                    <Ionicons name="chevron-forward" size={16} color="gray" />
                 </TouchableOpacity>
             </View>
 
@@ -48,7 +48,7 @@ export default function OrdersSection() {
                 <TouchableOpacity className="flex-row items-center justify-between py-2">
                     <View className="flex-row items-center">
                         <Ionicons name="phone-portrait-outline" size={20} color="black" />
-                        <Text className="text-md text-gray-800 ml-2">Đơn Nạp điện thoại & Dịch vụ</Text>
+                        <Text className="text-md text-gray-700 ml-2">Đơn Nạp điện thoại & Dịch vụ</Text>
                     </View>
                     <View className="flex-row items-center">
                         <Text className="text-sm text-secondary mr-1">Giảm 5%</Text>
@@ -58,7 +58,7 @@ export default function OrdersSection() {
                 <TouchableOpacity className="flex-row items-center justify-between py-2">
                     <View className="flex-row items-center">
                         <MaterialCommunityIcons name="food-outline" size={20} color="black" />
-                        <Text className="text-md text-gray-800 ml-2">Đơn OECFood</Text>
+                        <Text className="text-md text-gray-700 ml-2">Đơn OECFood</Text>
                     </View>
                     <View className="flex-row items-center">
                         <Text className="text-sm text-secondary mr-1">Đang có ưu đãi</Text>

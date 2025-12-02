@@ -5,8 +5,8 @@
 
 import { Platform } from 'react-native';
 
-const tintColorLight = '#EE4D2D';
-const tintColorDark = '#EE4D2D';
+const tintColorLight = '#4392F9';  // Primary blue
+const tintColorDark = '#4392F9';   // Primary blue
 
 export const Colors = {
   light: {
@@ -16,9 +16,16 @@ export const Colors = {
     icon: '#687076',
     tabIconDefault: '#687076',
     tabIconSelected: tintColorLight,
-    primary: '#d4f1a2',
-    secondary: '#8cdb03ff',
+    // Main theme colors
+    primary: '#4392F9',           // Xanh dương chính
+    primaryLight: '#CFE2FC',      // Xanh dương nhạt (gradient from)
+    primaryDark: '#4392F9',       // Xanh dương đậm (gradient to)
+    secondary: '#F83758',         // Đỏ/hồng chính
+    secondaryLight: '#F8BCC6',    // Đỏ/hồng nhạt (gradient from)
+    secondaryDark: '#F83758',     // Đỏ/hồng đậm (gradient to)
+    // Utility colors
     surface: '#F5F5F5',
+    shoppeeColor: '#EE4D2D',
   },
   dark: {
     text: '#ECEDEE',
@@ -27,9 +34,16 @@ export const Colors = {
     icon: '#9BA1A6',
     tabIconDefault: '#9BA1A6',
     tabIconSelected: tintColorDark,
-    primary: '#d4f1a2',
-    secondary: '#8cdb03ff',
+    // Main theme colors
+    primary: '#4392F9',           // Xanh dương chính
+    primaryLight: '#CFE2FC',      // Xanh dương nhạt (gradient from)
+    primaryDark: '#4392F9',       // Xanh dương đậm (gradient to)
+    secondary: '#F83758',         // Đỏ/hồng chính
+    secondaryLight: '#F8BCC6',    // Đỏ/hồng nhạt (gradient from)
+    secondaryDark: '#F83758',     // Đỏ/hồng đậm (gradient to)
+    // Utility colors
     surface: '#000000',
+    shoppeeColor: '#EE4D2D',
   },
 };
 

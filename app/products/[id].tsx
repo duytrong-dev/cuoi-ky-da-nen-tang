@@ -5,7 +5,6 @@ import ProductDescription from "@/components/product-description";
 import ProductDetailGallary from "@/components/product-detail-gallary";
 import ProductDetailHeader from "@/components/product-detail-header";
 import ProductSpecifications from "@/components/product-specifications";
-import ProductTitleSection from "@/components/product-title-section";
 import ProductVideosSection from "@/components/product-videos-section";
 import RecommendationSection from "@/components/recommendation-section";
 import ReturnPolicyBanner from "@/components/return-policy-banner";
@@ -14,9 +13,7 @@ import { Review } from "@/components/review-item";
 import ReviewsSection from "@/components/reviews-section";
 import ShopInfoCard from "@/components/shop-info-card";
 import ShopProductsCarousel from "@/components/shop-products-carousel";
-import ShopeeVIPBanner from "@/components/shopee-vip-banner";
 import SPayLaterBanner from "@/components/spaylater-banner";
-import VoucherSection from "@/components/voucher-section";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useRef, useState } from "react";
 import {
@@ -93,17 +90,8 @@ export default function ProductDetailScreen() {
         {/* Image Gallery */}
         <ProductDetailGallary />
 
-        {/* Voucher Section */}
-        <VoucherSection />
-
         {/* Free Shipping */}
         <FreeShippingBanner />
-
-        {/* ShopeeVIP Banner */}
-        <ShopeeVIPBanner vipPrice="379.440₫" />
-
-        {/* Product Title */}
-        <ProductTitleSection title="Mô hình BANDAI đấu sĩ LBX tổng hợp (NEW SEAL)" />
 
         {/* Delivery Info */}
         <DeliveryInfoSection />

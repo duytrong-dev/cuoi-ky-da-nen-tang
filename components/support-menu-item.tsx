@@ -16,8 +16,8 @@ export default function SupportMenuItem({ icon, label, onPress, showBorder = tru
             onPress={onPress}
         >
             <Ionicons name={icon} size={24} color="black" />
-            <Text className="text-md text-black ml-3 flex-1">{label}</Text>
-            <Ionicons name="chevron-forward" size={16} color="black" />
+            <Text className="text-md text-gray-700 ml-3 flex-1">{label}</Text>
+            <Ionicons name="chevron-forward" size={16} color="gray" />
         </TouchableOpacity>
     );
 }

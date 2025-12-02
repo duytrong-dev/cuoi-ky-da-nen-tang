@@ -15,7 +15,7 @@ export default function ProfileHeader({ isLoggedIn }: ProfileHeaderProps) {
 
     if (isLoggedIn) {
         return (
-            <View className="bg-primary px-4 pb-8 pt-16">
+            <View className="bg-primary-light px-4 pb-8 pt-16">
                 {/* Top Icons */}
                 <View className="flex-row justify-between items-center mb-10">
                     <View className="flex-row items-center gap-4 bg-white rounded-full">
@@ -77,7 +77,7 @@ export default function ProfileHeader({ isLoggedIn }: ProfileHeaderProps) {
 
     // Not logged in view
     return (
-        <View className="bg-primary px-4 pb-6 pt-12">
+        <View className="bg-secondary-light px-4 pb-6 pt-12">
             <View className="flex-row justify-between items-center">
                 {/* Avatar Icon */}
                 <View className="w-16 h-16 rounded-full bg-white items-center justify-center cursor-pointer mt-4">
@@ -110,16 +110,16 @@ export default function ProfileHeader({ isLoggedIn }: ProfileHeaderProps) {
             {/* Login/Register Buttons */}
             <View className="flex-row gap-3 mt-6">
                 <TouchableOpacity
-                    className="bg-white px-6 py-2 rounded border border-black"
+                    className="bg-white px-6 py-2 rounded border border-gray-300"
                     onPress={() => router.push("/login")}
                 >
-                    <Text className="text-black font-medium text-base">Đăng nhập</Text>
+                    <Text className="text-gray-700 font-medium text-base">Đăng nhập</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    className="border border-black px-6 py-2 rounded"
+                    className="bg-secondary px-6 py-2 rounded"
                     onPress={() => router.push("/register")}
                 >
-                    <Text className="text-black font-medium text-base">Đăng ký</Text>
+                    <Text className="text-white font-medium text-base">Đăng ký</Text>
                 </TouchableOpacity>
             </View>
         </View>

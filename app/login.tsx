@@ -27,7 +27,7 @@ export default function LoginScreen() {
         <View className="items-center mb-10 mt-10">
           <Image
             source={require("@/assets/images/logo.png")}
-            style={{ width: 140, height: 120 }}
+            style={{ width: 180, height: 120 }}
           />
         </View>
 
@@ -66,7 +66,7 @@ export default function LoginScreen() {
 
         {/* toggle password / sms */}
         <TouchableOpacity onPress={() => setUseSMS(!useSMS)}>
-          <Text className="text-right text-secondary mt-3">
+          <Text className="text-right text-primary mt-3">
             {useSMS ? "Đăng nhập bằng mật khẩu" : "Đăng nhập bằng SMS"}
           </Text>
         </TouchableOpacity>
@@ -87,7 +87,7 @@ export default function LoginScreen() {
         <TextLink
           text="Đăng ký ngay"
           onPress={() => router.push("/register")}
-          className="text-secondary font-normal"
+          className="text-primary font-normal"
         />
       </View>
     </View>

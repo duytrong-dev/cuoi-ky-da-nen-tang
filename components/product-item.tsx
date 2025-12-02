@@ -1,10 +1,10 @@
 import { ProductItemType } from "@/constants/product";
-import { Colors } from "@/constants/theme";
 import { formatVND } from "@/utils/formatVND";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
+import VoucherXtra from "./voucher-xtra";
 
 type ProductItemProps = {
     item: ProductItemType;
@@ -19,7 +19,7 @@ export default function ProductItem({ item }: ProductItemProps) {
     };
     return (
         <TouchableOpacity className="p-1" onPress={() => handleOnPress(item.id)}>
-            <View className="bg-white rounded-md overflow-hidden shadow-sm border border-black">
+            <View className="bg-white rounded-md overflow-hidden shadow-sm">
                 {/* Image */}
                 <View className="w-full aspect-square relative">
                     <Image
@@ -30,13 +30,10 @@ export default function ProductItem({ item }: ProductItemProps) {
 
                     {/* Voucher Xtra Badge */}
                     {item.hasVoucherXtra && (
-                        <View className="absolute bottom-0 left-0 bg-yellow-400 px-1 py-[2px]">
-                            <Text className="text-[10px] font-bold text-black">VOUCHER</Text>
-                            <Text className="text-[10px] font-bold text-black leading-3">XTRA</Text>
-                        </View>
+                        <VoucherXtra />
                     )}
                     {item.discount && (
-                        <View className="absolute top-0 right-0 bg-primary px-1">
+                        <View className="absolute top-0 right-0 bg-yellow-400 px-1">
                             <Text className="text-xs font-bold text-black">{item.discount}</Text>
                         </View>
                     )}
@@ -76,7 +73,7 @@ export default function ProductItem({ item }: ProductItemProps) {
                     {/* Location & Delivery */}
                     <View className="flex-row items-center justify-between">
                         <View className="flex-row items-center flex-1">
-                            <MaterialCommunityIcons name="truck-delivery-outline" size={16} color={Colors.light.secondary} />
+                            <MaterialCommunityIcons name="truck-delivery-outline" size={16} color="#26AA99" />
                             <Text className="text-sm text-gray-500 ml-1" numberOfLines={1}>
                                 {item.deliveryTime}
                             </Text>

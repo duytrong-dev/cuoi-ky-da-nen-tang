@@ -1,9 +1,9 @@
 import BannerSlider from "@/components/banner-slider";
 import DeliveryAndRewards from "@/components/delivery-and-rewards";
 import HomeHeader from "@/components/home-header";
-import LiveAndVideoSection from "@/components/live-and-video-section";
 import ProductsGrid from "@/components/products-grid";
 import QuickLinks from "@/components/quick-links";
+import SpecialOffer from "@/components/special-offer";
 import React from "react";
 import { ScrollView, View } from "react-native";
 
@@ -24,8 +24,11 @@ export default function HomeScreen() {
         {/* Quick Links */}
         <QuickLinks />
 
+        {/* Special Offer */}
+        <SpecialOffer />
+
         {/* Live & Video Section */}
-        <LiveAndVideoSection />
+        {/* <LiveAndVideoSection /> */}
 
         {/* Featured Grid */}
         <ProductsGrid />

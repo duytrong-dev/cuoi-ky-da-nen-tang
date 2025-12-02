@@ -20,12 +20,12 @@ export default function PasswordInput({
     const router = useRouter();
 
     return (
-        <View className="flex-row items-center border-b border-gray-400 py-3 mt-4">
-            <Ionicons name="lock-closed-outline" size={22} color="black" />
+        <View className="flex-row items-center border-b border-gray-300 py-3 mt-4">
+            <Ionicons name="lock-closed-outline" size={22} color="gray" />
             <TextInput
                 placeholder={placeholder}
                 secureTextEntry={!showPassword}
-                className="flex-1 ml-3 text-lg"
+                className="flex-1 ml-3 text-lg text-gray-700"
                 style={{ fontSize: 16, lineHeight: 20 }}
                 value={value}
                 onChangeText={onChangeText}
@@ -34,14 +34,14 @@ export default function PasswordInput({
                 <Ionicons
                     name={showPassword ? "eye-outline" : "eye-off-outline"}
                     size={22}
-                    color="black"
+                    color="gray"
                 />
             </TouchableOpacity>
             {showForgotPassword && (
                 <>
                     <View className="w-[1px] h-5 bg-gray-300 mx-3" />
                     <TouchableOpacity onPress={() => router.push('/forgot-password')}>
-                        <Text className="text-secondary">Quên?</Text>
+                        <Text className="text-primary">Quên?</Text>
                     </TouchableOpacity>
                 </>
             )}

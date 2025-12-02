@@ -6,7 +6,7 @@ export default function MyUtilitiesSection() {
     return (
         <View className="bg-white mt-2 p-4">
             <View className="flex-row items-center justify-between mb-4">
-                <Text className="text-lg font-medium text-black">Tiện ích của tôi</Text>
+                <Text className="text-lg font-medium text-gray-700">Tiện ích của tôi</Text>
             </View>
             <View className="flex-row justify-between">
                 <UtilityCard

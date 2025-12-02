@@ -27,7 +27,7 @@ export default function OTPInput({
                     onKeyPress={(e) => onKeyPress(e, idx)}
                     maxLength={1}
                     keyboardType="number-pad"
-                    className="w-12 h-14 border-b border-gray-500 text-center text-2xl text-black"
+                    className="w-12 h-14 border-b border-gray-300 text-center text-2xl text-gray-700"
                 />
             ))}
         </View>

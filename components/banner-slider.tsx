@@ -1,4 +1,5 @@
 import { banners } from "@/constants/banner";
+import { Colors } from "@/constants/theme";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Dimensions, Image, TouchableOpacity, View } from "react-native";
@@ -28,7 +29,7 @@ export default function BannerSlider() {
 
     return (
         <View className="relative px-2 py-2">
-            <View className="rounded-2xl overflow-hidden border">
+            <View className="rounded-2xl overflow-hidden">
                 <Carousel
                     ref={ref}
                     loop
@@ -41,7 +42,7 @@ export default function BannerSlider() {
                     renderItem={({ item }) => (
                         <TouchableOpacity key={item.id} activeOpacity={0.9}>
                             <Image
-                                source={{ uri: item.image }}
+                                source={item.image}
                                 style={{ width: width - 16, height: 200 }}
                                 resizeMode="cover"
                             />
@@ -55,7 +56,7 @@ export default function BannerSlider() {
                 className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/50 rounded-full w-10 h-10 items-center justify-center"
                 onPress={handlePrev}
             >
-                <Ionicons name="chevron-back" size={24} color="#000" />
+                <Ionicons name="chevron-back" size={24} color={Colors.light.secondary} />
             </TouchableOpacity>
 
             {/* Right Arrow */}
@@ -63,7 +64,7 @@ export default function BannerSlider() {
                 className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/50 rounded-full w-10 h-10 items-center justify-center"
                 onPress={handleNext}
             >
-                <Ionicons name="chevron-forward" size={24} color="#000" />
+                <Ionicons name="chevron-forward" size={24} color={Colors.light.secondary} />
             </TouchableOpacity>
 
             {/* Pagination Dots */}
@@ -78,7 +79,7 @@ export default function BannerSlider() {
                         height: 8,
                     }}
                     activeDotStyle={{
-                        backgroundColor: "#d4f1a2",
+                        backgroundColor: Colors.light.secondary,
                         borderRadius: 50,
                         width: 8,
                         height: 8,

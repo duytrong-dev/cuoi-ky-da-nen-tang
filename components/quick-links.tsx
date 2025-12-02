@@ -10,19 +10,19 @@ export default function QuickLinks() {
     };
 
     return (
-        <View className="flex p-2 mt-2">
-            <View className="flex-row flex-wrap bg-white py-6 rounded-xl border">
+        <View className="flex p-2 px-0">
+            <View className="flex-row flex-wrap bg-white py-6">
                 {quickLinks.map((link) => (
                     <View
                         key={link.id}
                         className="w-[20%] items-center mb-4"
                     >
                         <TouchableOpacity className="flex-col items-center" onPress={() => handleOnPress(link.id)}>
-                            <View className="w-10 h-10 rounded-xl border border-black/50 items-center justify-center mb-1 bg-white shadow-sm">
+                            <View className="w-10 h-10 rounded-xl items-center justify-center mb-1 bg-white shadow-sm">
                                 {/* Using Icons as placeholders for the actual images */}
                                 <MaterialCommunityIcons name={link.icon as any} size={24} color={link.color} />
                             </View>
-                            <Text className="text-[10px] text-center leading-3">
+                            <Text className="text-[10px] text-center leading-3 text-gray-600">
                                 {link.title}
                             </Text>
                         </TouchableOpacity>

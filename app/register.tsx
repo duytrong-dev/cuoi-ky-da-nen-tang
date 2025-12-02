@@ -21,7 +21,7 @@ export default function RegisterScreen() {
         <View className="items-center mb-10 mt-10">
           <Image
             source={require("@/assets/images/logo.png")}
-            style={{ width: 140, height: 120 }}
+            style={{ width: 180, height: 120 }}
           />
         </View>
 
@@ -64,9 +64,9 @@ export default function RegisterScreen() {
           Bằng việc đăng ký, bạn đã đồng ý với
         </Text>
         <Text className="text-center text-black text-sm leading-5">
-          <Text className="text-secondary">Điều khoản Dịch vụ</Text>
+          <Text className="text-primary">Điều khoản Dịch vụ</Text>
           {" "} & {" "}
-          <Text className="text-secondary">Chính sách Riêng tư</Text>
+          <Text className="text-primary">Chính sách Riêng tư</Text>
           {" "} của Nền tảng
         </Text>
 
@@ -74,7 +74,7 @@ export default function RegisterScreen() {
         <View className="w-full flex flex-row justify-center items-center mt-12">
           <Text className="text-black font-light">Bạn đã có tài khoản? </Text>
           <TouchableOpacity onPress={() => router.push("/login")}>
-            <Text className="text-secondary font-normal">Đăng nhập ngay</Text>
+            <Text className="text-primary font-normal">Đăng nhập ngay</Text>
           </TouchableOpacity>
         </View>
       </View>

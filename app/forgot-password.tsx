@@ -38,7 +38,7 @@ export default function ForgotPasswordScreen() {
         <TextLink
           text="Số điện thoại đã thay đổi?"
           onPress={() => console.log("Phone changed")}
-          className="text-secondary text-center"
+          className="text-primary text-center"
         />
       </View>
     </View>

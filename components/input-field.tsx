@@ -18,14 +18,14 @@ export default function InputField({
     keyboardType = "default",
 }: InputFieldProps) {
     return (
-        <View className="flex-row items-center border-b border-gray-400 py-3">
-            <Ionicons name={icon} size={22} color="black" />
+        <View className="flex-row items-center border-b border-gray-300 py-3">
+            <Ionicons name={icon} size={22} color="gray" />
             <TextInput
                 placeholder={placeholder}
                 value={value}
                 onChangeText={onChangeText}
                 keyboardType={keyboardType}
-                className="flex-1 ml-3 text-lg"
+                className="flex-1 ml-3 text-lg text-gray-700"
                 style={{ fontSize: 16, lineHeight: 20 }}
             />
         </View>

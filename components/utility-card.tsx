@@ -26,12 +26,12 @@ export default function UtilityCard({
             <View className="relative">
                 <IconComponent name={icon} size={28} color="black" />
                 {badge && (
-                    <View className="absolute -top-1 -right-1 bg-primary rounded-full w-3 h-3" />
+                    <View className="absolute -top-1 -right-1 bg-red-500 rounded-full w-3 h-3" />
                 )}
             </View>
-            <Text className="text-xs text-black mt-2 text-center font-medium">{title}</Text>
+            <Text className="text-xs text-gray-700 mt-2 text-center font-medium">{title}</Text>
             {subtitle && (
-                <Text className="text-xs text-black mt-1 text-center">{subtitle}</Text>
+                <Text className="text-xs text-gray-600 mt-1 text-center">{subtitle}</Text>
             )}
         </TouchableOpacity>
     );

@@ -8,10 +8,10 @@ export default function SPayLaterBanner() {
         <TouchableOpacity className="px-4 py-3 bg-white border-t border-gray-100">
             <View className="flex-row items-center justify-between">
                 <View className="flex-row items-center flex-1">
-                    <Ionicons name="card-outline" size={18} color={Colors.light.primary} />
-                    <Text className="text-sm text-gray-700 ml-2">SPayLater: Mua trước trả sau</Text>
+                    <Ionicons name="card-outline" size={18} color={Colors.light.secondary} />
+                    <Text className="text-sm text-gray-700 ml-2">OECPayLater: Mua trước trả sau</Text>
                 </View>
-                <Ionicons name="chevron-forward" size={18} color="#999" />
+                <Ionicons name="chevron-forward" size={18} color="black" />
             </View>
         </TouchableOpacity>
     );

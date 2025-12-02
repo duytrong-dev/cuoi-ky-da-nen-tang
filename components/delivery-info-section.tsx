@@ -18,10 +18,10 @@ export default function DeliveryInfoSection({
         <View className="px-4 py-3 bg-white border-t border-gray-100">
             <TouchableOpacity className="flex-row items-center justify-between mb-2">
                 <View className="flex-row items-center flex-1">
-                    <Ionicons name="cube-outline" size={18} color={Colors.light.primary} />
-                    <Text className="text-base text-gray-800 ml-2">Nhận trong {deliveryTime}</Text>
+                    <Ionicons name="cube-outline" size={18} color={Colors.light.secondary} />
+                    <Text className="text-base text-black ml-2">Nhận trong {deliveryTime}</Text>
                 </View>
-                <Ionicons name="chevron-forward" size={18} color="#999" />
+                <Ionicons name="chevron-forward" size={18} color="black" />
             </TouchableOpacity>
             <Text className="text-base font-medium text-teal-600">Phí ship {shippingFee}</Text>
             <Text className="text-sm text-gray-500 mt-1">

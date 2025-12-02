@@ -17,11 +17,12 @@ export const createStandardScreenOptions = (
 ): NativeStackNavigationOptions => ({
     headerShown: true,
     headerTitle: title,
-    headerLeft: () => <HeaderBackButton onPress={goBack} />,
+    headerLeft: () => <HeaderBackButton onPress={goBack} color="black" />,
     headerRight: () => (
         <HeaderIconButton
             iconName="help-circle-outline"
             onPress={() => console.log("Help")}
+            color="black"
         />
     ),
     headerTitleAlign: "center",
@@ -29,7 +30,7 @@ export const createStandardScreenOptions = (
     headerTitleStyle: {
         fontWeight: "500",
         fontSize: 18,
-        color: isDark ? Colors.dark.secondary : Colors.light.secondary,
+        color: isDark ? "black" : "black",
     },
 });
 
@@ -117,7 +118,7 @@ export const createChatDetailScreenOptions = ({
     goBack,
 }: CreateScreenOptionsParams): NativeStackNavigationOptions => ({
     headerShown: true,
-    headerLeft: () => <HeaderBackButton onPress={goBack} />,
+    headerLeft: () => <HeaderBackButton onPress={goBack} color="black" />,
     headerStyle: {
         backgroundColor: isDark ? Colors.dark.background : Colors.light.background,
     },

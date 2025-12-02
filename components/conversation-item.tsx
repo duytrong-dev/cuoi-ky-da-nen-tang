@@ -34,8 +34,8 @@ export default function ConversationItem({ conversation: item, onPress }: Conver
                     className="w-16 aspect-square rounded-full"
                 />
                 {item.badge && (
-                    <View className="absolute -bottom-1 left-0 right-0 bg-primary px-1 py-0.5 rounded-sm">
-                        <Text className="text-white text-[8px] font-bold text-center">
+                    <View className="absolute -bottom-1 left-0 right-0 bg-white border border-red-500 px-1 py-0.5 rounded-sm">
+                        <Text className="text-red-500 text-[8px] font-bold text-center">
                             {item.badge}
                         </Text>
                     </View>

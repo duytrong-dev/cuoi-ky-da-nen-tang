@@ -61,8 +61,8 @@ export default function TabLayout() {
                   count={5}
                   onPress={() => router.push('/cart')}
                   color="black"
-                  badgeColor={Colors[colorScheme ?? 'light'].primary}
-                  badgeTextColor="black"
+                  badgeColor="red"
+                  badgeTextColor="white"
                   colorScheme={colorScheme ?? 'light'}
                 />
               </View>
@@ -74,11 +74,29 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="mall"
+        name="wishlist"
         options={{
-          title: 'Mall',
-          tabBarIcon: ({ color, focused }) => (
-            <Ionicons size={22} name={focused ? "bag-handle" : "bag-handle-outline"} color={color} />
+          title: '',  // Ẩn title
+          tabBarLabel: () => null,  // Ẩn label hoàn toàn
+          tabBarIcon: ({ focused }) => (
+            <View style={{
+              width: 55,
+              height: 55,
+              borderRadius: 30,
+              backgroundColor: focused ? Colors[colorScheme ?? 'light'].secondary : Colors[colorScheme ?? 'light'].secondary,
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginBottom: 10,  // Nâng lên khỏi tab bar
+              borderWidth: 2,
+              borderColor: "white",
+              shadowColor: '#000',
+              shadowOffset: { width: 0, height: 4 },
+              shadowOpacity: 0.3,
+              shadowRadius: 8,
+              elevation: 8,
+            }}>
+              <Ionicons size={28} name="heart-outline" color="white" />
+            </View>
           ),
         }}
       />
@@ -95,7 +113,7 @@ export default function TabLayout() {
           headerTitleStyle: {
             fontSize: 18,
             fontWeight: '500',
-            color: Colors[colorScheme ?? 'light'].secondary,
+            color: "black",
           },
           headerRight: () => (
             <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 16 }}>
@@ -104,8 +122,8 @@ export default function TabLayout() {
                   count={5}
                   onPress={() => router.push('/cart')}
                   color="black"
-                  badgeColor={Colors[colorScheme ?? 'light'].primary}
-                  badgeTextColor="black"
+                  badgeColor="red"
+                  badgeTextColor="white"
                   colorScheme={colorScheme ?? 'light'}
                 />
               </View>

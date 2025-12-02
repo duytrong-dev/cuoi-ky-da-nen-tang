@@ -26,14 +26,14 @@ export default function OrderNotificationCard({
                 className="w-12 h-12 rounded"
             />
             <View className="flex-1 ml-3">
-                <Text className="text-lg font-medium text-black">{title}</Text>
+                <Text className="text-lg font-medium text-gray-700">{title}</Text>
                 <Text className="text-md text-gray-600 mt-1 leading-5">
                     Đơn hàng{" "}
                     <Text className="text-blue-600">{orderId}</Text>
                     {" "}đã hoàn thành. Bạn hãy đánh giá sản phẩm trước ngày{" "}
                     <Text className="text-blue-600">01-12-2025</Text>
                     {" "}để nhận{" "}
-                    <Text className="font-medium">200 xu</Text>
+                    <Text className="font-medium text-red-500">200 xu</Text>
                     {" "}và giúp người dùng khác hiểu hơn về sản phẩm nhé!
                 </Text>
                 <Text className="text-xs text-gray-400 mt-2">{time}</Text>

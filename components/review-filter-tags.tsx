@@ -22,14 +22,14 @@ export default function ReviewFilterTags({ tags = DEFAULT_TAGS }: ReviewFilterTa
     return (
         <View className="px-4 py-3 bg-white border-t-2 border-gray-100">
             <TouchableOpacity className="flex-row items-center justify-between mb-3">
-                <Text className="text-sm font-medium text-gray-800">Các đánh giá về sản phẩm khác của Shop</Text>
-                <Ionicons name="chevron-forward" size={16} color="#999" />
+                <Text className="text-md font-medium text-black">Các đánh giá về sản phẩm khác của Shop</Text>
+                <Ionicons name="chevron-forward" size={16} color="black" />
             </TouchableOpacity>
 
             <View className="flex-row flex-wrap gap-2">
                 {tags.map((tag, index) => (
                     <TouchableOpacity key={index} className="bg-gray-100 px-2.5 py-1.5 rounded-full">
-                        <Text className="text-xs text-gray-700">{tag.label} ({tag.count})</Text>
+                        <Text className="text-xs text-black">{tag.label} ({tag.count})</Text>
                     </TouchableOpacity>
                 ))}
             </View>

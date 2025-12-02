@@ -41,7 +41,7 @@ export default function SocialLoginButton({ provider, onPress, customLabel }: So
 
     return (
         <TouchableOpacity
-            className="flex-row items-center border border-gray-400 py-3 rounded-lg"
+            className="flex-row items-center border border-gray-300 py-3 rounded-lg"
             onPress={onPress}
         >
             {config.icon === "image" && config.imageSource ? (

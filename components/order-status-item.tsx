@@ -15,12 +15,12 @@ export default function OrderStatusItem({ icon, label, badge, onPress }: OrderSt
             <View className="relative">
                 <Ionicons name={icon} size={28} color="black" />
                 {badge && badge > 0 && (
-                    <View className="absolute -top-1 -right-1 bg-primary rounded-full w-4 h-4 items-center justify-center border">
-                        <Text className="text-black text-xs font-bold">{badge}</Text>
+                    <View className="absolute -top-1 -right-1 bg-red-500 rounded-full w-4 h-4 items-center justify-center">
+                        <Text className="text-white text-xs font-bold">{badge}</Text>
                     </View>
                 )}
             </View>
-            <Text className="text-xs text-black mt-2 text-center">{label}</Text>
+            <Text className="text-xs text-gray-700 mt-2 text-center">{label}</Text>
         </TouchableOpacity>
     );
 }

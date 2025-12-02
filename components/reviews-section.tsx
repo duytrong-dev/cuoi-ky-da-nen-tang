@@ -15,11 +15,11 @@ export default function ReviewsSection({ reviews, averageRating = 5 }: ReviewsSe
                 <View className="flex-row items-center">
                     <Text className="text-xl font-bold text-gray-800">{averageRating}</Text>
                     <Ionicons name="star" size={18} color="#FFD700" style={{ marginLeft: 4 }} />
-                    <Text className="text-base text-gray-700 ml-2">Đánh Giá Sản Phẩm</Text>
+                    <Text className="text-base text-black ml-2">Đánh Giá Sản Phẩm</Text>
                 </View>
                 <TouchableOpacity className="flex-row items-center">
-                    <Text className="text-sm text-gray-600">Tất cả</Text>
-                    <Ionicons name="chevron-forward" size={16} color="#999" style={{ marginLeft: 2 }} />
+                    <Text className="text-sm text-black">Tất cả</Text>
+                    <Ionicons name="chevron-forward" size={16} color="black" style={{ marginLeft: 2 }} />
                 </TouchableOpacity>
             </View>
 

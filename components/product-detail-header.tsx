@@ -1,4 +1,3 @@
-import { Colors } from "@/constants/theme";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
@@ -45,7 +44,7 @@ export default function ProductDetailHeader({ scrollY }: ProductDetailHeaderProp
         extrapolate: 'clamp',
     });
 
-    const iconColor = isScrolled ? Colors.light.primary : '#FFFFFF';
+    const iconColor = isScrolled ? 'black' : 'black';
 
     return (
         <Animated.View
@@ -73,12 +72,12 @@ export default function ProductDetailHeader({ scrollY }: ProductDetailHeaderProp
                     pointerEvents={isScrolled ? 'auto' : 'none'}
                 >
                     <TouchableOpacity
-                        className="flex-row items-center rounded-md px-3 py-2 border border-gray-300"
+                        className="flex-row items-center rounded-md px-3 py-2 border border-black"
                         onPress={() => router.push("/search")}
                         activeOpacity={0.7}
                     >
-                        <Ionicons name="search" size={18} color="#666" />
-                        <Text className="flex-1 ml-2 text-md text-gray-500">
+                        <Ionicons name="search" size={18} color="black" />
+                        <Text className="flex-1 ml-2 text-md text-black">
                             Tìm kiếm sản phẩm
                         </Text>
                     </TouchableOpacity>
@@ -96,8 +95,8 @@ export default function ProductDetailHeader({ scrollY }: ProductDetailHeaderProp
                         style={{ backgroundColor: iconBackgroundColor } as any}
                     >
                         <Ionicons name="cart-outline" size={22} color={iconColor} />
-                        <View className="absolute -top-1 -right-1 bg-primary rounded-full w-5 h-5 items-center justify-center">
-                            <Text className="text-white text-xs font-bold">2</Text>
+                        <View className="absolute -top-1 -right-1 bg-primary rounded-full w-5 h-5 items-center justify-center border">
+                            <Text className="text-black text-xs font-bold">2</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity

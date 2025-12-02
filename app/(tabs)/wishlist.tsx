@@ -1,9 +1,9 @@
-import { View, Text, StyleSheet } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 export default function MailScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello Mall!</Text>
+      <Text style={styles.text}>Hello Wishlist!</Text>
     </View>
   );
 }

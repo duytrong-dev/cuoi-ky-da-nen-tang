@@ -130,14 +130,14 @@ export default function ChatDetailScreen() {
                         <View className="ml-3 flex-1">
                             <View className="flex-row items-center">
                                 <Text
-                                    className="text-base font-medium text-gray-800 dark:text-white"
+                                    className="text-base font-medium text-black dark:text-white"
                                     numberOfLines={1}
                                 >
                                     {shopName}
                                 </Text>
                                 {badge && (
-                                    <View className="bg-primary px-2 py-0.5 rounded-sm ml-2">
-                                        <Text className="text-white text-xs font-medium">{badge}</Text>
+                                    <View className="bg-white border border-red-500 px-2 py-0.5 rounded-sm ml-2">
+                                        <Text className="text-red-500 text-xs font-medium">{badge}</Text>
                                     </View>
                                 )}
                             </View>
@@ -154,12 +154,12 @@ export default function ChatDetailScreen() {
                     <View className="flex-row items-center gap-2">
                         <HeaderIconButton
                             iconName="storefront-outline"
-                            color={isDark ? '#fff' : '#666'}
+                            color={isDark ? '#fff' : 'black'}
                             onPress={() => { }}
                         />
                         <HeaderIconButton
                             iconName="ellipsis-vertical"
-                            color={isDark ? '#fff' : '#666'}
+                            color={isDark ? '#fff' : 'black'}
                             onPress={() => setShowMenu(true)}
                         />
                     </View>
