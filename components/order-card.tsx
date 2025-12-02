@@ -121,14 +121,14 @@ export default function OrderCard({ order, isExpanded, onToggleExpand }: OrderCa
                     <TouchableOpacity className="border border-gray-300 rounded px-4 py-2 flex-1">
                         <Text className="text-gray-700 font-medium text-center">Xem Chi tiết đơn hủy</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity className="border border-primary rounded px-4 py-2 flex-1">
-                        <Text className="text-primary font-medium text-center">Mua lại</Text>
+                    <TouchableOpacity className="border border-secondary rounded px-4 py-2 flex-1">
+                        <Text className="text-secondary font-medium text-center">Mua lại</Text>
                     </TouchableOpacity>
                 </View>
             ) : (
                 <View className="px-4 pb-4 items-end">
-                    <TouchableOpacity className="border border-primary rounded px-6 py-2">
-                        <Text className="text-primary font-medium">
+                    <TouchableOpacity className="border border-secondary rounded px-6 py-2">
+                        <Text className="text-secondary font-medium">
                             {(order.status === "Chờ thanh toán" || order.status === "Chờ lấy hàng") ? "Liên hệ Shop" : "Mua lại"}
                         </Text>
                     </TouchableOpacity>

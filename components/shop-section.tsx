@@ -35,7 +35,7 @@ export default function ShopSection({
       {/* Shop Header */}
       <View className="flex-row items-center px-3 py-3 border-b border-gray-100">
         <TouchableOpacity className="mr-3">
-          <View className={`w-5 h-5 border rounded-md ${allShopProductsSelected ? 'bg-primary border-primary' : 'border-gray-400'} flex items-center justify-center`}>
+          <View className={`w-5 h-5 border rounded-md ${allShopProductsSelected ? 'bg-secondary border-secondary' : 'border-gray-400'} flex items-center justify-center`}>
             {allShopProductsSelected && <Ionicons name="checkmark" size={16} color="white" />}
           </View>
         </TouchableOpacity>
@@ -74,7 +74,7 @@ export default function ShopSection({
       {/* Shop Voucher */}
       <TouchableOpacity onPress={onOpenVoucher} className="flex-row items-center justify-between px-3 py-3 border-t border-gray-100 mt-1">
         <View className="flex-row items-center">
-          <MaterialCommunityIcons name="ticket-percent-outline" size={20} color={Colors.light.primary} />
+          <MaterialCommunityIcons name="ticket-percent-outline" size={20} color={Colors.light.secondary} />
           <Text className="ml-2 text-gray-700">Thêm Shop Voucher</Text>
         </View>
         <Ionicons name="chevron-forward" size={18} color="#999" />

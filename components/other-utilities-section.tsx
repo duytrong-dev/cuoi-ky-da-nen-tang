@@ -37,7 +37,7 @@ export default function OtherUtilitiesSection() {
                 <TouchableOpacity className="w-[49%] border border-gray-400 p-4 flex-row items-center mb-2">
                     <Ionicons name="card-outline" size={24} color="red" />
                     <View className="ml-3 flex-1">
-                        <Text className="text-sm text-gray-700">Số dư TK Shopee</Text>
+                        <Text className="text-sm text-gray-700">Số dư tài khoản</Text>
                     </View>
                     <Ionicons name="chevron-forward" size={16} color="gray" />
                 </TouchableOpacity>

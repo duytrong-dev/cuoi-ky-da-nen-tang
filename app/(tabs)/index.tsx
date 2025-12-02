@@ -27,9 +27,6 @@ export default function HomeScreen() {
         {/* Special Offer */}
         <SpecialOffer />
 
-        {/* Live & Video Section */}
-        {/* <LiveAndVideoSection /> */}
-
         {/* Featured Grid */}
         <ProductsGrid />
       </ScrollView>

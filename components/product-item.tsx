@@ -2,20 +2,24 @@ import { ProductItemType } from "@/constants/product";
 import { formatVND } from "@/utils/formatVND";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import React from "react";
+import React, { useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
-import VoucherXtra from "./voucher-xtra";
 
 type ProductItemProps = {
     item: ProductItemType;
 };
 
 export default function ProductItem({ item }: ProductItemProps) {
-
+    const [isWishlisted, setIsWishlisted] = useState(false);
     const router = useRouter();
 
     const handleOnPress = (id: string) => {
         router.push(`/products/${id}`);
+    };
+
+    const toggleWishlist = (e: any) => {
+        e.stopPropagation();
+        setIsWishlisted(!isWishlisted);
     };
     return (
         <TouchableOpacity className="p-1" onPress={() => handleOnPress(item.id)}>
@@ -28,12 +32,21 @@ export default function ProductItem({ item }: ProductItemProps) {
                         resizeMode="cover"
                     />
 
-                    {/* Voucher Xtra Badge */}
-                    {item.hasVoucherXtra && (
-                        <VoucherXtra />
-                    )}
+                    {/* Wishlist Heart Icon */}
+                    <TouchableOpacity
+                        onPress={toggleWishlist}
+                        className="absolute top-2 left-2 bg-white/80 rounded-full p-1.5"
+                        style={{ elevation: 2, shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.2, shadowRadius: 2 }}
+                    >
+                        <Ionicons
+                            name={isWishlisted ? "heart" : "heart-outline"}
+                            size={20}
+                            color={isWishlisted ? "#EE4D2D" : "#666"}
+                        />
+                    </TouchableOpacity>
+
                     {item.discount && (
-                        <View className="absolute top-0 right-0 bg-yellow-400 px-1">
+                        <View className="absolute top-0 right-0 bg-yellow-400 px-2 py-1">
                             <Text className="text-xs font-bold text-black">{item.discount}</Text>
                         </View>
                     )}

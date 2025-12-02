@@ -20,7 +20,7 @@ export default function ContinueButton({
         <TouchableOpacity
             disabled={isDisabled}
             onPress={onPress}
-            className={`w-full py-4 rounded-lg mt-6 ${isDisabled ? "bg-gray-200" : "bg-primary"
+            className={`w-full py-4 rounded-lg mt-6 ${isDisabled ? "bg-gray-200" : "bg-secondary"
                 }`}
         >
             {isLoading ? (

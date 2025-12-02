@@ -1,5 +1,3 @@
-import FinancialServicesSection from "@/components/financial-services-section";
-import MyUtilitiesSection from "@/components/my-utilities-section";
 import OrdersSection from "@/components/orders-section";
 import OtherUtilitiesSection from "@/components/other-utilities-section";
 import ProfileHeader from "@/components/profile-header";
@@ -19,22 +17,14 @@ export default function ProfileScreen() {
     <View className="flex-1 bg-transparent">
       {/* Fixed Header with User Info */}
       <ProfileHeader
-        isLoggedIn={isAuthenticated}
+        isLoggedIn={true}
       />
 
       {/* Scrollable Content */}
       <ScrollView className="flex-1">
-        {/* Email Verification */}
-        {/* <EmailVerificationCard /> */}
 
         {/* Orders Section */}
         <OrdersSection />
-
-        {/* My Utilities */}
-        <MyUtilitiesSection />
-
-        {/* Financial Services */}
-        <FinancialServicesSection />
 
         {/* Other Utilities */}
         <OtherUtilitiesSection />

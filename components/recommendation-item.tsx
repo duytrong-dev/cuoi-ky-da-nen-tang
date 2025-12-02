@@ -2,7 +2,6 @@ import { formatVND } from "@/utils/formatVND";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
-import VoucherXtra from "./voucher-xtra";
 
 export type RecommendationProduct = {
     id: string;
@@ -28,16 +27,6 @@ export default function RecommendationItem({ item }: Readonly<Props>) {
             {/* Image Container */}
             <View className="relative w-full aspect-square">
                 <Image source={{ uri: item.image }} className="w-full h-full" resizeMode="cover" />
-
-                {/* Voucher Xtra Badge */}
-                {item.hasVoucherXtra && (
-                    <VoucherXtra />
-                )}
-
-                {/* Play Icon Overlay (if needed, based on image) */}
-                {/* <View className="absolute bottom-2 right-2 bg-black/30 rounded-full p-1">
-                    <Ionicons name="play" size={12} color="white" />
-                </View> */}
             </View>
 
             {/* Content */}

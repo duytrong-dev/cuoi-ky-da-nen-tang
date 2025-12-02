@@ -1,8 +1,8 @@
-import { banners } from "@/constants/banner";
 import { Colors } from "@/constants/theme";
+import { useBanners } from "@/queries/useBanner";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import { Dimensions, Image, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Dimensions, Image, TouchableOpacity, View } from "react-native";
 import { useSharedValue } from "react-native-reanimated";
 import Carousel, { ICarouselInstance, Pagination } from "react-native-reanimated-carousel";
 
@@ -11,6 +11,8 @@ const { width } = Dimensions.get("window");
 export default function BannerSlider() {
     const progress = useSharedValue<number>(0);
     const ref = React.useRef<ICarouselInstance>(null);
+
+    const { data: banners, isLoading, error } = useBanners();
 
     const onPressPagination = (index: number) => {
         ref.current?.scrollTo({
@@ -27,6 +29,20 @@ export default function BannerSlider() {
         ref.current?.next();
     };
 
+    // Hiển thị loading indicator
+    if (isLoading) {
+        return (
+            <View className="px-2 py-2 h-[200px] items-center justify-center">
+                <ActivityIndicator size="large" color={Colors.light.secondary} />
+            </View>
+        );
+    }
+
+    // Không hiển thị gì nếu có lỗi hoặc không có banners
+    if (error || !banners || banners.length === 0) {
+        return null;
+    }
+
     return (
         <View className="relative px-2 py-2">
             <View className="rounded-2xl overflow-hidden">
@@ -36,13 +52,13 @@ export default function BannerSlider() {
                     width={width - 16}
                     height={200}
                     autoPlay={true}
-                    data={banners}
+                    data={banners!}
                     scrollAnimationDuration={2000}
                     onProgressChange={progress}
                     renderItem={({ item }) => (
                         <TouchableOpacity key={item.id} activeOpacity={0.9}>
                             <Image
-                                source={item.image}
+                                source={{ uri: item.image_url }}
                                 style={{ width: width - 16, height: 200 }}
                                 resizeMode="cover"
                             />
@@ -71,7 +87,7 @@ export default function BannerSlider() {
             <View className="absolute bottom-4 left-0 right-0 items-center">
                 <Pagination.Basic
                     progress={progress}
-                    data={banners}
+                    data={banners!}
                     dotStyle={{
                         backgroundColor: "rgba(255,255,255,0.6)",
                         borderRadius: 50,

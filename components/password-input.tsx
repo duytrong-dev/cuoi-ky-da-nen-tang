@@ -44,7 +44,7 @@ export default function PasswordInput({
                     <>
                         <View className="w-[1px] h-5 bg-gray-300 mx-3" />
                         <TouchableOpacity onPress={() => router.push('/forgot-password')}>
-                            <Text className="text-primary">Quên?</Text>
+                            <Text className="text-secondary">Quên?</Text>
                         </TouchableOpacity>
                     </>
                 )}

@@ -1,6 +1,6 @@
 import { Colors } from "@/constants/theme";
 import { Ionicons } from "@expo/vector-icons";
-import React from "react";
+import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
 interface ProductDescriptionProps {
@@ -31,18 +31,32 @@ const DEFAULT_DESCRIPTION = `Mô hình Bandai đấu sĩ LBX tổng hợp
 - Biệt đồ chơi sẽ giúp bạn rèn luyện sự kiên nhẫn, tỉ mỉ và khéo léo của mình nữa.`;
 
 export default function ProductDescription({ description = DEFAULT_DESCRIPTION }: ProductDescriptionProps) {
+    const [isExpanded, setIsExpanded] = useState(false);
+
     return (
         <View className="px-4 py-3 bg-white border-t-2 border-gray-100">
             <Text className="text-md font-medium text-gray-800 mb-3">Mô tả sản phẩm</Text>
 
-            <Text className="text-sm text-gray-700 leading-5 mb-3">
+            <Text
+                className="text-sm text-gray-700 leading-5 mb-3"
+                numberOfLines={isExpanded ? undefined : 3}
+            >
                 {description}
             </Text>
 
             <View className="items-center mt-4 mb-2">
-                <TouchableOpacity className="flex-row items-center border-t border-gray-200 pt-3 w-full justify-center">
-                    <Text className="text-md text-primary mr-1">Xem thêm</Text>
-                    <Ionicons name="chevron-down" size={16} color={Colors.light.primary} />
+                <TouchableOpacity
+                    className="flex-row items-center border-t border-gray-200 pt-3 w-full justify-center"
+                    onPress={() => setIsExpanded(!isExpanded)}
+                >
+                    <Text className="text-md text-secondary mr-1">
+                        {isExpanded ? "Thu gọn" : "Xem thêm"}
+                    </Text>
+                    <Ionicons
+                        name={isExpanded ? "chevron-up" : "chevron-down"}
+                        size={16}
+                        color={Colors.light.secondary}
+                    />
                 </TouchableOpacity>
             </View>
 

@@ -57,11 +57,6 @@ export default function ProductDetailGallary() {
                     </Text>
                 </View>
 
-                {/* Voucher XTRA Badge */}
-                <View className="absolute bottom-3 left-3 bg-yellow-400 px-2 py-1 rounded">
-                    <Text className="text-md font-bold text-white">VOUCHER</Text>
-                    <Text className="text-md font-bold text-white">XTRA</Text>
-                </View>
             </View>
 
             {/* Price Section */}
@@ -73,13 +68,9 @@ export default function ProductDetailGallary() {
                         <Text className="text-xs text-black">Giá Sau Voucher</Text>
                     </View>
                 </View>
-                <View className="flex-row items-center mb-1">
-                    <Text className="text-sm text-black">Chỉ từ 388.368₫ x 1 kỳ với OPayLater</Text>
-                    <Ionicons name="chevron-forward" size={14} color="black" style={{ marginLeft: 4 }} />
-                </View>
                 <View className="flex-row items-center">
-                    <Text className="text-sm text-black">Đã bán 85</Text>
-                    <Ionicons name="heart-outline" size={16} color="black" style={{ marginLeft: 8 }} />
+                    <Text className="text-md text-black">Đã bán 85</Text>
+                    <Ionicons name="heart-outline" size={20} color="black" style={{ marginLeft: 8 }} />
                 </View>
             </View>
 

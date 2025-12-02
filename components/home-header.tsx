@@ -31,7 +31,7 @@ export default function HomeHeader() {
                 <View className="flex-row items-center space-x-4">
                     <TouchableOpacity
                         className="relative mr-4"
-                        onPress={() => router.push("/cart")}
+                        onPress={() => router.push("/orders/cart")}
                     >
                         <Ionicons name="cart-outline" size={26} />
                         <View className="absolute -top-1 -right-2 bg-red-500 rounded-full min-w-[16px] h-4 items-center justify-center px-1">
@@ -39,7 +39,7 @@ export default function HomeHeader() {
                         </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => router.push("/chat")}>
+                    <TouchableOpacity onPress={() => router.push("/chats")}>
                         <Ionicons
                             name="chatbubble-ellipses-outline"
                             size={26}

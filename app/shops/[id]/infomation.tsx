@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import React from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -7,32 +7,32 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 export default function ShopInfoScreen() {
     const router = useRouter();
     const insets = useSafeAreaInsets();
+    const params = useLocalSearchParams();
+
+    // Get data from params with fallback values
+    const shopName = params.shopName as string || "GLO OO";
+    const shopAvatar = params.shopAvatar as string || "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7ab0te9@resize_w450_nl.webp";
+    const rating = params.rating ? parseFloat(params.rating as string) : 4.9;
+    const followers = params.followers as string || "3,6k";
+    const videoCount = params.videoCount as string || "100k";
 
     return (
-        <View className="flex-1 bg-gray-50" style={{ paddingTop: insets.top }}>
-            {/* Header */}
-            <View className="bg-white px-4 py-3 flex-row items-center border-b border-gray-200">
-                <TouchableOpacity onPress={() => router.back()} className="mr-3">
-                    <Ionicons name="arrow-back" size={24} color="black" />
-                </TouchableOpacity>
-                <Text className="text-lg font-medium flex-1 text-center">Chi tiết Shop</Text>
-                <View style={{ width: 24 }} />
-            </View>
+        <View className="flex-1 bg-gray-50">
 
             <ScrollView className="flex-1">
                 {/* Shop Header */}
                 <View className="bg-white px-4 py-4 border-b-8 border-gray-100">
                     <View className="flex-row items-center">
                         <Image
-                            source={{ uri: "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7ab0te9@resize_w450_nl.webp" }}
+                            source={{ uri: shopAvatar }}
                             style={{ width: 64, height: 64 }}
                             className="rounded-full"
                         />
                         <View className="ml-3 flex-1">
-                            <Text className="text-lg font-semibold text-gray-800">GLO OO</Text>
+                            <Text className="text-lg font-semibold text-gray-800">{shopName}</Text>
                             <Text className="text-sm text-gray-500 mt-1">Online 7 phút trước</Text>
                             <View className="flex-row items-center mt-2">
-                                <Text className="text-sm text-gray-600">Người theo dõi 3,6k</Text>
+                                <Text className="text-sm text-gray-600">Người theo dõi {followers}</Text>
                                 <Text className="text-sm text-gray-600 ml-4">Đang Theo 0</Text>
                             </View>
                         </View>
@@ -51,7 +51,7 @@ export default function ShopInfoScreen() {
                             <Text className="text-base text-gray-700 ml-3">Đánh giá</Text>
                         </View>
                         <View className="flex-row items-center">
-                            <Text className="text-red-500 text-base mr-1">4.9 / 5</Text>
+                            <Text className="text-red-500 text-base mr-1">{rating} / 5</Text>
                             <Text className="text-gray-400 text-sm">(8,4k Đánh giá)</Text>
                             <Ionicons name="chevron-forward" size={20} color="#999" className="ml-2" />
                         </View>

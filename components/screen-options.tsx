@@ -6,14 +6,13 @@ import HeaderBackButton from "./header-back-button";
 import HeaderIconButton from "./header-icon-button";
 
 interface CreateScreenOptionsParams {
-    isDark: boolean;
     goBack: () => void;
     router: Router;
 }
 
 export const createStandardScreenOptions = (
     title: string,
-    { isDark, goBack }: CreateScreenOptionsParams
+    { goBack }: CreateScreenOptionsParams
 ): NativeStackNavigationOptions => ({
     headerShown: true,
     headerTitle: title,
@@ -26,16 +25,15 @@ export const createStandardScreenOptions = (
         />
     ),
     headerTitleAlign: "center",
-    headerStyle: { backgroundColor: isDark ? "#111" : "#fff" },
+    headerStyle: { backgroundColor: "#fff" },
     headerTitleStyle: {
         fontWeight: "500",
         fontSize: 18,
-        color: isDark ? "black" : "black",
+        color: "black",
     },
 });
 
 export const createCartScreenOptions = ({
-    isDark,
     goBack,
     router,
 }: CreateScreenOptionsParams): NativeStackNavigationOptions => ({
@@ -44,24 +42,23 @@ export const createCartScreenOptions = ({
     headerRight: () => (
         <View className="flex-row items-center gap-4">
             <TouchableOpacity>
-                <Text className="text-base text-gray-800 dark:text-white">Sửa</Text>
+                <Text className="text-base text-gray-800">Sửa</Text>
             </TouchableOpacity>
             <HeaderIconButton
                 iconName="chatbubble-ellipses-outline"
-                onPress={() => router.push("/chat")}
+                onPress={() => router.push("/chats")}
                 color="black"
             />
         </View>
     ),
     headerTitleAlign: "left",
     headerStyle: {
-        backgroundColor: isDark ? Colors.dark.background : Colors.light.background,
+        backgroundColor: Colors.light.background,
     },
     headerShadowVisible: false,
 });
 
 export const createSettingsScreenOptions = ({
-    isDark,
     goBack,
     router,
 }: CreateScreenOptionsParams): NativeStackNavigationOptions => ({
@@ -72,12 +69,12 @@ export const createSettingsScreenOptions = ({
     headerRight: () => (
         <HeaderIconButton
             iconName="chatbubble-ellipses-outline"
-            onPress={() => router.push("/chat")}
+            onPress={() => router.push("/chats")}
             color="black"
         />
     ),
     headerStyle: {
-        backgroundColor: isDark ? Colors.dark.background : Colors.light.background,
+        backgroundColor: Colors.light.background,
     },
     headerTitleStyle: {
         fontWeight: "500",
@@ -87,7 +84,6 @@ export const createSettingsScreenOptions = ({
 });
 
 export const createMyOrdersScreenOptions = ({
-    isDark,
     goBack,
     router,
 }: CreateScreenOptionsParams): NativeStackNavigationOptions => ({
@@ -100,13 +96,13 @@ export const createMyOrdersScreenOptions = ({
             <HeaderIconButton iconName="search-outline" onPress={() => { }} color="black" />
             <HeaderIconButton
                 iconName="chatbubble-ellipses-outline"
-                onPress={() => router.push("/chat")}
+                onPress={() => router.push("/chats")}
                 color="black"
             />
         </View>
     ),
     headerStyle: {
-        backgroundColor: isDark ? Colors.dark.background : Colors.light.background,
+        backgroundColor: Colors.light.background,
     },
     headerTitleStyle: {
         fontWeight: "500",
@@ -117,19 +113,17 @@ export const createMyOrdersScreenOptions = ({
 
 
 export const createChatDetailScreenOptions = ({
-    isDark,
     goBack,
 }: CreateScreenOptionsParams): NativeStackNavigationOptions => ({
     headerShown: true,
     headerLeft: () => <HeaderBackButton onPress={goBack} color="black" />,
     headerStyle: {
-        backgroundColor: isDark ? Colors.dark.background : Colors.light.background,
+        backgroundColor: Colors.light.background,
     },
     headerShadowVisible: true,
 });
 
 export const createOrderSuccessScreenOptions = ({
-    isDark,
     goBack,
     router,
 }: CreateScreenOptionsParams): NativeStackNavigationOptions => ({
@@ -138,14 +132,32 @@ export const createOrderSuccessScreenOptions = ({
     headerRight: () => (
         <HeaderIconButton
             iconName="cart-outline"
-            onPress={() => router.push("/cart")}
+            onPress={() => router.push("/orders/cart")}
             color="#fff"
         />
     ),
     headerTitle: "",
     headerTitleAlign: "center",
     headerStyle: {
-        backgroundColor: isDark ? Colors.dark.primary : Colors.light.primary,
+        backgroundColor: Colors.light.secondary,
+    },
+    headerShadowVisible: false,
+});
+
+export const createSellerRegisterScreenOptions = ({
+    goBack,
+}: CreateScreenOptionsParams): NativeStackNavigationOptions => ({
+    headerShown: true,
+    headerTitle: "Đăng ký bán hàng",
+    headerTitleAlign: "center",
+    headerLeft: () => <HeaderBackButton onPress={goBack} color="#fff" />,
+    headerStyle: {
+        backgroundColor: Colors.light.secondary,
+    },
+    headerTitleStyle: {
+        fontWeight: "600",
+        fontSize: 18,
+        color: "#fff",
     },
     headerShadowVisible: false,
 });

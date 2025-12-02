@@ -80,7 +80,7 @@ export default function ShopVoucherModal({
                 <View className="p-4 border-t border-gray-100 bg-white pb-8 my-6">
                     <TouchableOpacity
                         onPress={onClose}
-                        className="bg-primary py-3 rounded-md"
+                        className="bg-secondary py-3 rounded-md"
                     >
                         <Text className="text-white text-center font-bold text-base">
                             Đồng ý

@@ -1,9 +1,10 @@
+import ProductItem from "@/components/product-item";
 import ShopBannerWithOverlay from "@/components/shop-banner-with-overlay";
 import ShopCategoriesList from "@/components/shop-categories-list";
 import ShopFlashSale from "@/components/shop-flash-sale";
 import ShopHeaderAnimated from "@/components/shop-header-animated";
 import ShopProductFilters from "@/components/shop-product-filters";
-import ShopRecommendations from "@/components/shop-recommendations";
+import ShopPromoBanner from "@/components/shop-promo-banner";
 import ShopTabs from "@/components/shop-tabs";
 import ShopVoucherSection from "@/components/shop-voucher-section";
 import { ProductItemType } from "@/constants/product";
@@ -219,9 +220,15 @@ export default function ShopDetailScreen() {
                             <ShopFlashSale products={FLASH_SALE_PRODUCTS} endTime={flashSaleEndTime} />
                         </View>
 
-                        {/* Recommendations */}
+                        {/* Promo Banner & Shop Introduction */}
                         <View className="mt-2">
-                            <ShopRecommendations products={RECOMMENDED_PRODUCTS} />
+                            <ShopPromoBanner
+                                shopName={SHOP_DATA.name}
+                                shopAvatar={SHOP_DATA.avatar}
+                                rating={SHOP_DATA.rating}
+                                productCount={36}
+                                responseRate="99%"
+                            />
                         </View>
                     </>
                 )}
@@ -229,8 +236,14 @@ export default function ShopDetailScreen() {
                 {activeTab === "Sản phẩm" && (
                     <>
                         {/* Product Grid */}
-                        <View className="mt-2">
-                            <ShopRecommendations products={RECOMMENDED_PRODUCTS} />
+                        <View className="bg-white px-2 py-2">
+                            <View className="flex-row flex-wrap">
+                                {RECOMMENDED_PRODUCTS.map((product) => (
+                                    <View key={product.id} style={{ width: '50%' }}>
+                                        <ProductItem item={product} />
+                                    </View>
+                                ))}
+                            </View>
                         </View>
                     </>
                 )}

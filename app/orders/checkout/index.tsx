@@ -90,7 +90,7 @@ export default function CheckoutScreen() {
                 {/* Shopee Voucher */}
                 <TouchableOpacity className="bg-white px-4 py-4 mb-2 flex-row items-center justify-between">
                     <View className="flex-row items-center">
-                        <MaterialCommunityIcons name="ticket-percent" size={20} color={Colors.light.primary} />
+                        <MaterialCommunityIcons name="ticket-percent" size={20} color={Colors.light.secondary} />
                         <Text className="font-medium text-md ml-2">Chọn Voucher</Text>
                     </View>
                     <View className="flex-row items-center">
@@ -141,7 +141,7 @@ export default function CheckoutScreen() {
                     </View>
                     <TouchableOpacity
                         className="bg-red-500 px-8 py-3 rounded-md"
-                        onPress={() => router.push("/order-success")}
+                        onPress={() => router.push("/orders/success")}
                     >
                         <Text className="text-white font-bold text-base">Đặt hàng</Text>
                     </TouchableOpacity>

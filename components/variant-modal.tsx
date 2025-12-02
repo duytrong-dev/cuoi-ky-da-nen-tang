@@ -88,18 +88,18 @@ export default function VariantModal({
                                         key={v}
                                         onPress={() => setSelectedVariant(v)}
                                         className={`rounded-md border mb-2 relative ${isSelected
-                                            ? "bg-white border-primary"
+                                            ? "bg-white border-secondary"
                                             : "bg-gray-50 border-transparent"
                                             }`}
                                     >
                                         <View className="flex-row items-center px-4 py-2">
                                             {isSelected && (
-                                                <View className="absolute top-0 left-0 bg-primary w-3 h-3 rounded-br-sm items-center justify-center">
+                                                <View className="absolute top-0 left-0 bg-secondary w-3 h-3 rounded-br-sm items-center justify-center">
                                                     <Ionicons name="checkmark" size={8} color="white" />
                                                 </View>
                                             )}
                                             <Text
-                                                className={`${isSelected ? "text-primary" : "text-gray-800"
+                                                className={`${isSelected ? "text-secondary" : "text-gray-800"
                                                     }`}
                                             >
                                                 {v}
@@ -121,7 +121,7 @@ export default function VariantModal({
                                     <Text className="text-gray-600 font-medium">-</Text>
                                 </TouchableOpacity>
                                 <View className="px-4 py-1">
-                                    <Text className="text-base font-medium text-primary">
+                                    <Text className="text-base font-medium text-red-500">
                                         {qty}
                                     </Text>
                                 </View>
@@ -142,7 +142,7 @@ export default function VariantModal({
                 <View className="p-4 border-t border-gray-100 my-6">
                     <TouchableOpacity
                         onPress={handleConfirm}
-                        className="bg-primary py-3 rounded-md"
+                        className="bg-secondary py-3 rounded-md"
                     >
                         <Text className="text-white text-center font-bold text-base">
                             Xác nhận

@@ -10,10 +10,10 @@ export const RegisterBody = z.object({
         .max(100, { message: "Họ và tên không được quá 100 ký tự" }),
     email: z.email({ message: "Email không hợp lệ" }),
     password: z.string({ message: "Vui lòng nhập mật khẩu" })
-        .min(6, { message: "Mật khẩu phải có ít nhất 6 ký tự" })
+        .min(8, { message: "Mật khẩu phải có ít nhất 8 ký tự" })
         .max(100, { message: "Mật khẩu không được quá 100 ký tự" }),
     password_confirmation: z.string({ message: "Vui lòng xác nhận mật khẩu" })
-        .min(6, { message: "Mật khẩu xác nhận phải có ít nhất 6 ký tự" })
+        .min(8, { message: "Mật khẩu xác nhận phải có ít nhất 8 ký tự" })
         .max(100, { message: "Mật khẩu xác nhận không được quá 100 ký tự" }),
     role: z.enum(RoleValues).default(Role.BUYER),
 }).strict().refine((data) => data.password === data.password_confirmation, {
@@ -40,7 +40,7 @@ export type RegisterResType = z.TypeOf<typeof RegisterRes>
 export const LoginBody = z.object({
     email: z.email({ message: "Email không hợp lệ" }),
     password: z.string({ message: "Vui lòng nhập mật khẩu" })
-        .min(6, { message: "Mật khẩu phải có ít nhất 6 ký tự" })
+        .min(8, { message: "Mật khẩu phải có ít nhất 8 ký tự" })
         .max(100, { message: "Mật khẩu không được quá 100 ký tự" })
 }).strict()
 export type LoginBodyType = z.TypeOf<typeof LoginBody>

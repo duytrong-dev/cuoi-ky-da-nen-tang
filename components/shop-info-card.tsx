@@ -47,10 +47,10 @@ export default function ShopInfoCard({ shop }: ShopInfoCardProps) {
                     </View>
                 </View>
                 <TouchableOpacity
-                    className="border border-primary px-3 py-1.5 rounded"
+                    className="border border-secondary px-3 py-1.5 rounded"
                     onPress={() => router.push("/shops/[id]")}
                 >
-                    <Text className="text-primary text-sm font-medium">Xem Shop</Text>
+                    <Text className="text-secondary text-sm font-medium">Xem Shop</Text>
                 </TouchableOpacity>
             </View>
 

@@ -49,7 +49,7 @@ export default function SearchScreen() {
 
   const handleSearch = () => {
     if (searchText.trim()) {
-      router.push(`/search-results?query=${encodeURIComponent(searchText)}`);
+      router.push(`/search/results?query=${encodeURIComponent(searchText)}`);
     }
   };
 

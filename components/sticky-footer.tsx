@@ -37,13 +37,13 @@ export default function StickyFooter({
       {/* Shopee Voucher */}
       <TouchableOpacity
         className="w-full px-3 py-3 flex-row justify-between items-center border-b border-gray-100"
-        onPress={() => router.push("/app-voucher")}
+        onPress={() => router.push("/vouchers")}
       >
         <View className="flex-row items-center">
           <MaterialCommunityIcons
             name="ticket-percent-outline"
             size={20}
-            color={Colors.light.primary}
+            color={Colors.light.secondary}
           />
           <Text className="ml-2 text-gray-700">Shop Voucher</Text>
         </View>

@@ -17,7 +17,7 @@ export default function OrderSuccessScreen() {
         <View className="flex-1 bg-gray-50">
             <ScrollView className="flex-1">
                 {/* Success Header */}
-                <View className="bg-primary px-4 py-6">
+                <View className="bg-secondary px-4 py-6">
                     <View className="items-center mb-4">
                         <View className="w-16 h-16 rounded-full bg-white items-center justify-center mb-3">
                             <Ionicons name="time-outline" size={40} color={Colors.light.secondary} />
@@ -67,7 +67,7 @@ export default function OrderSuccessScreen() {
                             <Ionicons name="close" size={24} color="#999" />
                         </TouchableOpacity>
                     </View>
-                    <TouchableOpacity className="bg-primary mx-4 mb-4 py-3 rounded-lg">
+                    <TouchableOpacity className="bg-secondary mx-4 mb-4 py-3 rounded-lg">
                         <Text className="text-white font-bold text-center">Đồng ý</Text>
                     </TouchableOpacity>
                 </View>

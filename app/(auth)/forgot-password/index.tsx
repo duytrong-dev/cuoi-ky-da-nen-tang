@@ -29,7 +29,7 @@ export default function ForgotPasswordScreen() {
       {/* Button */}
       <ContinueButton
         disabled={!canContinue}
-        onPress={() => router.push("/verify-code")}
+        onPress={() => router.push("/(auth)/verify-code")}
         text="Tiếp tục"
       />
 
@@ -38,7 +38,7 @@ export default function ForgotPasswordScreen() {
         <TextLink
           text="Số điện thoại đã thay đổi?"
           onPress={() => console.log("Phone changed")}
-          className="text-primary text-center"
+          className="text-secondary text-center"
         />
       </View>
     </View>

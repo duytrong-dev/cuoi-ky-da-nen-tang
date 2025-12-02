@@ -1,6 +1,5 @@
 import BottomActionBar from "@/components/bottom-action-bar";
 import DeliveryInfoSection from "@/components/delivery-info-section";
-import FreeShippingBanner from "@/components/free-shipping-banner";
 import ProductDescription from "@/components/product-description";
 import ProductDetailGallary from "@/components/product-detail-gallary";
 import ProductDetailHeader from "@/components/product-detail-header";
@@ -13,7 +12,6 @@ import { Review } from "@/components/review-item";
 import ReviewsSection from "@/components/reviews-section";
 import ShopInfoCard from "@/components/shop-info-card";
 import ShopProductsCarousel from "@/components/shop-products-carousel";
-import SPayLaterBanner from "@/components/spaylater-banner";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useRef, useState } from "react";
 import {
@@ -90,17 +88,11 @@ export default function ProductDetailScreen() {
         {/* Image Gallery */}
         <ProductDetailGallary />
 
-        {/* Free Shipping */}
-        <FreeShippingBanner />
-
         {/* Delivery Info */}
         <DeliveryInfoSection />
 
         {/* Return Policy */}
         <ReturnPolicyBanner />
-
-        {/* SPayLater */}
-        <SPayLaterBanner />
 
         {/* Reviews Section */}
         <ReviewsSection reviews={REVIEWS} averageRating={5} />

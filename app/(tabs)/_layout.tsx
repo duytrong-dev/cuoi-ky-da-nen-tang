@@ -59,7 +59,7 @@ export default function TabLayout() {
               <View style={{ marginLeft: 16 }}>
                 <CartIconWithBadge
                   count={5}
-                  onPress={() => router.push('/cart')}
+                  onPress={() => router.push('/orders/cart')}
                   color="black"
                   badgeColor="red"
                   badgeTextColor="white"
@@ -77,6 +77,35 @@ export default function TabLayout() {
         name="wishlist"
         options={{
           title: '',  // Ẩn title
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: Colors[colorScheme ?? 'light'].background,
+          },
+          headerTitleStyle: {
+            fontSize: 20,
+            fontWeight: 'bold',
+            color: Colors[colorScheme ?? 'light'].secondary,
+          },
+          headerTitle: () => <TrendingHeaderTitle colorScheme={colorScheme ?? 'light'} title='YÊU THÍCH' icon='heart' />,
+          headerTitleAlign: 'left',
+          headerRight: () => (
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 16 }}>
+              <HeaderIconButton
+                iconName="search-outline"
+                onPress={() => router.push('/search')}
+                color="black"
+                size={26}
+              />
+              <View style={{ marginLeft: 16 }}>
+                <HeaderIconButton
+                  iconName="options-outline"
+                  onPress={() => router.push('/wishlist')}
+                  color="black"
+                  size={26}
+                />
+              </View>
+            </View>
+          ),
           tabBarLabel: () => null,  // Ẩn label hoàn toàn
           tabBarIcon: ({ focused }) => (
             <View style={{
@@ -120,7 +149,7 @@ export default function TabLayout() {
               <View style={{ marginRight: 16 }}>
                 <CartIconWithBadge
                   count={5}
-                  onPress={() => router.push('/cart')}
+                  onPress={() => router.push('/orders/cart')}
                   color="black"
                   badgeColor="red"
                   badgeTextColor="white"
@@ -129,7 +158,7 @@ export default function TabLayout() {
               </View>
               <HeaderIconButton
                 iconName="chatbubble-ellipses-outline"
-                onPress={() => router.push('/chat')}
+                onPress={() => router.push('/chats')}
                 color="black"
                 size={26}
               />

@@ -58,7 +58,12 @@ export default function ShopBannerWithOverlay({
                         />
                         <View className="ml-3 flex-1">
                             <TouchableOpacity
-                                onPress={() => router.push("/shops/info")}
+                                onPress={() => router.push({
+                                    pathname: "/shops/[id]/infomation",
+                                    params: {
+                                        id: shopName,
+                                    }
+                                })}
                                 className="flex-row items-center"
                             >
                                 <Text className="text-white text-base font-semibold">{shopName}</Text>
@@ -75,7 +80,7 @@ export default function ShopBannerWithOverlay({
 
                     {/* Right: Action Buttons */}
                     <View className="flex-row items-center">
-                        <TouchableOpacity className="bg-primary px-4 py-2 rounded mr-2">
+                        <TouchableOpacity className="bg-secondary px-4 py-2 rounded mr-2">
                             <Text className="text-white text-sm font-medium">+ Theo dõi</Text>
                         </TouchableOpacity>
                         <TouchableOpacity className="bg-white/20 px-3 py-2 rounded border border-white/40">

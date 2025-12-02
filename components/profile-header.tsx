@@ -22,7 +22,10 @@ export default function ProfileHeader({ isLoggedIn }: ProfileHeaderProps) {
                 {/* Top Icons */}
                 <View className="flex-row justify-between items-center mb-10">
                     <View className="flex-row items-center gap-4 bg-white rounded-full">
-                        <TouchableOpacity className="flex-row items-center justify-center gap-2 px-4 py-1 rounded-full">
+                        <TouchableOpacity
+                            className="flex-row items-center justify-center gap-2 px-4 py-1 rounded-full"
+                            onPress={() => router.push("/seller/register")}
+                        >
                             <Ionicons name="storefront-outline" size={22} color="black" />
                             <Text className="font-medium text-md">Bắt đầu bán</Text>
                         </TouchableOpacity>
@@ -30,20 +33,20 @@ export default function ProfileHeader({ isLoggedIn }: ProfileHeaderProps) {
                     <View className="flex-row items-center gap-4">
                         <HeaderIconButton
                             iconName="settings-outline"
-                            onPress={() => router.push("/settings")}
+                            onPress={() => router.push("/user/settings")}
                             color="black"
                             size={26}
                         />
                         <CartIconWithBadge
                             count={5}
-                            onPress={() => router.push("/cart")}
+                            onPress={() => router.push("/orders/cart")}
                             color="black"
                             badgeColor="red"
                             badgeTextColor="white"
                         />
                         <HeaderIconButton
                             iconName="chatbubble-ellipses-outline"
-                            onPress={() => router.push("/chat")}
+                            onPress={() => router.push("/chats")}
                             color="black"
                             size={26}
                         />
@@ -91,19 +94,19 @@ export default function ProfileHeader({ isLoggedIn }: ProfileHeaderProps) {
                 <View className="flex-row items-center gap-4">
                     <HeaderIconButton
                         iconName="settings-outline"
-                        onPress={() => router.push("/settings")}
+                        onPress={() => router.push("/user/settings")}
                         color="black"
                         size={26}
                     />
                     <HeaderIconButton
                         iconName="cart-outline"
-                        onPress={() => router.push("/cart")}
+                        onPress={() => router.push("/orders/cart")}
                         color="black"
                         size={26}
                     />
                     <HeaderIconButton
                         iconName="chatbubble-ellipses-outline"
-                        onPress={() => router.push("/chat")}
+                        onPress={() => router.push("/chats")}
                         color="black"
                         size={26}
                     />
@@ -114,13 +117,13 @@ export default function ProfileHeader({ isLoggedIn }: ProfileHeaderProps) {
             <View className="flex-row gap-3 mt-6">
                 <TouchableOpacity
                     className="bg-white px-6 py-2 rounded border border-gray-300"
-                    onPress={() => router.push("/login")}
+                    onPress={() => router.push("/(auth)/login")}
                 >
                     <Text className="text-gray-700 font-medium text-base">Đăng nhập</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     className="bg-secondary px-6 py-2 rounded"
-                    onPress={() => router.push("/register")}
+                    onPress={() => router.push("/(auth)/register")}
                 >
                     <Text className="text-white font-medium text-base">Đăng ký</Text>
                 </TouchableOpacity>

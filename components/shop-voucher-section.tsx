@@ -19,11 +19,11 @@ export default function ShopVoucherSection({ vouchers }: ShopVoucherSectionProps
                 {vouchers.map((voucher) => (
                     <View
                         key={voucher.id}
-                        className="mr-3 border border-primary rounded-md overflow-hidden"
+                        className="mr-3 border border-secondary rounded-md overflow-hidden"
                         style={{ width: 160 }}
                     >
                         <View className="p-3">
-                            <Text className="text-primary text-base font-bold">
+                            <Text className="text-secondary text-base font-bold">
                                 {voucher.discount}
                             </Text>
                             <Text className="text-xs text-gray-600 mt-1">
@@ -33,7 +33,7 @@ export default function ShopVoucherSection({ vouchers }: ShopVoucherSectionProps
                                 HSD: {voucher.validUntil}
                             </Text>
                         </View>
-                        <TouchableOpacity className="bg-primary py-2">
+                        <TouchableOpacity className="bg-secondary py-2">
                             <Text className="text-white text-center text-sm font-medium">
                                 Lưu
                             </Text>
@@ -41,7 +41,7 @@ export default function ShopVoucherSection({ vouchers }: ShopVoucherSectionProps
                     </View>
                 ))}
                 <TouchableOpacity className="justify-center items-center px-4">
-                    <Text className="text-primary text-sm">Tìm hiểu ngay →</Text>
+                    <Text className="text-secondary text-sm">Tìm hiểu ngay →</Text>
                 </TouchableOpacity>
             </ScrollView>
         </View>

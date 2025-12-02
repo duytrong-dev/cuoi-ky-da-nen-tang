@@ -6,7 +6,7 @@ export const UserSchema = z.object({
     id: z.number(),
     name: z.string().min(2).max(100),
     email: z.email(),
-    phone: z.string().min(10).max(15).regex(/^[0-9]+$/).nullable(),
+    phone: z.string().min(10).max(15).nullable(),
     role: z.enum(RoleValues).default(Role.BUYER),
     status: z.enum(StatusValues).default(Status.ACTIVE),
     avatar: z.string().nullable(),

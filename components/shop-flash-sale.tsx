@@ -101,7 +101,7 @@ export default function ShopFlashSale({ products, endTime }: ShopFlashSaleProps)
                                 </View>
                             )}
                             {product.badge && (
-                                <View className="absolute top-0 left-0 bg-primary px-1.5 py-0.5 rounded-br">
+                                <View className="absolute top-0 left-0 bg-secondary px-1.5 py-0.5 rounded-br">
                                     <Text className="text-white text-xs font-bold">{product.badge}</Text>
                                 </View>
                             )}
@@ -114,7 +114,7 @@ export default function ShopFlashSale({ products, endTime }: ShopFlashSaleProps)
                                 {formatVND(product.salePrice)}
                             </Text>
                         </View>
-                        <TouchableOpacity className="bg-primary mt-2 py-1 rounded">
+                        <TouchableOpacity className="bg-secondary mt-2 py-1 rounded">
                             <Text className="text-white text-center text-xs font-medium">
                                 ĐANG BÁN CHẠY
                             </Text>

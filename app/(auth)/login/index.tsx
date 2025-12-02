@@ -52,6 +52,7 @@ export default function LoginScreen() {
     try {
       await loginMutation.mutateAsync(result.data);
       Alert.alert('Thành công', 'Đăng nhập thành công!');
+      router.replace('/')
       setEmail('');
       setPassword('');
       setErrors({});
@@ -118,7 +119,7 @@ export default function LoginScreen() {
 
         {/* toggle password / sms */}
         <TouchableOpacity onPress={() => setUseSMS(!useSMS)}>
-          <Text className="text-right text-primary mt-3">
+          <Text className="text-right text-secondary mt-3">
             {useSMS ? "Đăng nhập bằng mật khẩu" : "Đăng nhập bằng SMS"}
           </Text>
         </TouchableOpacity>
@@ -138,8 +139,8 @@ export default function LoginScreen() {
         <Text className="text-black font-light">Bạn chưa có tài khoản? </Text>
         <TextLink
           text="Đăng ký ngay"
-          onPress={() => router.push("/register")}
-          className="text-primary font-normal"
+          onPress={() => router.push("/(auth)/register")}
+          className="text-secondary font-normal"
         />
       </View>
     </View>

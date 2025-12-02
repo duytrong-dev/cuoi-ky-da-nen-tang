@@ -6,12 +6,13 @@ import { Text, View } from "react-native";
 interface TrendingHeaderTitleProps {
     title?: string;
     colorScheme?: 'light' | 'dark';
+    icon?: React.ComponentProps<typeof Ionicons>['name'];
 }
 
-export default function TrendingHeaderTitle({ title = "XU HƯỚNG", colorScheme = 'light' }: TrendingHeaderTitleProps) {
+export default function TrendingHeaderTitle({ title = "XU HƯỚNG", colorScheme = 'light', icon = 'flame' }: TrendingHeaderTitleProps) {
     return (
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <Ionicons name="flame" size={30} color={Colors[colorScheme ?? 'light'].secondary} />
+            <Ionicons name={icon} size={30} color={Colors[colorScheme ?? 'light'].secondary} />
             <Text style={{ color: Colors[colorScheme ?? 'light'].secondary }} className="text-2xl font-bold ml-2">
                 {title}
             </Text>

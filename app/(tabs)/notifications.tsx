@@ -49,19 +49,19 @@ const notificationCategories: Notification[] = [
     type: "update",
     icon: "storefront-outline",
     iconBg: "#EF5350",
-    title: "Cập nhật Shopee",
-    description: "Bạn đang có 100 Shopee Xu sẽ hết hạn vào...",
+    title: "Cập nhật",
+    description: "Bạn đang có 100 Xu thưởng sẽ hết hạn vào...",
     badge: 1,
   },
-  {
-    id: "4",
-    type: "reward",
-    icon: "gift-outline",
-    iconBg: "#42A5F5",
-    title: "Giải Thưởng Shopee",
-    description: "Đập Kẹo: Lượt chơi đã đầy, vào chơi ngay b...",
-    badge: 5,
-  },
+  // {
+  //   id: "4",
+  //   type: "reward",
+  //   icon: "gift-outline",
+  //   iconBg: "#42A5F5",
+  //   title: "Giải Thưởng Shopee",
+  //   description: "Đập Kẹo: Lượt chơi đã đầy, vào chơi ngay b...",
+  //   badge: 5,
+  // },
 ];
 
 type OrderNotification = {

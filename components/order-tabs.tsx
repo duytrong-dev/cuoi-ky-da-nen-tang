@@ -35,14 +35,14 @@ export default function OrderTabs({ tabs, activeTab, onTabChange }: OrderTabsPro
                     >
                         <Text
                             className={`text-sm ${activeTab === tab.key
-                                ? "text-primary font-medium"
+                                ? "text-secondary font-medium"
                                 : "text-gray-600"
                                 }`}
                         >
                             {tab.label}
                         </Text>
                         {activeTab === tab.key && (
-                            <View className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
+                            <View className="absolute bottom-0 left-0 right-0 h-0.5 bg-secondary" />
                         )}
                     </TouchableOpacity>
                 ))}

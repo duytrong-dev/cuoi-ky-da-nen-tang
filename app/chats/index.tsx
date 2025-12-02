@@ -39,10 +39,7 @@ export default function ChatScreen() {
         renderItem={({ item, index }) => (
           <ConversationItem
             conversation={item}
-            onPress={() => router.push({
-              pathname: "/chat/[id]",
-              params: { id: index.toString() },
-            })}
+            onPress={() => router.push(`/chats/${item.id}`)}
           />
         )}
         keyExtractor={(item) => item.id}

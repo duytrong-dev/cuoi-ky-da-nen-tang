@@ -20,14 +20,14 @@ export default function ShopTabs({ activeTab, onTabChange }: ShopTabsProps) {
                     >
                         <Text
                             className={`text-base ${activeTab === tab
-                                ? "text-primary font-semibold"
+                                ? "text-secondary font-semibold"
                                 : "text-gray-600"
                                 }`}
                         >
                             {tab}
                         </Text>
                         {activeTab === tab && (
-                            <View className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
+                            <View className="absolute bottom-0 left-0 right-0 h-0.5 bg-secondary" />
                         )}
                     </TouchableOpacity>
                 ))}

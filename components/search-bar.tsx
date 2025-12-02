@@ -1,4 +1,3 @@
-import { Colors } from "@/constants/theme";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import {
@@ -48,7 +47,7 @@ export default function SearchBar({
 
             {/* Filter Button */}
             <TouchableOpacity className="ml-2" onPress={onFilter}>
-                <Ionicons name="options-outline" size={24} color={Colors.light.secondary} />
+                <Ionicons name="options-outline" size={24} color="black" />
             </TouchableOpacity>
         </View>
     );

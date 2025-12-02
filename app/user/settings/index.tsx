@@ -1,8 +1,10 @@
 import SettingItem from "@/components/setting-item";
 import SettingSectionHeader from "@/components/setting-section-header";
+import { useLogout } from "@/queries/useAuth";
 import { useRouter } from "expo-router";
 import React from "react";
 import {
+    Alert,
     ScrollView,
     Text,
     TouchableOpacity,
@@ -11,6 +13,26 @@ import {
 
 export default function SettingsScreen() {
     const router = useRouter();
+
+    const logoutMutiton = useLogout();
+
+    const handleLogout = async () => {
+        Alert.alert("Xác nhận", "Bạn có chắc chắn muốn đăng xuất không?", [
+            {
+                text: "Hủy",
+                onPress: () => { },
+                style: "cancel"
+            },
+            {
+                text: "Đăng xuất",
+                onPress: async () => {
+                    await logoutMutiton.mutateAsync()
+                    Alert.alert("Thông báo", "Đăng xuất thành công")
+                    router.replace("/(auth)/login")
+                }
+            }
+        ])
+    }
 
     return (
         <View className="flex-1 bg-transparent">
@@ -85,7 +107,7 @@ export default function SettingsScreen() {
                 <View className="px-4 py-6">
                     <TouchableOpacity
                         className="bg-white border border-gray-400 rounded py-3 items-center"
-                        onPress={() => { }}
+                        onPress={handleLogout}
                     >
                         <Text className="text-base text-black">Chuyển tài khoản / Đăng xuất</Text>
                     </TouchableOpacity>

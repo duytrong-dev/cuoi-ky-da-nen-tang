@@ -31,7 +31,7 @@ export default function CartItem({
     <View className="flex-row px-3 py-4 bg-white">
       {/* Checkbox */}
       <TouchableOpacity onPress={onToggle} className="mr-3 justify-center">
-        <View className={`w-5 h-5 border rounded-md ${checked ? 'bg-primary border-primary' : 'border-gray-400'} flex items-center justify-center`}>
+        <View className={`w-5 h-5 border rounded-md ${checked ? 'bg-secondary border-secondary' : 'border-gray-400'} flex items-center justify-center`}>
           {checked && <Ionicons name="checkmark" size={16} color="white" />}
         </View>
       </TouchableOpacity>

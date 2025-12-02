@@ -130,7 +130,7 @@ export default function CartScreen() {
         onToggleAll={toggleSelectAll}
         total={total}
         totalItems={totalItems}
-        onCheckout={() => router.push("/checkout")}
+        onCheckout={() => router.push("/orders/checkout")}
       />
 
       <VariantModal

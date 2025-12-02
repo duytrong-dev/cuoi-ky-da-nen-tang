@@ -60,6 +60,7 @@ export default function RegisterScreen() {
     try {
       await registerMutation.mutateAsync(result.data);
       Alert.alert('Thành công', 'Đăng ký thành công!');
+      router.replace('/(auth)/login');
       setEmail('');
       setPassword('');
       setName('');
@@ -152,9 +153,9 @@ export default function RegisterScreen() {
               Bằng việc đăng ký, bạn đã đồng ý với
             </Text>
             <Text className="text-center text-black text-sm leading-5">
-              <Text className="text-primary">Điều khoản Dịch vụ</Text>
+              <Text className="text-secondary">Điều khoản Dịch vụ</Text>
               {" "} & {" "}
-              <Text className="text-primary">Chính sách Riêng tư</Text>
+              <Text className="text-secondary">Chính sách Riêng tư</Text>
               {" "} của Nền tảng
             </Text>
           </View>
@@ -162,8 +163,8 @@ export default function RegisterScreen() {
           {/* footer */}
           <View className="w-full flex flex-row justify-center items-center mb-6">
             <Text className="text-black font-light">Bạn đã có tài khoản? </Text>
-            <TouchableOpacity onPress={() => router.push("/login")}>
-              <Text className="text-primary font-normal">Đăng nhập ngay</Text>
+            <TouchableOpacity onPress={() => router.push("/(auth)/login")}>
+              <Text className="text-secondary font-normal">Đăng nhập ngay</Text>
             </TouchableOpacity>
           </View>
         </View>

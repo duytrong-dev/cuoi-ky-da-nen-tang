@@ -38,5 +38,9 @@ export const queryKeys = {
     auth: {
         currentUser: ['auth', 'currentUser'] as const,
     },
+    banner: {
+        all: ['banner'] as const,
+        byShop: (shopId: number) => ['banner', 'shop', shopId] as const,
+    },
     // Thêm các query keys khác ở đây
 } as const;
