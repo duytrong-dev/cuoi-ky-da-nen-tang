@@ -45,6 +45,7 @@ export default function ShippingSettings() {
                                 onChangeText={setFreeShippingMin}
                                 keyboardType="numeric"
                                 placeholder="500000"
+                                style={{ fontSize: 16, lineHeight: 20 }}
                             />
                             <Text className="text-xs text-gray-500 mt-1">VNĐ</Text>
                         </View>
@@ -74,6 +75,7 @@ export default function ShippingSettings() {
                             onChangeText={setStandardFee}
                             keyboardType="numeric"
                             placeholder="30000"
+                            style={{ fontSize: 16, lineHeight: 20 }}
                         />
                         <Text className="text-xs text-gray-500 mt-1">Phí vận chuyển (VNĐ)</Text>
                     </View>
@@ -95,6 +97,7 @@ export default function ShippingSettings() {
                             onChangeText={setExpressFee}
                             keyboardType="numeric"
                             placeholder="50000"
+                            style={{ fontSize: 16, lineHeight: 20 }}
                         />
                         <Text className="text-xs text-gray-500 mt-1">Phí vận chuyển (VNĐ)</Text>
                     </View>

@@ -1,14 +1,9 @@
-import { Ionicons } from '@expo/vector-icons';
+import { AddBannerButton } from '@/components/seller/add-banner-button';
+import { Banner, BannerCard } from '@/components/seller/banner-card';
+import { EmptyBannerState } from '@/components/seller/empty-banner-state';
 import * as ImagePicker from 'expo-image-picker';
-import React, { useState } from 'react';
-import { Alert, FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
-
-interface Banner {
-    id: string;
-    image: string;
-    position: number;
-    active: boolean;
-}
+import { useState } from 'react';
+import { Alert, FlatList, View } from 'react-native';
 
 const MOCK_BANNERS: Banner[] = [
     { id: '1', image: 'https://via.placeholder.com/400x200', position: 1, active: true },
@@ -27,7 +22,7 @@ export default function BannersManagement() {
         }
 
         const result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            mediaTypes: ['images'],
             allowsEditing: true,
             aspect: [2, 1],
             quality: 0.8,
@@ -65,68 +60,23 @@ export default function BannersManagement() {
         );
     };
 
-    const renderBanner = ({ item }: { item: Banner }) => (
-        <View className="bg-white rounded-lg overflow-hidden mb-4 shadow-sm">
-            <Image
-                source={{ uri: item.image }}
-                className="w-full h-40"
-                resizeMode="cover"
-            />
-            <View className="p-4">
-                <View className="flex-row items-center justify-between">
-                    <View className="flex-row items-center">
-                        <Text className="text-sm text-gray-600 mr-3">Vị trí: {item.position}</Text>
-                        <View className={`px-2 py-1 rounded ${item.active ? 'bg-green-100' : 'bg-gray-100'}`}>
-                            <Text className={`text-xs ${item.active ? 'text-green-600' : 'text-gray-600'}`}>
-                                {item.active ? 'Đang hiển thị' : 'Đã ẩn'}
-                            </Text>
-                        </View>
-                    </View>
-                    <View className="flex-row">
-                        <TouchableOpacity
-                            onPress={() => toggleBannerStatus(item.id)}
-                            className="p-2 mr-2"
-                        >
-                            <Ionicons
-                                name={item.active ? 'eye-off-outline' : 'eye-outline'}
-                                size={20}
-                                color="#6b7280"
-                            />
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            onPress={() => deleteBanner(item.id)}
-                            className="p-2"
-                        >
-                            <Ionicons name="trash-outline" size={20} color="#ef4444" />
-                        </TouchableOpacity>
-                    </View>
-                </View>
-            </View>
-        </View>
-    );
-
     return (
         <View className="flex-1 bg-gray-50">
             <FlatList
                 data={banners}
-                renderItem={renderBanner}
+                renderItem={({ item }) => (
+                    <BannerCard
+                        banner={item}
+                        onToggleStatus={toggleBannerStatus}
+                        onDelete={deleteBanner}
+                    />
+                )}
                 keyExtractor={item => item.id}
                 contentContainerStyle={{ padding: 16 }}
-                ListEmptyComponent={
-                    <View className="items-center justify-center py-20">
-                        <Ionicons name="image-outline" size={64} color="#d1d5db" />
-                        <Text className="text-gray-400 mt-4">Chưa có banner nào</Text>
-                    </View>
-                }
+                ListEmptyComponent={<EmptyBannerState />}
             />
 
-            <TouchableOpacity
-                onPress={pickBanner}
-                className="absolute bottom-6 right-6 bg-secondary w-14 h-14 rounded-full items-center justify-center shadow-lg"
-                style={{ elevation: 5 }}
-            >
-                <Ionicons name="add" size={28} color="white" />
-            </TouchableOpacity>
+            <AddBannerButton onPress={pickBanner} />
         </View>
     );
 }

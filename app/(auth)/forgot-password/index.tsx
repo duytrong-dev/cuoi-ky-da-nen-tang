@@ -21,7 +21,7 @@ export default function ForgotPasswordScreen() {
       {/* Input */}
       <InputField
         icon="person-outline"
-        placeholder="Email hoặc số điện thoại"
+        placeholder="Email"
         value={identifier}
         onChangeText={setIdentifier}
       />
@@ -36,8 +36,8 @@ export default function ForgotPasswordScreen() {
       {/* Extra link */}
       <View className="mt-8">
         <TextLink
-          text="Số điện thoại đã thay đổi?"
-          onPress={() => console.log("Phone changed")}
+          text="Quay lại đăng nhập?"
+          onPress={() => router.back()}
           className="text-secondary text-center"
         />
       </View>

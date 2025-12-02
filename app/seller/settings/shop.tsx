@@ -31,7 +31,7 @@ export default function ShopSettings() {
         }
 
         const result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            mediaTypes: ['images'],
             allowsEditing: true,
             aspect: type === 'logo' ? [1, 1] : [3, 1],
             quality: 0.8,
@@ -59,11 +59,11 @@ export default function ShopSettings() {
                 <View className="p-4">
                     {/* Shop Images */}
                     <View className="bg-white rounded-lg overflow-hidden mb-4 shadow-sm">
-                        {/* Banner */}
+                        {/* Banner with Avatar Inside */}
                         <View className="relative">
                             <Image
                                 source={{ uri: banner }}
-                                style={{ width: '100%', height: 150 }}
+                                style={{ width: '100%', height: 220 }}
                                 resizeMode="cover"
                             />
                             <TouchableOpacity
@@ -72,26 +72,27 @@ export default function ShopSettings() {
                             >
                                 <Ionicons name="camera" size={20} color="white" />
                             </TouchableOpacity>
-                        </View>
-
-                        {/* Logo */}
-                        <View className="items-center" style={{ marginTop: -50 }}>
-                            <View className="relative">
-                                <Image
-                                    source={{ uri: logo }}
-                                    style={{ width: 100, height: 100 }}
-                                    className="rounded-full border-4 border-white bg-white"
-                                />
-                                <TouchableOpacity
-                                    onPress={() => pickImage('logo')}
-                                    className="absolute bottom-0 right-0 bg-secondary p-2 rounded-full border-2 border-white"
-                                >
-                                    <Ionicons name="camera" size={16} color="white" />
-                                </TouchableOpacity>
-                            </View>
-                            <Text className="text-sm text-gray-500 mt-2 mb-3">
-                                Nhấn để thay đổi ảnh
+                            <Text className="absolute top-2 left-2 bg-black/40 px-3 py-2 rounded text-md text-white">
+                                Banner Shop
                             </Text>
+
+                            {/* Avatar positioned at bottom center of banner */}
+                            <View className="absolute bottom-4 left-0 right-0 items-center">
+                                <View className="relative">
+                                    <Image
+                                        source={{ uri: logo }}
+                                        style={{ width: 100, height: 100 }}
+                                        className="rounded-full bg-white border-2 border-gray-300"
+                                    />
+                                    <TouchableOpacity
+                                        onPress={() => pickImage('logo')}
+                                        className="absolute bottom-0 right-0 bg-secondary p-2 rounded-full border-2 border-white"
+                                        style={{ elevation: 2 }}
+                                    >
+                                        <Ionicons name="camera" size={16} color="white" />
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
                         </View>
                     </View>
 
@@ -104,6 +105,7 @@ export default function ShopSettings() {
                             className="border border-gray-300 rounded-lg px-3 py-2 text-base"
                             value={shopName}
                             onChangeText={setShopName}
+                            style={{ fontSize: 16, lineHeight: 20 }}
                         />
                     </View>
 
@@ -119,6 +121,7 @@ export default function ShopSettings() {
                             multiline
                             numberOfLines={4}
                             textAlignVertical="top"
+                            style={{ fontSize: 16, lineHeight: 20 }}
                         />
                     </View>
 
@@ -136,6 +139,7 @@ export default function ShopSettings() {
                             value={phoneNumber}
                             onChangeText={setPhoneNumber}
                             keyboardType="phone-pad"
+                            style={{ fontSize: 16, lineHeight: 20 }}
                         />
 
                         <Text className="text-base font-semibold text-gray-800 mb-2">
@@ -147,6 +151,7 @@ export default function ShopSettings() {
                             onChangeText={setEmail}
                             keyboardType="email-address"
                             autoCapitalize="none"
+                            style={{ fontSize: 16, lineHeight: 20 }}
                         />
 
                         <Text className="text-base font-semibold text-gray-800 mb-2">
@@ -158,6 +163,7 @@ export default function ShopSettings() {
                             onChangeText={setAddress}
                             multiline
                             numberOfLines={2}
+                            style={{ fontSize: 16, lineHeight: 20 }}
                         />
                     </View>
 

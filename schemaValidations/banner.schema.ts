@@ -12,6 +12,7 @@ export const BannerSchema = z.object({
 });
 export type BannerSchemaType = z.TypeOf<typeof BannerSchema>;
 
+// get banners response schema
 export const BannersSchemaRes = z.object({
     success: z.boolean(),
     message: z.string(),

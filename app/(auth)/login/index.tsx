@@ -76,7 +76,7 @@ export default function LoginScreen() {
         <View className="items-center mb-10 mt-10">
           <Image
             source={require("@/assets/images/logo.png")}
-            style={{ width: 180, height: 120 }}
+            style={{ width: 200, height: 140 }}
           />
         </View>
 

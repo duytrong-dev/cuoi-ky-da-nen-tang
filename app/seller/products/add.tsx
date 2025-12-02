@@ -32,7 +32,7 @@ export default function AddProduct() {
         }
 
         const result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            mediaTypes: ['images'],
             allowsMultipleSelection: true,
             quality: 0.8,
         });
@@ -121,6 +121,7 @@ export default function AddProduct() {
                             placeholder="Nhập tên sản phẩm"
                             value={productName}
                             onChangeText={setProductName}
+                            style={{ fontSize: 16, lineHeight: 20 }}
                         />
                     </View>
 
@@ -134,6 +135,7 @@ export default function AddProduct() {
                             placeholder="VD: Thời trang, Điện tử..."
                             value={category}
                             onChangeText={setCategory}
+                            style={{ fontSize: 16, lineHeight: 20 }}
                         />
                     </View>
 
@@ -149,6 +151,7 @@ export default function AddProduct() {
                                 value={price}
                                 onChangeText={setPrice}
                                 keyboardType="numeric"
+                                style={{ fontSize: 16, lineHeight: 20 }}
                             />
                             <Text className="text-xs text-gray-500 mt-1">VNĐ</Text>
                         </View>
@@ -163,6 +166,7 @@ export default function AddProduct() {
                                 value={stock}
                                 onChangeText={setStock}
                                 keyboardType="numeric"
+                                style={{ fontSize: 16, lineHeight: 20 }}
                             />
                             <Text className="text-xs text-gray-500 mt-1">Sản phẩm</Text>
                         </View>
@@ -181,6 +185,7 @@ export default function AddProduct() {
                             multiline
                             numberOfLines={6}
                             textAlignVertical="top"
+                            style={{ fontSize: 16, lineHeight: 20 }}
                         />
                     </View>
 

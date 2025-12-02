@@ -161,3 +161,27 @@ export const createSellerRegisterScreenOptions = ({
     },
     headerShadowVisible: false,
 });
+
+
+export const createStandardSellerScreenOptions = (
+    title: string,
+    { goBack }: CreateScreenOptionsParams
+): NativeStackNavigationOptions => ({
+    headerShown: true,
+    headerTitle: title,
+    headerLeft: () => <HeaderBackButton onPress={goBack} color="white" />,
+    headerRight: () => (
+        <HeaderIconButton
+            iconName="help-circle-outline"
+            onPress={() => console.log("Help")}
+            color="white"
+        />
+    ),
+    headerTitleAlign: "center",
+    headerStyle: { backgroundColor: Colors.light.secondary },
+    headerTitleStyle: {
+        fontWeight: "500",
+        fontSize: 18,
+        color: "white",
+    },
+});

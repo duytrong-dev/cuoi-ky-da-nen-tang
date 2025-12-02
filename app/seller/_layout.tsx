@@ -1,10 +1,7 @@
-import { createSellerRegisterScreenOptions } from '@/components/screen-options';
-import { Colors } from '@/constants/theme';
+import { createSellerRegisterScreenOptions, createStandardSellerScreenOptions } from '@/components/screen-options';
 import { Stack, useRouter } from 'expo-router';
-import { useColorScheme } from 'react-native';
 
 export default function SellerLayout() {
-    const colorScheme = useColorScheme();
     const router = useRouter();
 
     const goBack = () => {
@@ -18,69 +15,58 @@ export default function SellerLayout() {
     const screenOptionsParams = { goBack, router };
 
     return (
-        <Stack
-            screenOptions={{
-                headerStyle: {
-                    backgroundColor: Colors[colorScheme ?? 'light'].secondary,
-                },
-                headerTintColor: '#fff',
-                headerTitleStyle: {
-                    fontWeight: 'bold',
-                },
-            }}
-        >
+        <Stack>
             <Stack.Screen
                 name="index"
-                options={{
-                    title: 'Quản lý Shop',
-                    headerShown: true
-                }}
-            />
+                options={createStandardSellerScreenOptions("Quản lý shop", screenOptionsParams)} />
+
             <Stack.Screen
                 name="products/index"
-                options={{ title: 'Quản lý Sản phẩm' }}
+                options={createStandardSellerScreenOptions("Quản lý Sản phẩm", screenOptionsParams)}
             />
             <Stack.Screen
                 name="products/add"
-                options={{ title: 'Thêm Sản phẩm' }}
+                options={createStandardSellerScreenOptions("Thêm Sản phẩm", screenOptionsParams)}
             />
             <Stack.Screen
                 name="categories/index"
-                options={{ title: 'Quản lý Danh mục' }}
+                options={createStandardSellerScreenOptions("Quản lý Danh mục", screenOptionsParams)}
             />
             <Stack.Screen
                 name="banners/index"
-                options={{ title: 'Quản lý Banner' }}
+                options={createStandardSellerScreenOptions("Quản lý Banner", screenOptionsParams)}
             />
             <Stack.Screen
                 name="settings/shop"
-                options={{ title: 'Cài đặt Shop' }}
+                options={createStandardSellerScreenOptions("Cài đặt Shop", screenOptionsParams)}
             />
             <Stack.Screen
                 name="settings/shipping"
-                options={{ title: 'Cài đặt Vận chuyển' }}
+                options={createStandardSellerScreenOptions("Cài đặt Vận chuyển", screenOptionsParams)}
             />
             <Stack.Screen
                 name="settings/payment"
-                options={{ title: 'Cài đặt Thanh toán' }}
+                options={createStandardSellerScreenOptions("Cài đặt Thanh toán", screenOptionsParams)}
             />
             <Stack.Screen
                 name="customize/index"
-                options={{ title: 'Tùy chỉnh Giao diện' }}
+                options={createStandardSellerScreenOptions("Tùy chỉnh Giao diện", screenOptionsParams)}
             />
             <Stack.Screen
                 name="orders/index"
-                options={{ title: 'Quản lý Đơn hàng' }}
+                options={createStandardSellerScreenOptions("Quản lý Đơn hàng", screenOptionsParams)}
             />
             <Stack.Screen
                 name="reviews/index"
-                options={{ title: 'Quản lý Đánh giá' }}
+                options={createStandardSellerScreenOptions("Quản lý Đánh giá", screenOptionsParams)}
             />
             <Stack.Screen
                 name="promotions/index"
-                options={{ title: 'Quản lý Khuyến mãi' }}
+                options={createStandardSellerScreenOptions("Quản lý Khuyến mãi", screenOptionsParams)}
             />
-            <Stack.Screen name="register/index" options={createSellerRegisterScreenOptions(screenOptionsParams)} />
+            <Stack.Screen
+                name="register/index"
+                options={createSellerRegisterScreenOptions(screenOptionsParams)} />
         </Stack>
     );
 }

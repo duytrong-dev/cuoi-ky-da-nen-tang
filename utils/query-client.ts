@@ -42,5 +42,8 @@ export const queryKeys = {
         all: ['banner'] as const,
         byShop: (shopId: number) => ['banner', 'shop', shopId] as const,
     },
+    product: {
+        recommended: ['product', 'recommended'] as const,
+    },
     // Thêm các query keys khác ở đây
 } as const;

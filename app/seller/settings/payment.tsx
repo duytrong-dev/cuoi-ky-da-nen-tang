@@ -81,6 +81,7 @@ export default function PaymentSettings() {
                                 value={bankName}
                                 onChangeText={setBankName}
                                 placeholder="Vietcombank"
+                                style={{ fontSize: 16, lineHeight: 20 }}
                             />
                         </View>
 
@@ -94,6 +95,7 @@ export default function PaymentSettings() {
                                 onChangeText={setAccountNumber}
                                 placeholder="1234567890"
                                 keyboardType="numeric"
+                                style={{ fontSize: 16, lineHeight: 20 }}
                             />
                         </View>
 
@@ -107,6 +109,7 @@ export default function PaymentSettings() {
                                 onChangeText={setAccountName}
                                 placeholder="NGUYEN VAN A"
                                 autoCapitalize="characters"
+                                style={{ fontSize: 16, lineHeight: 20 }}
                             />
                         </View>
                     </View>

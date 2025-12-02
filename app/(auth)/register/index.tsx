@@ -93,7 +93,7 @@ export default function RegisterScreen() {
           <View className="items-center mb-8 mt-6">
             <Image
               source={require("@/assets/images/logo.png")}
-              style={{ width: 180, height: 120 }}
+              style={{ width: 200, height: 140 }}
             />
           </View>
 
