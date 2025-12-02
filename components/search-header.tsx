@@ -9,6 +9,7 @@ interface SearchHeaderProps {
     onSearchTextChange: (text: string) => void;
     selectedTab: SearchTab;
     onTabChange: (tab: SearchTab) => void;
+    selectedFilter?: string;
     onBack: () => void;
     onFilter?: () => void;
     onCamera?: () => void;
@@ -20,6 +21,7 @@ export default function SearchHeader({
     onSearchTextChange,
     selectedTab,
     onTabChange,
+    selectedFilter,
     onBack,
     onFilter,
     onCamera,
@@ -38,7 +40,10 @@ export default function SearchHeader({
                 selectedTab={selectedTab}
                 onTabChange={onTabChange}
             />
-            <FilterPills onFilterPress={onFilterPillPress} />
+            <FilterPills
+                selectedFilter={selectedFilter}
+                onFilterPress={onFilterPillPress}
+            />
         </View>
     );
 }

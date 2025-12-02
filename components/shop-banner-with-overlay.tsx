@@ -1,5 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
 import React from "react";
 import { Dimensions, Image, Text, TouchableOpacity, View } from "react-native";
 
@@ -22,12 +23,14 @@ export default function ShopBannerWithOverlay({
     followers,
     videoCount,
 }: ShopBannerWithOverlayProps) {
+    const router = useRouter();
+
     return (
         <View className="relative">
             {/* Banner Image */}
             <Image
                 source={{ uri: imageUrl }}
-                style={{ width: width, height: 240 }}
+                style={{ width: width, height: 280 }}
                 resizeMode="cover"
             />
 
@@ -44,8 +47,8 @@ export default function ShopBannerWithOverlay({
             />
 
             {/* Shop Info Overlay */}
-            <View className="absolute bottom-0 left-0 right-0 px-4 pb-4">
-                <View className="flex-row items-center justify-between mb-3">
+            <View className="absolute bottom-0 left-0 right-0 px-4 pb-8">
+                <View className="flex-row items-center justify-between mb-8">
                     {/* Left: Avatar and Info */}
                     <View className="flex-row items-center flex-1">
                         <Image
@@ -54,10 +57,13 @@ export default function ShopBannerWithOverlay({
                             className="rounded-full border-2 border-white"
                         />
                         <View className="ml-3 flex-1">
-                            <View className="flex-row items-center">
+                            <TouchableOpacity
+                                onPress={() => router.push("/shops/info")}
+                                className="flex-row items-center"
+                            >
                                 <Text className="text-white text-base font-semibold">{shopName}</Text>
                                 <Ionicons name="chevron-forward" size={16} color="#fff" />
-                            </View>
+                            </TouchableOpacity>
                             <View className="flex-row items-center mt-1">
                                 <Ionicons name="star" size={14} color="#FFD700" />
                                 <Text className="text-white text-sm ml-1">{rating}</Text>

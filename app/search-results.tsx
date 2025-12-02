@@ -12,6 +12,13 @@ export default function SearchResultsScreen() {
     const params = useLocalSearchParams();
     const [searchText, setSearchText] = useState(params.query as string || "dấu sĩ lbx");
     const [selectedTab, setSelectedTab] = useState<SearchTab>("related");
+    const [selectedFilter, setSelectedFilter] = useState<string | undefined>();
+
+    const handleFilterPillPress = (filterId: string) => {
+        // Toggle filter: if already selected, unselect it
+        setSelectedFilter(selectedFilter === filterId ? undefined : filterId);
+        console.log("Filter:", filterId);
+    };
 
     return (
         <View className="flex-1 bg-transparent" style={{ paddingTop: insets.top }}>
@@ -21,10 +28,11 @@ export default function SearchResultsScreen() {
                 onSearchTextChange={setSearchText}
                 selectedTab={selectedTab}
                 onTabChange={setSelectedTab}
+                selectedFilter={selectedFilter}
                 onBack={() => router.back()}
                 onFilter={() => console.log("Filter")}
                 onCamera={() => console.log("Camera")}
-                onFilterPillPress={(filterId) => console.log("Filter:", filterId)}
+                onFilterPillPress={handleFilterPillPress}
             />
 
             {/* Product Grid */}

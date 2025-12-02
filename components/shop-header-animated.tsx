@@ -1,13 +1,15 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { Animated, TextInput, TouchableOpacity, View } from "react-native";
+import { Animated, Text, TouchableOpacity, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 interface ShopHeaderAnimatedProps {
     scrollY: Animated.Value;
 }
 
 export default function ShopHeaderAnimated({ scrollY }: ShopHeaderAnimatedProps) {
+    const insets = useSafeAreaInsets();
     const router = useRouter();
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -24,40 +26,40 @@ export default function ShopHeaderAnimated({ scrollY }: ShopHeaderAnimatedProps)
     // Animate background color based on scroll
     const headerBackgroundColor = scrollY.interpolate({
         inputRange: [0, 100],
-        outputRange: ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 1)"],
-        extrapolate: "clamp",
+        outputRange: ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 1)'],
+        extrapolate: 'clamp',
     });
 
-    // Animate search bar visibility
+    // Animate search bar opacity
     const searchBarOpacity = scrollY.interpolate({
         inputRange: [0, 100],
         outputRange: [0, 1],
-        extrapolate: "clamp",
+        extrapolate: 'clamp',
     });
 
     // Animate icon background color
     const iconBackgroundColor = scrollY.interpolate({
         inputRange: [0, 100],
-        outputRange: ["rgba(0, 0, 0, 0.3)", "rgba(0, 0, 0, 0)"],
-        extrapolate: "clamp",
+        outputRange: ['rgba(0, 0, 0, 0.3)', 'rgba(0, 0, 0, 0)'],
+        extrapolate: 'clamp',
     });
 
-    const iconColor = isScrolled ? "#000" : "#fff";
+    const iconColor = isScrolled ? 'black' : 'white';
 
     return (
         <Animated.View
             className="absolute top-0 left-0 right-0 z-10"
             style={{
+                paddingTop: insets.top,
                 backgroundColor: headerBackgroundColor,
                 borderBottomWidth: isScrolled ? 1 : 0,
-                borderBottomColor: "#f0f0f0",
+                borderBottomColor: '#f0f0f0',
             }}
         >
-            <View className="flex-row items-center px-4 py-3">
-                {/* Back Button */}
+            <View className="flex-row items-center justify-between px-4 py-3">
                 <TouchableOpacity
                     onPress={() => router.back()}
-                    className="w-10 h-10 rounded-full items-center justify-center mr-3"
+                    className="w-10 h-10 rounded-full items-center justify-center"
                     style={{ backgroundColor: iconBackgroundColor } as any}
                 >
                     <Ionicons name="arrow-back" size={24} color={iconColor} />
@@ -65,27 +67,36 @@ export default function ShopHeaderAnimated({ scrollY }: ShopHeaderAnimatedProps)
 
                 {/* Search Bar - Shows when scrolled */}
                 <Animated.View
-                    className="flex-1"
+                    className="flex-1 mx-3"
                     style={{ opacity: searchBarOpacity }}
-                    pointerEvents={isScrolled ? "auto" : "none"}
+                    pointerEvents={isScrolled ? 'auto' : 'none'}
                 >
-                    <View className="flex-row items-center bg-gray-100 rounded-md px-3 py-2">
-                        <Ionicons name="search" size={18} color="#999" />
-                        <TextInput
-                            placeholder="Tìm kiếm sản phẩm trong Shop"
-                            placeholderTextColor="#999"
-                            className="flex-1 ml-2 text-sm"
-                        />
-                    </View>
+                    <TouchableOpacity
+                        className="flex-row items-center rounded-md px-3 py-2 border border-gray-400"
+                        onPress={() => router.push("/search")}
+                        activeOpacity={0.7}
+                    >
+                        <Ionicons name="search" size={18} color="black" />
+                        <Text className="flex-1 ml-2 text-md text-gray-500">
+                            Tìm kiếm sản phẩm
+                        </Text>
+                    </TouchableOpacity>
                 </Animated.View>
 
-                {/* More Options */}
-                <TouchableOpacity
-                    className="w-10 h-10 rounded-full items-center justify-center ml-3"
-                    style={{ backgroundColor: iconBackgroundColor } as any}
-                >
-                    <Ionicons name="ellipsis-vertical" size={24} color={iconColor} />
-                </TouchableOpacity>
+                <View className="flex-row items-center gap-3">
+                    <TouchableOpacity
+                        className="w-10 h-10 rounded-full items-center justify-center"
+                        style={{ backgroundColor: iconBackgroundColor } as any}
+                    >
+                        <Ionicons name="share-outline" size={22} color={iconColor} />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        className="w-10 h-10 rounded-full items-center justify-center"
+                        style={{ backgroundColor: iconBackgroundColor } as any}
+                    >
+                        <Ionicons name="ellipsis-vertical" size={22} color={iconColor} />
+                    </TouchableOpacity>
+                </View>
             </View>
         </Animated.View>
     );

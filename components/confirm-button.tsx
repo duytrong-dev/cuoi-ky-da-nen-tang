@@ -12,7 +12,7 @@ export default function ConfirmButton({
 }: ConfirmButtonProps) {
     return (
         <TouchableOpacity
-            className="bg-primary py-3 rounded-md"
+            className="bg-secondary py-3 rounded-md"
             onPress={onPress}
         >
             <Text className="text-white text-center font-bold text-base">

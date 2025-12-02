@@ -73,8 +73,8 @@ export default function ShopFlashSale({ products, endTime }: ShopFlashSaleProps)
                     </View>
                 </View>
                 <TouchableOpacity className="flex-row items-center">
-                    <Text className="text-primary text-sm">Tìm hiểu ngay</Text>
-                    <Ionicons name="chevron-forward" size={16} color="#EE4D2D" />
+                    <Text className="text-red-500 text-sm">Tìm hiểu ngay</Text>
+                    <Ionicons name="chevron-forward" size={16} color="red" />
                 </TouchableOpacity>
             </View>
 

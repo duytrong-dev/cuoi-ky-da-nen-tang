@@ -32,7 +32,7 @@ export default function SearchInput({
             <View className="flex-row items-center px-3 py-2">
                 {/* Back Button */}
                 <TouchableOpacity onPress={onBack} className="mr-2">
-                    <Ionicons name="arrow-back" size={24} color="#999" />
+                    <Ionicons name="arrow-back" size={24} color="black" />
                 </TouchableOpacity>
 
                 {/* Search Input */}

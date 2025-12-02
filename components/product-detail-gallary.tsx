@@ -1,9 +1,19 @@
-import { PRODUCT_IMAGES } from "@/app/products/[id]";
+// import { PRODUCT_IMAGES } from "@/app/products/[id]";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useRef, useState } from "react";
 import { Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import Carousel, { ICarouselInstance } from "react-native-reanimated-carousel";
 import ProductTitleSection from "./product-title-section";
+
+export const PRODUCT_IMAGES = [
+    "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7ab0te9@resize_w450_nl.webp",
+    "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7aba9df.webp",
+    "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7bpup65.webp",
+    "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7eiq5f8.webp",
+    "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax78wptcb.webp",
+    "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7bpl989.webp",
+];
+
 
 const { width, height } = Dimensions.get("window");
 const SLIDER_HEIGHT = height * 0.45; // Gần 1/2 chiều cao màn hình
@@ -49,8 +59,8 @@ export default function ProductDetailGallary() {
 
                 {/* Voucher XTRA Badge */}
                 <View className="absolute bottom-3 left-3 bg-yellow-400 px-2 py-1 rounded">
-                    <Text className="text-md font-bold text-black">VOUCHER</Text>
-                    <Text className="text-md font-bold text-black">XTRA</Text>
+                    <Text className="text-md font-bold text-white">VOUCHER</Text>
+                    <Text className="text-md font-bold text-white">XTRA</Text>
                 </View>
             </View>
 

@@ -32,13 +32,13 @@ export default function ShopInfoCard({ shop }: ShopInfoCardProps) {
                         <View className="flex-row items-center mb-1">
                             <Text className="text-base font-medium text-gray-800">{shop.name}</Text>
                             {shop.badge && (
-                                <View className="bg-primary px-1.5 py-0.5 rounded ml-2">
-                                    <Text className="text-white text-xs font-bold">{shop.badge}</Text>
+                                <View className="bg-white px-1.5 py-0.5 rounded ml-2 border border-red-500">
+                                    <Text className="text-red-500 text-xs font-bold">{shop.badge}</Text>
                                 </View>
                             )}
                         </View>
                         <View className="flex-row items-center mb-0.5">
-                            <View className="bg-primary px-1.5 py-0.5 rounded">
+                            <View className="bg-red-500 px-1.5 py-0.5 rounded">
                                 <Text className="text-white text-xs font-bold">Shop Nổi Bật</Text>
                             </View>
                             <Text className="text-xs text-gray-500 ml-1">trong Đồ Sưu Tầm</Text>

@@ -33,7 +33,7 @@ const DEFAULT_DESCRIPTION = `Mô hình Bandai đấu sĩ LBX tổng hợp
 export default function ProductDescription({ description = DEFAULT_DESCRIPTION }: ProductDescriptionProps) {
     return (
         <View className="px-4 py-3 bg-white border-t-2 border-gray-100">
-            <Text className="text-sm font-medium text-gray-800 mb-3">Mô tả sản phẩm</Text>
+            <Text className="text-md font-medium text-gray-800 mb-3">Mô tả sản phẩm</Text>
 
             <Text className="text-sm text-gray-700 leading-5 mb-3">
                 {description}
@@ -41,16 +41,16 @@ export default function ProductDescription({ description = DEFAULT_DESCRIPTION }
 
             <View className="items-center mt-4 mb-2">
                 <TouchableOpacity className="flex-row items-center border-t border-gray-200 pt-3 w-full justify-center">
-                    <Text className="text-sm text-primary mr-1">Xem thêm</Text>
+                    <Text className="text-md text-primary mr-1">Xem thêm</Text>
                     <Ionicons name="chevron-down" size={16} color={Colors.light.primary} />
                 </TouchableOpacity>
             </View>
 
             {/* Share Question */}
             <View className="bg-gray-50 p-3 rounded-lg flex-row items-center justify-between mt-2">
-                <Text className="text-sm text-gray-700 flex-1">Bạn có muốn chia sẻ sản phẩm này?</Text>
-                <TouchableOpacity className="bg-white px-3 py-1.5 rounded border border-gray-200">
-                    <Text className="text-sm text-gray-800">Chia sẻ</Text>
+                <Text className="text-md text-gray-700 flex-1">Bạn có muốn chia sẻ sản phẩm này?</Text>
+                <TouchableOpacity className="bg-white px-4 py-2 rounded border border-gray-200">
+                    <Text className="text-md text-gray-800">Chia sẻ</Text>
                 </TouchableOpacity>
             </View>
         </View>

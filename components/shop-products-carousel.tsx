@@ -42,7 +42,7 @@ export default function ShopProductsCarousel({ products = DEFAULT_PRODUCTS }: Sh
     return (
         <View className="py-3 bg-white border-t-2 border-gray-100">
             <TouchableOpacity className="flex-row items-center justify-between px-4 mb-3">
-                <Text className="text-sm font-medium text-gray-800">Các sản phẩm khác của Shop</Text>
+                <Text className="text-base font-medium text-gray-800">Các sản phẩm khác của Shop</Text>
                 <Ionicons name="chevron-forward" size={16} color="#999" />
             </TouchableOpacity>
 
@@ -58,7 +58,7 @@ export default function ShopProductsCarousel({ products = DEFAULT_PRODUCTS }: Sh
                             <Text numberOfLines={2} className="text-xs text-gray-800 mb-1 h-8">
                                 {product.name}
                             </Text>
-                            <Text className="text-primary font-medium text-sm mb-1">{product.price}</Text>
+                            <Text className="text-red-500 font-medium text-sm mb-1">{product.price}</Text>
                             <View className="flex-row items-center justify-between">
                                 <View className="flex-row items-center">
                                     <Ionicons name="star" size={10} color="#FFD700" />

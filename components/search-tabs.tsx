@@ -28,16 +28,16 @@ export default function SearchTabs({ selectedTab, onTabChange }: SearchTabsProps
                 <TouchableOpacity
                     key={tab.id}
                     onPress={() => onTabChange(tab.id)}
-                    className={`flex-1 py-3 ${tab.hasIcon ? "flex-row items-center justify-center" : ""} ${selectedTab === tab.id ? "border-b-2 border-primary" : ""}`}
+                    className={`flex-1 py-3 ${tab.hasIcon ? "flex-row items-center justify-center" : ""} ${selectedTab === tab.id ? "border-b-2 border-secondary" : ""}`}
                 >
-                    <Text className={`text-center text-base ${selectedTab === tab.id ? "text-primary font-medium" : "text-gray-600"}`}>
+                    <Text className={`text-center text-base ${selectedTab === tab.id ? "text-secondary font-medium" : "text-gray-600"}`}>
                         {tab.label}
                     </Text>
                     {tab.hasIcon && (
                         <Ionicons
                             name="chevron-down"
                             size={16}
-                            color={selectedTab === tab.id ? Colors.light.primary : "#666"}
+                            color={selectedTab === tab.id ? Colors.light.secondary : "#666"}
                         />
                     )}
                 </TouchableOpacity>

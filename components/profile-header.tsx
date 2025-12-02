@@ -1,6 +1,7 @@
 import CartIconWithBadge from "@/components/cart-icon-with-badge";
 import HeaderIconButton from "@/components/header-icon-button";
 import { Colors } from "@/constants/theme";
+import { useAuth } from "@/queries/useAuth";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React from "react";
@@ -13,9 +14,11 @@ interface ProfileHeaderProps {
 export default function ProfileHeader({ isLoggedIn }: ProfileHeaderProps) {
     const router = useRouter();
 
+    const { user } = useAuth();
+
     if (isLoggedIn) {
         return (
-            <View className="bg-primary-light px-4 pb-8 pt-16">
+            <View className="bg-secondary-light px-4 pb-8 pt-16">
                 {/* Top Icons */}
                 <View className="flex-row justify-between items-center mb-10">
                     <View className="flex-row items-center gap-4 bg-white rounded-full">
@@ -28,20 +31,20 @@ export default function ProfileHeader({ isLoggedIn }: ProfileHeaderProps) {
                         <HeaderIconButton
                             iconName="settings-outline"
                             onPress={() => router.push("/settings")}
-                            color="white"
+                            color="black"
                             size={26}
                         />
                         <CartIconWithBadge
                             count={5}
                             onPress={() => router.push("/cart")}
-                            color="white"
-                            badgeColor="white"
-                            badgeTextColor={Colors.light.primary}
+                            color="black"
+                            badgeColor="red"
+                            badgeTextColor="white"
                         />
                         <HeaderIconButton
                             iconName="chatbubble-ellipses-outline"
                             onPress={() => router.push("/chat")}
-                            color="white"
+                            color="black"
                             size={26}
                         />
                     </View>
@@ -51,8 +54,8 @@ export default function ProfileHeader({ isLoggedIn }: ProfileHeaderProps) {
                 <View className="flex-row items-center">
                     <View className="relative">
                         <Image
-                            source={{ uri: "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lz09eax7ab0te9@resize_w450_nl.webp" }}
-                            className="w-16 h-16 rounded-full"
+                            source={user?.avatar ? { uri: user?.avatar } : require("@/assets/images/logo.png")}
+                            className="w-16 h-16 rounded-full border border-white bg-white"
                         />
                         <View className="absolute bottom-0 right-0 bg-gray-600 rounded-full p-1">
                             <Ionicons name="camera" size={12} color="white" />
@@ -60,14 +63,14 @@ export default function ProfileHeader({ isLoggedIn }: ProfileHeaderProps) {
                     </View>
                     <View className="ml-3 flex-1">
                         <View className="flex-row items-center">
-                            <Text className="text-white text-xl font-medium">vf28o_pmef</Text>
-                            <View className="bg-pink-100 px-2 py-0.5 rounded-full ml-2">
-                                <Text className="text-primary text-xs">Thành viên</Text>
+                            <Text className="text-black text-xl font-medium">{user?.name}</Text>
+                            <View className="bg-white px-2 py-0.5 rounded-full ml-2">
+                                <Text className="text-red-500 text-xs">Thành viên</Text>
                             </View>
                         </View>
                         <View className="flex-row mt-2">
-                            <Text className="text-white text-md">0 Người theo dõi</Text>
-                            <Text className="text-white text-md ml-4">3 Đang theo dõi</Text>
+                            <Text className="text-gray-600 text-md">0 Người theo dõi</Text>
+                            <Text className="text-gray-600 text-md ml-4">3 Đang theo dõi</Text>
                         </View>
                     </View>
                 </View>

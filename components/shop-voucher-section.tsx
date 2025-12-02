@@ -6,7 +6,6 @@ interface Voucher {
     discount: string;
     minOrder: string;
     validUntil: string;
-    isNew?: boolean;
 }
 
 interface ShopVoucherSectionProps {
@@ -30,11 +29,6 @@ export default function ShopVoucherSection({ vouchers }: ShopVoucherSectionProps
                             <Text className="text-xs text-gray-600 mt-1">
                                 Đơn tối thiểu {voucher.minOrder}
                             </Text>
-                            {voucher.isNew && (
-                                <View className="bg-red-100 px-2 py-0.5 rounded mt-1 self-start">
-                                    <Text className="text-red-600 text-xs">Voucher khách hàng mới</Text>
-                                </View>
-                            )}
                             <Text className="text-xs text-gray-400 mt-1">
                                 HSD: {voucher.validUntil}
                             </Text>

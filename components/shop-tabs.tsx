@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 
 const TABS = ["Shop", "Sản phẩm", "Danh mục hàng"];
 
@@ -11,21 +11,17 @@ interface ShopTabsProps {
 export default function ShopTabs({ activeTab, onTabChange }: ShopTabsProps) {
     return (
         <View className="bg-white border-b border-gray-200">
-            <ScrollView
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                className="px-4"
-            >
+            <View className="flex-row">
                 {TABS.map((tab) => (
                     <TouchableOpacity
                         key={tab}
                         onPress={() => onTabChange(tab)}
-                        className="mr-6 py-3"
+                        className="flex-1 py-3 items-center relative"
                     >
                         <Text
                             className={`text-base ${activeTab === tab
-                                    ? "text-primary font-semibold"
-                                    : "text-gray-600"
+                                ? "text-primary font-semibold"
+                                : "text-gray-600"
                                 }`}
                         >
                             {tab}
@@ -35,7 +31,7 @@ export default function ShopTabs({ activeTab, onTabChange }: ShopTabsProps) {
                         )}
                     </TouchableOpacity>
                 ))}
-            </ScrollView>
+            </View>
         </View>
     );
 }
