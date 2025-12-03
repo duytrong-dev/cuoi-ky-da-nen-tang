@@ -6,9 +6,10 @@ import SocialLoginButton from "@/components/social-login-button";
 import TextLink from "@/components/text-link";
 import { useLogin } from "@/queries/useAuth";
 import { LoginBody } from "@/schemaValidations/auth.schema";
+import { showErrorToast, showSuccessToast } from "@/utils/toast";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
@@ -51,7 +52,7 @@ export default function LoginScreen() {
 
     try {
       await loginMutation.mutateAsync(result.data);
-      Alert.alert('Thành công', 'Đăng nhập thành công!');
+      showSuccessToast('Đăng nhập thành công!');
       router.replace('/')
       setEmail('');
       setPassword('');
@@ -64,7 +65,7 @@ export default function LoginScreen() {
           password: serverErrors.password?.[0],
         });
       } else {
-        Alert.alert('Lỗi', error?.message || 'Đăng nhập thất bại');
+        showErrorToast(error?.message || 'Đăng nhập thất bại');
       }
     }
   };

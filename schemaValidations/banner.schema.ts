@@ -1,6 +1,6 @@
 import z from "zod";
 
-// banner schema 
+// Schema banner 
 export const BannerSchema = z.object({
     id: z.number(),
     title: z.string().nullable(),
@@ -12,7 +12,7 @@ export const BannerSchema = z.object({
 });
 export type BannerSchemaType = z.TypeOf<typeof BannerSchema>;
 
-// get banners response schema
+// Schema phản hồi lấy danh sách banner
 export const BannersSchemaRes = z.object({
     success: z.boolean(),
     message: z.string(),

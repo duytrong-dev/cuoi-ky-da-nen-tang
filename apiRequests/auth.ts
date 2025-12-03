@@ -15,12 +15,11 @@ import {
 import http from "@/utils/http";
 import { clearTokens, setTokens } from "@/utils/token-helper";
 
-// Login
+// Đăng nhập
 export const loginApiRequest = async (body: LoginBodyType): Promise<LoginResType> => {
     const validatedBody = LoginBody.parse(body);
     const response = await http.post<LoginResType>("/auth/login", validatedBody);
-
-    // Validate response
+    // Validate phản hồi
     const validatedResponse = LoginRes.parse(response);
 
     // Lưu tokens sau khi login thành công
@@ -34,12 +33,12 @@ export const loginApiRequest = async (body: LoginBodyType): Promise<LoginResType
     return validatedResponse;
 };
 
-// Register
+// Đăng ký
 export const registerApiRequest = async (body: RegisterBodyType): Promise<RegisterResType> => {
     const validatedBody = RegisterBody.parse(body);
     const response = await http.post<RegisterResType>("/auth/register", validatedBody);
 
-    // Validate response
+    // Validate phản hồi
     const validatedResponse = RegisterRes.parse(response);
 
     // Lưu tokens sau khi register thành công
@@ -53,7 +52,7 @@ export const registerApiRequest = async (body: RegisterBodyType): Promise<Regist
     return validatedResponse;
 };
 
-// Logout
+// Đăng xuất
 export const logoutApiRequest = async (): Promise<LogoutResType> => {
     try {
         const response = await http.post<LogoutResType>("/auth/logout");
@@ -65,7 +64,7 @@ export const logoutApiRequest = async (): Promise<LogoutResType> => {
     }
 };
 
-// Logout all   
+// Đăng xuất tất cả thiết bị   
 export const logoutAllApiRequest = async (): Promise<LogoutResType> => {
     try {
         const response = await http.post<LogoutResType>("/auth/logout-all");
@@ -77,7 +76,7 @@ export const logoutAllApiRequest = async (): Promise<LogoutResType> => {
     }
 };
 
-// Get current user
+// Lấy thông tin người dùng hiện tại
 export const getMeApiRequest = async (): Promise<GetMeResType> => {
     const response = await http.get<GetMeResType>("/auth/me");
     const validatedResponse = GetMeRes.parse(response);

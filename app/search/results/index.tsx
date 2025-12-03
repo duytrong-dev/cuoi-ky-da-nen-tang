@@ -1,6 +1,7 @@
 import ProductsGrid from "@/components/products-grid";
 import SearchHeader from "@/components/search-header";
 import { SearchTab } from "@/components/search-tabs";
+import { useSearchProducts } from "@/queries/useSearch";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useState } from "react";
 import { View } from "react-native";
@@ -14,8 +15,11 @@ export default function SearchResultsScreen() {
     const [selectedTab, setSelectedTab] = useState<SearchTab>("related");
     const [selectedFilter, setSelectedFilter] = useState<string | undefined>();
 
+    const { data, isLoading } = useSearchProducts({
+        q: searchText
+    });
+
     const handleFilterPillPress = (filterId: string) => {
-        // Toggle filter: if already selected, unselect it
         setSelectedFilter(selectedFilter === filterId ? undefined : filterId);
         console.log("Filter:", filterId);
     };
@@ -35,8 +39,9 @@ export default function SearchResultsScreen() {
                 onFilterPillPress={handleFilterPillPress}
             />
 
-            {/* Product Grid */}
-            <ProductsGrid />
+
+            <ProductsGrid products={data?.data || []} isLoading={isLoading} />
+
         </View>
     );
 }

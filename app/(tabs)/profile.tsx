@@ -17,7 +17,7 @@ export default function ProfileScreen() {
     <View className="flex-1 bg-transparent">
       {/* Fixed Header with User Info */}
       <ProfileHeader
-        isLoggedIn={true}
+        isLoggedIn={isAuthenticated}
       />
 
       {/* Scrollable Content */}

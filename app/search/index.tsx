@@ -2,25 +2,16 @@ import ProductsGrid from "@/components/products-grid";
 import SearchHistory from "@/components/search-history";
 import SearchInput from "@/components/search-input";
 import SearchSuggestions from "@/components/search-suggestions";
+import { useSearchHistoryStore } from "@/store";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
+  Alert,
   ScrollView,
   Text,
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-
-// Sample data
-const SEARCH_HISTORY = [
-  "Samsung Galaxy Siêu Sale",
-  "dấu sĩ lbx",
-  "prism keycaps",
-  "monka 3067",
-  "switch cherry",
-  "Switch",
-  "bàn phím m1w",
-];
 
 const SEARCH_SUGGESTIONS = [
   { id: 1, text: "tim", fullText: "tim" },
@@ -40,6 +31,9 @@ export default function SearchScreen() {
   const router = useRouter();
   const [searchText, setSearchText] = useState("");
   const [isFocused, setIsFocused] = useState(false);
+  const { getRecentSearches, clearHistory, addSearch } = useSearchHistoryStore();
+
+  const recentSearches = getRecentSearches();
 
   const showSuggestions = searchText.length > 0;
 
@@ -49,8 +43,23 @@ export default function SearchScreen() {
 
   const handleSearch = () => {
     if (searchText.trim()) {
+      addSearch(searchText);
       router.push(`/search/results?query=${encodeURIComponent(searchText)}`);
     }
+  };
+
+  const handleClearHistory = () => {
+    Alert.alert("Xóa lịch sử tìm kiếm", "Bạn có chắc chắn muốn xóa lịch sử tìm kiếm không?", [
+      {
+        text: "Hủy",
+        onPress: () => { },
+        style: "cancel",
+      },
+      {
+        text: "Xóa",
+        onPress: () => clearHistory(),
+      },
+    ]);
   };
 
   return (
@@ -79,9 +88,9 @@ export default function SearchScreen() {
           <View>
             {/* Search History */}
             <SearchHistory
-              history={SEARCH_HISTORY}
+              history={recentSearches.map((item) => item.query)}
               onHistoryPress={setSearchText}
-              onClearHistory={() => console.log("Clear history")}
+              onClearHistory={handleClearHistory}
             />
 
             {/* Search Suggestions Section */}

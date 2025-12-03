@@ -8,7 +8,8 @@ export const RoleValues = [Role.BUYER, Role.SELLER, Role.ADMIN] as const
 
 export const Status = {
     ACTIVE: 'active',
-    BANNED: 'banned'
+    BANNED: 'banned',
+    PENDING: 'pending'
 } as const
 
-export const StatusValues = [Status.ACTIVE, Status.BANNED] as const
+export const StatusValues = [Status.ACTIVE, Status.BANNED, Status.PENDING] as const

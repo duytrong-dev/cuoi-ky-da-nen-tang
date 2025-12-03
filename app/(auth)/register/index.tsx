@@ -5,9 +5,10 @@ import PasswordInput from "@/components/password-input";
 import SocialLoginButton from "@/components/social-login-button";
 import { useRegister } from "@/queries/useAuth";
 import { RegisterBody } from "@/schemaValidations/auth.schema";
+import { showErrorToast, showSuccessToast } from "@/utils/toast";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import { Alert, Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function RegisterScreen() {
@@ -59,7 +60,7 @@ export default function RegisterScreen() {
 
     try {
       await registerMutation.mutateAsync(result.data);
-      Alert.alert('Thành công', 'Đăng ký thành công!');
+      showSuccessToast('Đăng ký thành công!');
       router.replace('/(auth)/login');
       setEmail('');
       setPassword('');
@@ -76,7 +77,7 @@ export default function RegisterScreen() {
           password_confirmation: serverErrors.password_confirmation?.[0],
         });
       } else {
-        Alert.alert('Lỗi', error?.message || 'Đăng ký thất bại');
+        showErrorToast(error?.message || 'Đăng ký thất bại');
       }
     }
   };

@@ -3,7 +3,7 @@ import z from 'zod'
 import { UserSchema } from './users.schema'
 
 
-// register schema
+// Schema đăng ký
 export const RegisterBody = z.object({
     name: z.string({ message: "Vui lòng nhập họ và tên" })
         .min(2, { message: "Họ và tên phải có ít nhất 2 ký tự" })
@@ -22,7 +22,7 @@ export const RegisterBody = z.object({
 })
 export type RegisterBodyType = z.TypeOf<typeof RegisterBody>
 
-// register response schema
+// Schema phản hồi đăng ký
 export const RegisterRes = z.object({
     success: z.boolean(),
     message: z.string(),
@@ -36,7 +36,7 @@ export const RegisterRes = z.object({
 })
 export type RegisterResType = z.TypeOf<typeof RegisterRes>
 
-// login schema
+// Schema đăng nhập
 export const LoginBody = z.object({
     email: z.email({ message: "Email không hợp lệ" }),
     password: z.string({ message: "Vui lòng nhập mật khẩu" })
@@ -45,7 +45,7 @@ export const LoginBody = z.object({
 }).strict()
 export type LoginBodyType = z.TypeOf<typeof LoginBody>
 
-// login response schema
+// Schema phản hồi đăng nhập
 export const LoginRes = z.object({
     success: z.boolean(),
     message: z.string(),
@@ -59,14 +59,14 @@ export const LoginRes = z.object({
 })
 export type LoginResType = z.TypeOf<typeof LoginRes>
 
-// refresh token schema
+// Schema refresh token
 export const RefreshTokenBody = z.object({
     refreshToken: z.string({ message: "Vui lòng cung cấp refresh token" })
         .min(1, { message: "Refresh token không được để trống" })
 }).strict()
 export type RefreshTokenBodyType = z.TypeOf<typeof RefreshTokenBody>
 
-// refresh token response schema
+// Schema phản hồi refresh token
 export const RefreshTokenRes = z.object({
     success: z.boolean(),
     message: z.string(),
@@ -78,14 +78,14 @@ export const RefreshTokenRes = z.object({
 })
 export type RefreshTokenResType = z.TypeOf<typeof RefreshTokenRes>
 
-// logout response schema
+// Schema phản hồi đăng xuất
 export const LogoutRes = z.object({
     success: z.boolean(),
     message: z.string()
 })
 export type LogoutResType = z.TypeOf<typeof LogoutRes>
 
-// get me response schema
+// Schema phản hồi lấy thông tin người dùng hiện tại
 export const GetMeRes = z.object({
     success: z.boolean(),
     message: z.string(),

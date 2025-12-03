@@ -2,18 +2,21 @@ import { Ionicons } from "@expo/vector-icons";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
 interface ShopImagesSectionProps {
-    banner: string;
-    logo: string;
+    banner: string | null;
+    logo: string | null;
     onPickImage: (type: 'logo' | 'banner') => void;
 }
 
 export function ShopImagesSection({ banner, logo, onPickImage }: ShopImagesSectionProps) {
+    const defaultBanner = "https://via.placeholder.com/400x200/e5e7eb/9ca3af?text=Banner+Shop";
+    const defaultLogo = "https://via.placeholder.com/150/e5e7eb/9ca3af?text=Logo";
+
     return (
         <View className="bg-white rounded-lg overflow-hidden mb-4 shadow-md">
             {/* Banner with Avatar Inside */}
             <View className="relative">
                 <Image
-                    source={{ uri: banner }}
+                    source={{ uri: banner || defaultBanner }}
                     style={{ width: '100%', height: 220 }}
                     resizeMode="cover"
                 />
@@ -32,7 +35,7 @@ export function ShopImagesSection({ banner, logo, onPickImage }: ShopImagesSecti
                 <View className="absolute bottom-4 left-0 right-0 items-center">
                     <View className="relative">
                         <Image
-                            source={{ uri: logo }}
+                            source={{ uri: logo || defaultLogo }}
                             style={{ width: 100, height: 100 }}
                             className="rounded-full bg-white border-2 border-gray-300"
                         />

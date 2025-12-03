@@ -4,17 +4,19 @@ import { RegisterHero } from "@/components/seller/register-hero";
 import { RegisterTerms } from "@/components/seller/register-terms";
 import { ShopImagesSection } from "@/components/seller/shop-images-section";
 import { ShopInfoForm } from "@/components/seller/shop-info-form";
+import { useCreateShop } from "@/queries/useShops";
 import * as ImagePicker from 'expo-image-picker';
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
+    ActivityIndicator,
     Alert,
     KeyboardAvoidingView,
     Platform,
     ScrollView,
     Text,
     TouchableOpacity,
-    View,
+    View
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -25,11 +27,12 @@ export default function SellerRegisterScreen() {
     const [shopName, setShopName] = useState("");
     const [description, setDescription] = useState("");
     const [address, setAddress] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const [email, setEmail] = useState("");
-    const [businessType, setBusinessType] = useState("");
-    const [logo, setLogo] = useState("https://via.placeholder.com/150");
-    const [banner, setBanner] = useState("https://via.placeholder.com/400x200");
+    const [businessTypeId, setBusinessTypeId] = useState<number>(0);
+    const [logo, setLogo] = useState<string | null>(null);
+    const [banner, setBanner] = useState<string | null>(null);
+
+    // Hook tạo shop
+    const { mutate: createShop, isPending } = useCreateShop();
 
     const pickImage = async (type: 'logo' | 'banner') => {
         const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -56,19 +59,48 @@ export default function SellerRegisterScreen() {
     };
 
     const handleSubmit = () => {
-        console.log({
-            shopName,
-            description,
-            address,
-            phoneNumber,
-            email,
-            businessType,
-            logo,
-            banner,
-        });
+        // Validation
+        if (!shopName.trim()) {
+            Alert.alert('Lỗi', 'Vui lòng nhập tên cửa hàng');
+            return;
+        }
 
-        // Navigate to seller dashboard
-        router.push('/seller');
+        if (shopName.trim().length < 2) {
+            Alert.alert('Lỗi', 'Tên cửa hàng phải có ít nhất 2 ký tự');
+            return;
+        }
+
+        // Tạo shop
+        createShop(
+            {
+                name: shopName.trim(),
+                description: description.trim() || null,
+                logo: logo,
+                banner: banner,
+                address: address.trim() || null,
+                business_type_id: businessTypeId,
+            },
+            {
+                onSuccess: (data) => {
+                    Alert.alert(
+                        'Thành công',
+                        'Cửa hàng của bạn đã được tạo thành công!',
+                        [
+                            {
+                                text: 'OK',
+                                onPress: () => router.push('/seller'),
+                            },
+                        ]
+                    );
+                },
+                onError: (error: any) => {
+                    Alert.alert(
+                        'Lỗi',
+                        error?.message || 'Đã có lỗi xảy ra khi tạo cửa hàng. Vui lòng thử lại.'
+                    );
+                },
+            }
+        );
     };
 
     return (
@@ -92,20 +124,16 @@ export default function SellerRegisterScreen() {
                     {/* Shop Info */}
                     <ShopInfoForm
                         shopName={shopName}
-                        businessType={businessType}
+                        businessTypeId={businessTypeId}
                         description={description}
                         onShopNameChange={setShopName}
-                        onBusinessTypeChange={setBusinessType}
+                        onBusinessTypeIdChange={setBusinessTypeId}
                         onDescriptionChange={setDescription}
                     />
 
                     {/* Contact Info */}
                     <ContactInfoForm
-                        phoneNumber={phoneNumber}
-                        email={email}
                         address={address}
-                        onPhoneNumberChange={setPhoneNumber}
-                        onEmailChange={setEmail}
                         onAddressChange={setAddress}
                     />
 
@@ -124,12 +152,22 @@ export default function SellerRegisterScreen() {
             >
                 <TouchableOpacity
                     onPress={handleSubmit}
-                    className="bg-secondary py-4 rounded-lg"
+                    disabled={isPending}
+                    className={`py-4 rounded-lg ${isPending ? 'bg-gray-400' : 'bg-secondary'}`}
                     style={{ elevation: 2 }}
                 >
-                    <Text className="text-white text-center font-bold text-base">
-                        Đăng ký ngay
-                    </Text>
+                    {isPending ? (
+                        <View className="flex-row items-center justify-center gap-2">
+                            <ActivityIndicator color="white" />
+                            <Text className="text-white text-center font-bold text-base">
+                                Đang tạo cửa hàng...
+                            </Text>
+                        </View>
+                    ) : (
+                        <Text className="text-white text-center font-bold text-base">
+                            Đăng ký ngay
+                        </Text>
+                    )}
                 </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>

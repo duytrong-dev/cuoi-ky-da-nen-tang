@@ -2,7 +2,7 @@ import { getBannersApiRequest } from '@/apiRequests/banner';
 import { queryKeys } from '@/utils/query-client';
 import { useQuery } from '@tanstack/react-query';
 
-// Hook để get banners
+// Hook để lấy danh sách banner
 export const useBanners = () => {
     return useQuery({
         queryKey: queryKeys.banner.all,

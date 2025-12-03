@@ -14,7 +14,7 @@ export const useAuth = () => {
         updateUser
     };
 }
-// Hook login mutation
+// Hook mutation đăng nhập
 export const useLogin = () => {
     const { setUser } = useAuthStore();
     const queryClient = useQueryClient();
@@ -22,12 +22,12 @@ export const useLogin = () => {
     return useMutation({
         mutationFn: (credentials: LoginBodyType) => loginApiRequest(credentials),
         onSuccess: async (data) => {
-            // Fetch user info sau khi login thành công
+            // Lấy thông tin người dùng sau khi đăng nhập thành công
             try {
                 const userResponse = await getMeApiRequest();
                 setUser(userResponse.data);
 
-                // Invalidate current user query để refetch
+                // Invalidate query người dùng hiện tại để refetch
                 queryClient.invalidateQueries({ queryKey: queryKeys.auth.currentUser });
             } catch (error) {
                 console.error('Error fetching user after login:', error);
@@ -39,7 +39,7 @@ export const useLogin = () => {
     });
 };
 
-// Hook cho register mutation
+// Hook cho mutation đăng ký
 export const useRegister = () => {
     const { setUser } = useAuthStore();
     const queryClient = useQueryClient();
@@ -47,12 +47,12 @@ export const useRegister = () => {
     return useMutation({
         mutationFn: (data: RegisterBodyType) => registerApiRequest(data),
         onSuccess: async (data) => {
-            // Fetch user info sau khi register thành công
+            // Lấy thông tin người dùng sau khi đăng ký thành công
             try {
                 const userResponse = await getMeApiRequest();
                 setUser(userResponse.data);
 
-                // Invalidate current user query để refetch
+                // Invalidate query người dùng hiện tại để refetch
                 queryClient.invalidateQueries({ queryKey: queryKeys.auth.currentUser });
             } catch (error) {
                 console.error('Error fetching user after register:', error);
@@ -64,7 +64,7 @@ export const useRegister = () => {
     });
 };
 
-// Hook cho logout mutation
+// Hook cho mutation đăng xuất
 export const useLogout = () => {
     const { clearUser } = useAuthStore();
     const queryClient = useQueryClient();
@@ -72,22 +72,22 @@ export const useLogout = () => {
     return useMutation({
         mutationFn: () => logoutApiRequest(),
         onSuccess: () => {
-            // Clear user khỏi store
+            // Xóa người dùng khỏi store
             clearUser();
 
-            // Clear tất cả queries
+            // Xóa tất cả queries
             queryClient.clear();
         },
         onError: (error) => {
             console.error('Logout error:', error);
-            // Vẫn clear user dù có lỗi
+            // Vẫn xóa người dùng dù có lỗi
             clearUser();
             queryClient.clear();
         },
     });
 };
 
-// Hook cho logout all mutation
+// Hook cho mutation đăng xuất tất cả
 export const useLogoutAll = () => {
     const { clearUser } = useAuthStore();
     const queryClient = useQueryClient();
@@ -95,22 +95,22 @@ export const useLogoutAll = () => {
     return useMutation({
         mutationFn: () => logoutAllApiRequest(),
         onSuccess: () => {
-            // Clear user khỏi store
+            // Xóa người dùng khỏi store
             clearUser();
 
-            // Clear tất cả queries
+            // Xóa tất cả queries
             queryClient.clear();
         },
         onError: (error) => {
             console.error('Logout error:', error);
-            // Vẫn clear user dù có lỗi
+            // Vẫn xóa người dùng dù có lỗi
             clearUser();
             queryClient.clear();
         },
     });
 };
 
-// Hook để get me
+// Hook để lấy thông tin người dùng hiện tại
 export const useGetMe = (enabled: boolean = true) => {
     const { isAuthenticated } = useAuthStore();
 

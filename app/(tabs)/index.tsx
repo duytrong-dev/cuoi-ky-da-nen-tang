@@ -4,11 +4,15 @@ import HomeHeader from "@/components/home-header";
 import ProductsGrid from "@/components/products-grid";
 import QuickLinks from "@/components/quick-links";
 import SpecialOffer from "@/components/special-offer";
+import { useProducts } from "@/queries/useProducts";
 import React from "react";
 import { ScrollView, View } from "react-native";
 
 export default function HomeScreen() {
 
+  const { data: products, isLoading } = useProducts();
+
+  console.log(products);
   return (
     <View className="flex-1 bg-transparent">
       {/* Header */}
@@ -28,7 +32,7 @@ export default function HomeScreen() {
         <SpecialOffer />
 
         {/* Featured Grid */}
-        <ProductsGrid />
+        <ProductsGrid products={products} isLoading={isLoading} />
       </ScrollView>
     </View>
   );

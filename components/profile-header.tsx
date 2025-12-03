@@ -24,10 +24,10 @@ export default function ProfileHeader({ isLoggedIn }: ProfileHeaderProps) {
                     <View className="flex-row items-center gap-4 bg-white rounded-full">
                         <TouchableOpacity
                             className="flex-row items-center justify-center gap-2 px-4 py-1 rounded-full"
-                            onPress={() => router.push("/seller/register")}
+                            onPress={() => router.push(user?.role === "seller" ? "/seller" : "/seller/register")}
                         >
                             <Ionicons name="storefront-outline" size={22} color="black" />
-                            <Text className="font-medium text-md">Bắt đầu bán</Text>
+                            <Text className="font-medium text-md">{user?.role === "seller" ? "Quản lý shop" : "Bắt đầu bán"}</Text>
                         </TouchableOpacity>
                     </View>
                     <View className="flex-row items-center gap-4">
@@ -68,7 +68,9 @@ export default function ProfileHeader({ isLoggedIn }: ProfileHeaderProps) {
                         <View className="flex-row items-center">
                             <Text className="text-black text-xl font-medium">{user?.name}</Text>
                             <View className="bg-white px-2 py-0.5 rounded-full ml-2">
-                                <Text className="text-red-500 text-xs">Thành viên</Text>
+                                <Text className="text-red-500 text-xs">
+                                    {user?.role === "seller" ? "Bán hàng" : "Thành viên"}
+                                </Text>
                             </View>
                         </View>
                         <View className="flex-row mt-2">
